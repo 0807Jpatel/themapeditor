@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/src/PropertiesManager/PropertiesManager.iml" filepath="$PROJECT_DIR$/src/PropertiesManager/PropertiesManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TheMapEditor.iml" filepath="$PROJECT_DIR$/TheMapEditor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/XMLUtilities/XMLUtilities.iml" filepath="$PROJECT_DIR$/src/XMLUtilities/XMLUtilities.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/me/me.iml" filepath="$PROJECT_DIR$/src/me/me.iml" />
+    </modules>
+  </component>
+</project>

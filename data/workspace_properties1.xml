@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    This XML file allows us to easily customize the look and language used
+    in our program's user interface. Note that this properties file is only
+    for the workspace controls, which are custom for each application
+-->
+<properties>
+    <property_list>
+        <!-- PROGRAM ICON FILES -->
+	<property name="ADD_ICON"               value="Add.png"></property>
+	<property name="REMOVE_ICON"		value="Remove.png"></property>
+        <property name="MOVE_UP_ICON"		value="MoveUp.png"></property>
+	<property name="MOVE_DOWN_ICON"		value="MoveDown.png"></property>
+        
+        <!-- TOOLTIPS FOR BUTTONS -->
+	<property name="ADD_ITEM_TOOLTIP"	    value="Elija un color de fondo"></property>
+	<property name="REMOVE_ITEM_TOOLTIP"		    value="Seleccione Color de relleno"></property>
+	<property name="MOVE_UP_ITEM_TOOLTIP"	    value="Seleccionar Color del contorno"></property>
+	<property name="MOVE_DOWN_ITEM_TOOLTIP"	    value="Tomar instantáneas"></property>
+	
+	<!-- HEADINGS AND PROMPTS -->
+	<property name="WORKSPACE_HEADING_LABEL"    value="Lista de quehaceres"></property>
+	<property name="DETAILS_HEADING_LABEL"	    value="detalles"></property>
+	<property name="NAME_PROMPT"                value="Nombre de la lista de tareas:"></property>
+	<property name="OWNER_PROMPT"               value="Propietario:"></property>
+        <property name="ITEMS_HEADING_LABEL"        value="Artículos"></property>
+	
+        <!-- TABLE COLUMN HEADINGS -->
+        <property name="CATEGORY_COLUMN_HEADING"        value="Categoría"></property>
+        <property name="DESCRIPTION_COLUMN_HEADING"     value="Descripción"></property>
+        <property name="START_DATE_COLUMN_HEADING"      value="Fecha de inicio"></property>
+        <property name="END_DATE_COLUMN_HEADING"        value="Fecha final"></property>
+        <property name="COMPLETED_COLUMN_HEADING"       value="Completar"></property>
+        
+                	
+	<!-- ERROR MESSAGES AND TITLES FOR THEIR DIALOGS -->
+	<property name="ATTRIBUTE_UPDATE_ERROR_MESSAGE"	    value="WARNING: An error occured updating the element's attribute."></property>
+	<property name="ATTRIBUTE_UPDATE_ERROR_TITLE"	    value="Attribute Update Error"></property>
+	<property name="UPDATE_ERROR_MESSAGE"		    value="An error occured updating the UI"></property>
+	<property name="UPDATE_ERROR_TITLE"		    value="UI Update Error"></property>
+    </property_list>
+    <property_options_list>
+    </property_options_list>
+</properties>

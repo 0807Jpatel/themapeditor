@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="bordered_pane" stylesheets="@../css/workspace.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <SplitPane dividerPositions="0.7290969899665551" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" stylesheets="@../css/workspace.css" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+        </items>
+      </SplitPane>
+   </center>
+   <top>
+      <HBox prefHeight="46.0" prefWidth="566.0" stylesheets="@../css/workspace.css" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" styleClass="newButton" stylesheets="@../css/workspace.css" />
+            <Button mnemonicParsing="false" styleClass="loadButton" stylesheets="@../css/workspace.css" />
+            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="32.0" styleClass="saveButton" stylesheets="@../css/workspace.css" />
+            <Button mnemonicParsing="false" styleClass="exportButton" stylesheets="@../css/workspace.css" />
+            <Button mnemonicParsing="false" styleClass="exitButton" stylesheets="@../css/workspace.css" />
+         </children>
+      </HBox>
+   </top>
+</BorderPane>
