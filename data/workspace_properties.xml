@@ -47,7 +47,7 @@
 
         <!-- OK AND CANCEL -->
         <property name="OK_BUTTON"		    value="Ok"></property>
-        <property name="OK_BUTTON"		    value="Cancel"></property>
+        <property name="CANCEL_BUTTON"		    value="Cancel"></property>
 
     </property_list>
     <property_options_list>
