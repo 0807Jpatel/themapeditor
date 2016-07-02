@@ -1,3 +1,6 @@
+package Driver;
+
+import gui.DimensionDialog;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -6,28 +9,27 @@ import javafx.stage.Stage;
 import properties_manager.PropertiesManager;
 import xml_utilities.InvalidXMLFileFormatException;
 
-public class MapEditor extends Application {
+/**
+ * Created by jappatel on 7/2/16.
+ */
+public class DimensionDriver extends Application{
+	public static void main(String[] args) {
+		launch(args);
+	}
 
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-	    try {
-		    boolean success = loadProperties("workspace_properties.xml");
-		    if (success){
-			    Parent root = FXMLLoader.load(getClass().getResource("gui/workspace.fxml"));
-			    primaryStage.setTitle("Map Editor");
-			    primaryStage.setScene(new Scene(root));
-		    }
-	    }catch (Exception e/*IOException ioe*/) {
-		    System.out.println("Error2");
-	    }
-		primaryStage.setMaximized(true);
-        primaryStage.show();
-    }
-
-
-    public static void main(String[] args) {
-        launch(args);
-    }
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		try {
+			boolean success = loadProperties("workspace_properties.xml");
+			if (success){
+				Parent root = FXMLLoader.load(getClass().getResource("gui/workspace.fxml"));
+				primaryStage.setTitle("Map Editor");
+				primaryStage.setScene(new Scene(root));
+			}
+		}catch (Exception e/*IOException ioe*/) {
+			System.out.println("Error2");
+		}
+	}
 
 	private boolean loadProperties(String propertiesFileName) {
 		PropertiesManager props = PropertiesManager.getPropertiesManager();

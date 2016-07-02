@@ -12,7 +12,7 @@
 .bordered_pane {
     -fx-background-color: #AAB3B1;
     -fx-background-radius: 5.0;
-    -fx-padding: 15;
+    -fx-padding: 10;
     -fx-spacing: 10;
     -fx-border-width: 2px;
     -fx-border-color: #808080;
@@ -125,4 +125,28 @@
 
 .exportButton{
     -fx-graphic: url("../images/Export.png");
+}
+
+.addImageButton{
+    -fx-graphic: url("../images/AddImage.png");
+}
+
+.removeImageButton{
+    -fx-graphic: url("../images/RemoveImage.png");
+}
+
+.reassignButton{
+    -fx-graphic: url("../images/ReassignColor.png");
+}
+
+.dimensionButton{
+    -fx-graphic: url("../images/Dimension.png");
+}
+
+.color-picker{
+    -fx-color-label-visible: false;
+}
+
+.separator{
+    -fx-padding: 5;
 }
