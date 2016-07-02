@@ -16,10 +16,10 @@ import properties_manager.PropertiesManager;
  * Created by jappatel on 6/29/16.
  */
 public class DimensionDialog {
-	private final String CSS_PATH = "css/dialog.css";
 	private final String GRIDPANE_STYLE = "gridpane";
 	private final String BUTTON_WIDTH = "buttonWidth";
 	private final String HBOX = "hBox";
+	private final String VALID_INPUT = "1234567890.";
 
 	private double height;
 	private double widgth;
@@ -70,7 +70,7 @@ public class DimensionDialog {
 
 
 		Scene scene = new Scene(gp);
-		scene.getStylesheets().add(getClass().getClassLoader().getResource(CSS_PATH).toString());
+		scene.getStylesheets().add(getClass().getClassLoader().getResource(prop.getProperty(PropertyType.DIALOG_CSS)).toString());
 		dim.setScene(scene);
 		dim.showAndWait();
 	}
@@ -79,7 +79,7 @@ public class DimensionDialog {
 	private EventHandler<KeyEvent> numeric_Validation() {
 		return e -> {
 			String c = e.getCharacter();
-			if(!"1234567890.".contains(c))
+			if(!VALID_INPUT.contains(c))
 				e.consume();
 		};
 	}

@@ -1,6 +1,7 @@
 package Controller;
 
 import gui.DimensionDialog;
+import gui.NewDialog;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -13,6 +14,8 @@ public class controller implements Initializable {
 	Button newButton, loadButton, saveButton, ExportButton, ExitButton, addPictureButton, removePictureButton, playButton, recolorButton, dimensionButton;
 
 	public void setNewButton(){
+		NewDialog nd = new NewDialog();
+		nd.show();
 	}
 
 	@Override

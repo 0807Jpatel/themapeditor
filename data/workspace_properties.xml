@@ -44,10 +44,24 @@
         <property name="DIMENSION_HEIGHT_LABEL"		    value="Height: "></property>
         <property name="DIMENSION_WIDTH_LABEL"		    value="Width: "></property>
 
+        <!-- NEW DIALOG TAGS -->
+        <property name="NEW_TITLE_LABEL"		    value="New Dialog"></property>
+        <property name="NEW_SUBNAME_LABEL"		    value="SubRegion Name:  "></property>
+        <property name="NEW_DIRECTORY_LABEL"		value="Parent Region Directory: "></property>
+        <property name="NEW_COORDINATE_LABEL"       value="Coordinates File: "></property>
+        <property name="CHOOSE_FILE_BUTTON"         value="Choose"></property>
+        <property name="NO_DIR_SELECTED"            value="  No Directory Selected"></property>
+        <property name="NO_FILE_SELECTED"           value="  No File Selected"></property>
 
         <!-- OK AND CANCEL -->
         <property name="OK_BUTTON"		    value="Ok"></property>
         <property name="CANCEL_BUTTON"		    value="Cancel"></property>
+
+        <!-- CSS PATHS -->
+        <property name="DIALOG_CSS"		    value="css/dialog.css"></property>
+        <property name="WORKSPACE_CSS"		    value="css/workspace.css"></property>
+
+
 
     </property_list>
     <property_options_list>
