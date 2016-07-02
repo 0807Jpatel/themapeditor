@@ -143,6 +143,10 @@
     -fx-graphic: url("../images/Dimension.png");
 }
 
+.playButton{
+    -fx-graphic: url("../images/Play.png");
+}
+
 .color-picker{
     -fx-color-label-visible: false;
 }

@@ -1,0 +1,27 @@
+package Controller;
+
+import gui.DimensionDialog;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class controller implements Initializable {
+	@FXML
+	Button newButton, loadButton, saveButton, ExportButton, ExitButton, addPictureButton, removePictureButton, playButton, recolorButton, dimensionButton;
+
+	public void setNewButton(){
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+
+	}
+
+	public void setDimensionButton(){
+		DimensionDialog dd = new DimensionDialog();
+		dd.show();
+	}
+}
