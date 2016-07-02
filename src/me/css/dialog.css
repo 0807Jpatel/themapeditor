@@ -1,0 +1,68 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jun 8, 2016, 10:10:14 AM
+    Author     : jappatel
+*/
+
+
+.gridpane{
+    -fx-alignment: center;    
+    -fx-hgap: 5px;
+    -fx-vgap: 10px;
+    -fx-background-color: #A2D4AB;
+    
+}
+
+.hbox{
+    -fx-spacing: 30px;
+    -fx-alignment: CENTER;
+}
+
+.button{
+    -fx-color: #fff;
+    -fx-background-color: #6496c8;
+    -fx-border: none;
+}
+
+.button:hover{
+    -fx-background-color: #346392;  
+}
+
+.button:active{
+    -fx-background-color: #27496d;
+}
+
+.buttonWidth{
+    -fx-max-width: 80px;
+    -fx-min-width: 80px;
+}
+
+
+.text-field{
+    -fx-font-size: 16px;
+    -fx-left-padding: 15px;
+    -fx-background: #fff;
+    -fx-border: none;
+    -fx-background-radius: 0;
+    -fx-color: #e74c3c;
+    -fx-outline: none;
+}
+
+.text-field:focused{
+    -fx-border: solid 1px #707070;
+}
+
+.label{
+    -fx-font-family:Lato,Helvetica,sans-serif;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.date-picker-popup {
+    -fx-effect: dropshadow( gaussian,rgba(0,0,0,0.16),5,0,0,2);
+    -fx-background-color: white;
+}

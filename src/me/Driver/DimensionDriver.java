@@ -2,9 +2,6 @@ package Driver;
 
 import gui.DimensionDialog;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import properties_manager.PropertiesManager;
 import xml_utilities.InvalidXMLFileFormatException;
@@ -22,9 +19,8 @@ public class DimensionDriver extends Application{
 		try {
 			boolean success = loadProperties("workspace_properties.xml");
 			if (success){
-				Parent root = FXMLLoader.load(getClass().getResource("gui/workspace.fxml"));
-				primaryStage.setTitle("Map Editor");
-				primaryStage.setScene(new Scene(root));
+				DimensionDialog dd = new DimensionDialog();
+				dd.show();
 			}
 		}catch (Exception e/*IOException ioe*/) {
 			System.out.println("Error2");

@@ -12,6 +12,7 @@ import properties_manager.PropertiesManager;
  * Created by jappatel on 6/29/16.
  */
 public class DimensionDialog {
+	private final String CSS_PATH = "css/dialog.css";
 
 	double height;
 	double widgth;
@@ -33,8 +34,8 @@ public class DimensionDialog {
 		Button ok = new Button(prop.getProperty(PropertyType.OK_BUTTON));
 		Button cancel = new Button(prop.getProperty(PropertyType.CANCEL_BUTTON));
 
-		gp.add(cancel, 0 , 2);
-		gp.add(ok, 2, 2);
+		gp.add(cancel, 2 , 2);
+		gp.add(ok, 0, 2);
 
 
 		ok.setOnAction(e -> {
@@ -50,6 +51,7 @@ public class DimensionDialog {
 
 
 		Scene scene = new Scene(gp);
+		scene.getStylesheets().add(getClass().getClassLoader().getResource(CSS_PATH).toString());
 		dim.setScene(scene);
 		dim.showAndWait();
 	}
