@@ -36,7 +36,7 @@ public class NewDialog {
 		PropertiesManager prop = PropertiesManager.getPropertiesManager();
 		Stage dim = new Stage();
 		dim.setHeight(350);
-		dim.setWidth(550);
+		dim.setWidth(570);
 		dim.initModality(Modality.APPLICATION_MODAL);
 		dim.setTitle(prop.getProperty(PropertyType.NEW_TITLE_LABEL));
 
@@ -89,6 +89,7 @@ public class NewDialog {
 		okButton.setOnAction(e -> {
 			name = regionName.getText();
 			dim.close();
+
 		});
 
 		cancelButton.setOnAction(e -> {

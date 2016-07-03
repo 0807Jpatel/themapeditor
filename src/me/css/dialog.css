@@ -60,3 +60,17 @@
     -fx-effect: dropshadow( gaussian,rgba(0,0,0,0.16),5,0,0,2);
     -fx-background-color: white;
 }
+
+.nextButton{
+    -fx-graphic: url("../images/Next.png");
+    -fx-background-color: #A2D4AB;
+}
+
+.previousButton{
+    -fx-graphic:url("../images/Previous.png");
+    -fx-background-color: #A2D4AB;
+}
+
+.nextPrev{
+    -fx-spacing: 290px;
+}

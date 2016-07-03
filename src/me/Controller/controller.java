@@ -27,4 +27,14 @@ public class controller implements Initializable {
 		DimensionDialog dd = new DimensionDialog();
 		dd.show();
 	}
+
+	public void enableButtons(){
+		saveButton.setDisable(false);
+		ExportButton.setDisable(false);
+		ExitButton.setDisable(false);
+		addPictureButton.setDisable(false);
+		playButton.setDisable(false);
+		recolorButton.setDisable(false);
+		dimensionButton.setDisable(false);
+	}
 }
