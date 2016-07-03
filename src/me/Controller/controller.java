@@ -1,5 +1,7 @@
 package Controller;
 
+import data.DataManger;
+import file.FileManager;
 import gui.DimensionDialog;
 import gui.NewDialog;
 import javafx.fxml.FXML;
@@ -13,9 +15,12 @@ public class controller implements Initializable {
 	@FXML
 	Button newButton, loadButton, saveButton, ExportButton, ExitButton, addPictureButton, removePictureButton, playButton, recolorButton, dimensionButton;
 
+	DataManger dataManger = new DataManger();
+	FileManager fileManager = new FileManager(dataManger);
+
+
 	public void setNewButton(){
-		NewDialog nd = new NewDialog();
-		nd.show();
+		fileManager.processNewRequest();
 	}
 
 	@Override

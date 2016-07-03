@@ -1,5 +1,6 @@
 package Driver;
 
+import data.SubRegion;
 import gui.NewDialog;
 import gui.SubRegionDialog;
 import javafx.application.Application;
@@ -20,11 +21,13 @@ public class SubRegionDriver extends Application {
 		try {
 			boolean success = loadProperties("workspace_properties.xml");
 			if (success){
+
+				SubRegion sr = new SubRegion("Name", "Leader", "Capital");
 				SubRegionDialog sd = new SubRegionDialog();
-				sd.show();
+				sd.show(sr);
 			}
 		}catch (Exception e/*IOException ioe*/) {
-			System.out.println("Error2");
+			e.printStackTrace();
 		}
 	}
 

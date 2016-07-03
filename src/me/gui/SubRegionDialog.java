@@ -1,15 +1,21 @@
 package gui;
 
+import data.SubRegion;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import properties_manager.PropertiesManager;
+
+import java.io.File;
 
 /**
  * Created by jappatel on 6/29/16.
@@ -27,7 +33,7 @@ public class SubRegionDialog {
 	private String subRegionLeaderString;
 
 
-	public void show(){
+	public void show(SubRegion subRegion){
 		PropertiesManager prop = PropertiesManager.getPropertiesManager();
 		Stage dim = new Stage();
 		dim.setHeight(350);
@@ -62,6 +68,12 @@ public class SubRegionDialog {
 		TextField subRegionLeader = new TextField();
 		gp.add(subRegionLeader, 1 , 3);
 
+		String path = subRegion.getLeader() + ".png";
+		System.out.println(path);
+		Image image = new Image(path);
+		ImageView iv = new ImageView(image);
+		gp.add(iv   , 0, 4);
+
 		HBox hbox = new HBox();
 		Button okButton = new Button(prop.getProperty(PropertyType.OK_BUTTON));
 		Button cancelButton = new Button(prop.getProperty(PropertyType.CANCEL_BUTTON));
@@ -70,7 +82,7 @@ public class SubRegionDialog {
 		hbox.getChildren().addAll(cancelButton, okButton);
 		hbox.getStyleClass().add(HBOX);
 
-		gp.add(hbox, 1, 4);
+		gp.add(hbox, 1, 5);
 
 		gp.getStyleClass().add(GRIDPANE_STYLE);
 		okButton.getStyleClass().add(BUTTON_WIDTH);
