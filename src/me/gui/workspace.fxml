@@ -21,15 +21,16 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="816.0" prefWidth="1281.0" styleClass="bordered_pane" stylesheets="@../css/workspace.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.controller">
    <center>
-      <SplitPane dividerPositions="0.7298804780876494" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <SplitPane fx:id="splitPane" dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
-            <FlowPane />
+            <FlowPane fx:id="flowPane" prefHeight="200.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/workspace.css" />
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TableView layoutX="-51.0" layoutY="7.0" prefHeight="721.0" prefWidth="335.0" stylesheets="@../css/workspace.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="table" layoutX="-51.0" layoutY="7.0" prefHeight="721.0" prefWidth="335.0" stylesheets="@../css/workspace.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn prefWidth="162.0" text="C1" />
-                      <TableColumn prefWidth="172.0" text="C2" />
+                      <TableColumn fx:id="nameColumn" prefWidth="115.0" text="Name" />
+                        <TableColumn fx:id="capitalColumn" prefWidth="123.0" text="Capital" />
+                      <TableColumn fx:id="leaderColumn" prefWidth="171.0" text="Leader" />
                     </columns>
                   </TableView>
                </children></AnchorPane>

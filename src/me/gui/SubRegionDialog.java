@@ -58,21 +58,38 @@ public class SubRegionDialog {
 
 		gp.add(new Label(prop.getProperty(PropertyType.SUBREGION_NAME)), 0 , 1);
 		TextField subRegionName = new TextField();
+		subRegionName.setText(subRegion.getName());
 		gp.add(subRegionName, 1 , 1);
 
 		gp.add(new Label(prop.getProperty(PropertyType.SUBREGON_CAPITAL)), 0 , 2);
 		TextField subRegionCapital = new TextField();
+		subRegionCapital.setText(subRegion.getCapital());
 		gp.add(subRegionCapital, 1 , 2);
 
 		gp.add(new Label(prop.getProperty(PropertyType.SUBREGON_LEADER)), 0 , 3);
 		TextField subRegionLeader = new TextField();
+		subRegionLeader.setText(subRegion.getLeader());
 		gp.add(subRegionLeader, 1 , 3);
 
-		String path = subRegion.getLeader() + ".png";
-		System.out.println(path);
-		Image image = new Image(path);
-		ImageView iv = new ImageView(image);
-		gp.add(iv   , 0, 4);
+		try {
+			String leaderPath = subRegion.getLeader() + ".png";
+			ImageView leaderiv = new ImageView(leaderPath);
+			leaderiv.setFitHeight(90);
+			leaderiv.setFitWidth(100);
+			gp.add(leaderiv, 0, 4);
+		}catch (IllegalArgumentException ex){
+			gp.add(new Label(prop.getProperty(PropertyType.SUBREGION_NO_PICTURE)), 0, 4);
+		}
+
+		try{
+		String flagPath = subRegion.getName() + ".png";
+		ImageView flagiv = new ImageView(flagPath);
+		flagiv.setFitHeight(90);
+		flagiv.setFitWidth(150);
+		gp.add(flagiv, 1, 4);
+		}catch (IllegalArgumentException ex){
+			gp.add(new Label(prop.getProperty(PropertyType.SUBREGION_NO_PICTURE)), 1, 4);
+		}
 
 		HBox hbox = new HBox();
 		Button okButton = new Button(prop.getProperty(PropertyType.OK_BUTTON));

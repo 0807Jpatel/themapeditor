@@ -35,7 +35,7 @@ public class NewDialog {
 	public void show(){
 		PropertiesManager prop = PropertiesManager.getPropertiesManager();
 		Stage dim = new Stage();
-		dim.setHeight(350);
+		dim.setHeight(270);
 		dim.setWidth(570);
 		dim.initModality(Modality.APPLICATION_MODAL);
 		dim.setTitle(prop.getProperty(PropertyType.NEW_TITLE_LABEL));

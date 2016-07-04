@@ -58,7 +58,7 @@
         <property name="SUBREGION_NAME"             value="SubRegion Name: "></property>
         <property name="SUBREGON_CAPITAL"           value="SubRegion Capital: "></property>
         <property name="SUBREGON_LEADER"            value="SubRegion leader: "></property>
-        <property name="SUBREGION_NO_PICTURE"       value="No Picture Available"></property>
+        <property name="SUBREGION_NO_PICTURE"       value="No Image Found"></property>
 
         <!-- OK AND CANCEL -->
         <property name="OK_BUTTON"		    value="Ok"></property>

@@ -137,6 +137,9 @@
     -fx-graphic: url("../images/Play.png");
 }
 
+.background{
+    -fx-background-image: url("../world.png");
+}
 .color-picker{
     -fx-color-label-visible: false;
 }

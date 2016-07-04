@@ -26,7 +26,7 @@ public class DimensionDialog {
 	public void show(){
 		PropertiesManager prop = PropertiesManager.getPropertiesManager();
 		Stage dim = new Stage();
-		dim.setHeight(250);
+		dim.setHeight(230);
 		dim.setWidth(350);
 		dim.initModality(Modality.APPLICATION_MODAL);
 		dim.setTitle(prop.getProperty(PropertyType.DIMENSIONS_TITLE_LABEL));

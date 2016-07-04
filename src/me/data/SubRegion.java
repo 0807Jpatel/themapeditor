@@ -15,7 +15,9 @@ public class SubRegion {
 
 	public SubRegion(){
 		polygons = new ArrayList<>();
-
+		name = "";
+		leader = "";
+		capital = "";
 	}
 
 	public SubRegion(String name, String leader, String capital){
