@@ -18,7 +18,7 @@ public class MapEditor extends Application {
 			    primaryStage.setScene(new Scene(root));
 		    }
 	    }catch (Exception e/*IOException ioe*/) {
-		    System.out.println("Error2");
+		    e.printStackTrace();
 	    }
 		primaryStage.setMaximized(true);
         primaryStage.show();

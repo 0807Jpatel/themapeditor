@@ -21,9 +21,9 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="816.0" prefWidth="1281.0" styleClass="bordered_pane" stylesheets="@../css/workspace.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.controller">
    <center>
-      <SplitPane fx:id="splitPane" dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <SplitPane fx:id="splitPane" dividerPositions="0.7" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
-            <FlowPane fx:id="flowPane" prefHeight="200.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/workspace.css" />
+            <FlowPane fx:id="flowPane" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/workspace.css" />
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
                   <TableView fx:id="table" layoutX="-51.0" layoutY="7.0" prefHeight="721.0" prefWidth="335.0" stylesheets="@../css/workspace.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -96,8 +96,8 @@
                <children>
                   <Label prefHeight="35.0" prefWidth="151.0" text="Border-Color:" />
                   <Label text="Background-Color:" GridPane.rowIndex="1" />
-                  <ColorPicker prefWidth="50.0" GridPane.columnIndex="1" />
-                  <ColorPicker GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <ColorPicker fx:id="borderCP" prefWidth="50.0" GridPane.columnIndex="1" />
+                  <ColorPicker fx:id="backgroundCP" onAction="#setBackgroundColorPicker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <Separator orientation="VERTICAL" prefHeight="200.0">
@@ -132,8 +132,8 @@
                <children>
                   <Label prefWidth="123.0" text="Border Width:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <Label text="Zoom:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <Slider GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                  <Slider prefHeight="16.0" prefWidth="124.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Slider fx:id="zoom" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Slider fx:id="borderWidth" prefHeight="16.0" prefWidth="124.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>
