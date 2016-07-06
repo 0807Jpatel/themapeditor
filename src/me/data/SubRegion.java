@@ -21,7 +21,7 @@ public class SubRegion {
 		name = "";
 		leader = "";
 		capital = "";
-		color = new Color(255, 255, 255, 1);
+		color = new Color(1, 1, 1, 1);
 	}
 
 	public SubRegion(String name, String leader, String capital){

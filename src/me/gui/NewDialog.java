@@ -31,6 +31,17 @@ public class NewDialog {
 	private File coordinateFile;
 
 
+	public File getParentDirectory() {
+		return parentDirectory;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public File getCoordinateFile() {
+		return coordinateFile;
+	}
 
 	public void show(){
 		PropertiesManager prop = PropertiesManager.getPropertiesManager();
