@@ -21,9 +21,13 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="816.0" prefWidth="1281.0" styleClass="bordered_pane" stylesheets="@../css/workspace.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
    <center>
-      <SplitPane fx:id="splitPane" dividerPositions="0.7" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <SplitPane fx:id="splitPane" dividerPositions="0.6" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
-            <FlowPane fx:id="flowPane" prefHeight="200.0" prefWidth="200.0" stylesheets="@../css/workspace.css" />
+            <FlowPane alignment="CENTER_LEFT" columnHalignment="CENTER">
+               <children>
+                  <AnchorPane fx:id="pane" prefHeight="187.0" prefWidth="180.0" />
+               </children>
+            </FlowPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
                   <TableView fx:id="table" layoutX="-51.0" layoutY="7.0" prefHeight="721.0" prefWidth="335.0" stylesheets="@../css/workspace.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -61,11 +65,11 @@
                   <Tooltip text="Exit" />
                </tooltip></Button>
             <Separator orientation="VERTICAL" prefHeight="8.0" prefWidth="15.0" />
-            <Button fx:id="addPictureButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="54.0" styleClass="addImageButton" stylesheets="@../css/workspace.css">
+            <Button fx:id="addPictureButton" mnemonicParsing="false" onAction="#setAddPictureButton" prefHeight="26.0" prefWidth="54.0" styleClass="addImageButton" stylesheets="@../css/workspace.css">
                <tooltip>
                   <Tooltip text="Add Image" />
                </tooltip></Button>
-            <Button fx:id="removePictureButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="51.0" styleClass="removeImageButton" stylesheets="@../css/workspace.css">
+            <Button fx:id="removePictureButton" mnemonicParsing="false" onAction="#setRemovePictureButton" prefHeight="26.0" prefWidth="51.0" styleClass="removeImageButton" stylesheets="@../css/workspace.css">
                <tooltip>
                   <Tooltip text="Remove Image" />
                </tooltip></Button>
@@ -76,7 +80,7 @@
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin></Separator>
-            <Button fx:id="recolorButton" mnemonicParsing="false" styleClass="reassignButton" stylesheets="@../css/workspace.css">
+            <Button fx:id="recolorButton" mnemonicParsing="false" onAction="#setRecolorButton" styleClass="reassignButton" stylesheets="@../css/workspace.css">
                <HBox.margin>
                   <Insets right="15.0" />
                </HBox.margin>
@@ -104,7 +108,7 @@
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin></Separator>
-            <Button fx:id="playButton" mnemonicParsing="false" styleClass="playButton" stylesheets="@../css/workspace.css">
+            <Button fx:id="playButton" mnemonicParsing="false" onAction="#setPlayButton" styleClass="playButton" stylesheets="@../css/workspace.css">
                <tooltip>
                   <Tooltip text="Play Anthem" />
                </tooltip></Button>

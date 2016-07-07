@@ -22,7 +22,16 @@ public class DimensionDialog {
 	private final String VALID_INPUT = "1234567890.";
 
 	private double height;
-	private double widgth;
+	private double width;
+
+	public double getWidth() {
+		return width;
+	}
+
+	public double getHeight() {
+		return height;
+	}
+
 	public void show(){
 		PropertiesManager prop = PropertiesManager.getPropertiesManager();
 		Stage dim = new Stage();
@@ -59,7 +68,7 @@ public class DimensionDialog {
 
 		okButton.setOnAction(e -> {
 			height = Double.parseDouble(HeightTF.getText());
-			widgth = Double.parseDouble(WidthTF.getText());
+			width = Double.parseDouble(WidthTF.getText());
 			dim.close();
 		});
 

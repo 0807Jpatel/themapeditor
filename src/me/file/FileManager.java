@@ -22,6 +22,7 @@ import java.util.ArrayList;
  * Created by jappatel on 6/29/16.
  */
 public class FileManager {
+
 	//String used for loading TAGS from JSON File
 	private final String NAMEOFMAP = "NAME_OF_MAP";
 	private final String BACKGROUNDCOLOR = "BACKGROUND_COLOR";
@@ -34,6 +35,8 @@ public class FileManager {
 	private final String IMAGEY = "IMAGE_Y";
 	private final String NUMBEROFSUBREGION = "NUMBER_OF_SUBREGIONS";
 	private final String SUBREGION = "SUBREGIONS";
+	private final String PARENTDIRECTORY = "PARENT_DIRECTORY";
+	private final String COORDINATESFILEPATH = "COORDINATE_FILE_PATH";
 	private final String NAMEOFSUBREGION = "NAME_OF_SUBREGION";
 	private final String SUBREGIONCAPITAL = "CAPITAL_OF_SUBREGION";
 	private final String SUBREGIONLEADER = "LEADER_OF_SUBREGION";
@@ -41,6 +44,8 @@ public class FileManager {
 	private final String NUMBEROFSUBREGIONPOLYGON = "NUMBER_OF_SUBREGION_POLYGONS";
 	private final String SUBREGIONPOLYGON = "SUBREGION_POLYGONS";
 
+
+	private boolean edited;
 	private DataManager dataManager;
 	private Controller controller;
 	private String regionPath; //After creating new Directory
@@ -56,6 +61,7 @@ public class FileManager {
 
 	/**
 	 * This method is called by the controller as handler to New Button
+	 * TODO add the parent directory to DataManager
 	 */
 	public void processNewRequest(){
 		NewDialog nd = new NewDialog();
@@ -109,8 +115,8 @@ public class FileManager {
 				double[] points = new double[xy.size() * 2];
 				for(int w = 0; w < xy.size(); w++){
 					JsonObject xyObject = xy.getJsonObject(w);
-					points[w*2] = (getDataAsDouble(xyObject, "X")) ;
-					points[w*2+1] =(getDataAsDouble(xyObject, "Y"));
+					points[w*2] = ((getDataAsDouble(xyObject, "X") + 180) / 360) * dataManager.getWidth();
+					points[w*2+1] =((getDataAsDouble(xyObject, "Y")* -1 + 90) / 180) * dataManager.getHeight();
 				}
 				polygonsPoints[q] = points;
 			}
@@ -136,9 +142,12 @@ public class FileManager {
 		dataManager.setBorderColor(jsonObject.getString(BORDERCOLOR));
 		dataManager.setBorderWidth(getDataAsDouble(jsonObject, BORDERWIDTH));
 		dataManager.setZoomLevel(getDataAsDouble(jsonObject, ZOOMLEVEL));
+		dataManager.setParentDirecotryPath(jsonObject.getString(PARENTDIRECTORY));
 		JsonArray imageArray = jsonObject.getJsonArray(IMAGES);
 		loadImages(imageArray);
-		System.out.println(dataManager.getZoomLevel());
+		String coordinatesFilePath = jsonObject.getString(COORDINATESFILEPATH);
+		loadSubRegionCoordinates(coordinatesFilePath);
+
 	}
 
 	/**
@@ -170,7 +179,7 @@ public class FileManager {
 		return number.bigDecimalValue().doubleValue();
 	}
 
-	public int getDataAsInt(JsonObject json, String dataName) {
+	private int getDataAsInt(JsonObject json, String dataName) {
 		JsonValue value = json.get(dataName);
 		JsonNumber number = (JsonNumber)value;
 		return number.bigIntegerValue().intValue();
@@ -191,4 +200,7 @@ public class FileManager {
 		return json;
 	}
 
+	public void setEdited(boolean edited) {
+		this.edited = edited;
+	}
 }

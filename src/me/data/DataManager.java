@@ -18,6 +18,7 @@ public class DataManager {
 	private ArrayList<ImageDetail> images;
 	private SimpleDoubleProperty height;
 	private SimpleDoubleProperty width;
+	private String parentDirecotryPath;
 
 	public DataManager(){
 		images = new ArrayList<>(3);
@@ -26,8 +27,8 @@ public class DataManager {
 		borderColor = new SimpleStringProperty("#000000");
 		zoomLevel = new SimpleDoubleProperty(0);
 		borderWidth = new SimpleDoubleProperty(1);
-		height = new SimpleDoubleProperty(536);
-		width = new SimpleDoubleProperty(802);
+		height = new SimpleDoubleProperty(650);
+		width = new SimpleDoubleProperty(1000);
 	}
 
 	public SubRegion[] getSubRegions() {
@@ -128,5 +129,13 @@ public class DataManager {
 
 	public void setWidth(double width) {
 		this.width.set(width);
+	}
+
+	public String getParentDirecotryPath() {
+		return parentDirecotryPath;
+	}
+
+	public void setParentDirecotryPath(String parentDirecotryPath) {
+		this.parentDirecotryPath = parentDirecotryPath;
 	}
 }

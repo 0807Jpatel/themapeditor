@@ -33,6 +33,18 @@ public class SubRegionDialog {
 	private String subRegionLeaderString;
 
 
+	public String getSubRegionNameString() {
+		return subRegionNameString;
+	}
+
+	public String getSubRegionCapitalString() {
+		return subRegionCapitalString;
+	}
+
+	public String getSubRegionLeaderString() {
+		return subRegionLeaderString;
+	}
+
 	public void show(SubRegion subRegion){
 		PropertiesManager prop = PropertiesManager.getPropertiesManager();
 		Stage dim = new Stage();
@@ -103,6 +115,7 @@ public class SubRegionDialog {
 
 		gp.getStyleClass().add(GRIDPANE_STYLE);
 		okButton.getStyleClass().add(BUTTON_WIDTH);
+
 		cancelButton.getStyleClass().add(BUTTON_WIDTH);
 
 		okButton.setOnAction(e -> {
