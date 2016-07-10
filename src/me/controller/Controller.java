@@ -18,18 +18,20 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Rectangle;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Collections;
 import java.util.Random;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
-	@FXML Button newButton, loadButton, saveButton, ExportButton, ExitButton,
+	@FXML Button newButton, loadButton, saveButton, exportButton, exitButton,
 			addPictureButton, removePictureButton, playButton, recolorButton, dimensionButton;
 	@FXML TableColumn nameColumn, leaderColumn, capitalColumn;
 	@FXML TableView<SubRegion> table;
-	@FXML AnchorPane pane;
+	@FXML StackPane pane;
 	@FXML ColorPicker backgroundCP, borderCP;
 	@FXML Slider zoom, borderWidth;
 	@FXML TextField mapNameTF;
@@ -37,7 +39,6 @@ public class Controller implements Initializable {
 	private ObservableList<SubRegion> ob = FXCollections.observableArrayList();
 	private DataManager dataManager = new DataManager();
 	private FileManager fileManager = new FileManager(dataManager, this);
-	private SubRegion[] subRegionsdata;
 	private Color[] grayScaleArray;
 	private Group gp;
 
@@ -55,9 +56,20 @@ public class Controller implements Initializable {
 		leaderColumn.setCellValueFactory(new PropertyValueFactory<>("leader"));
 		capitalColumn.prefWidthProperty().bind(table.widthProperty().multiply(.32));
 		capitalColumn.setCellValueFactory(new PropertyValueFactory<>("capital"));
-		zoom.setMin(15);
-		zoom.setMax(150);
-		borderWidth.setMin(1);
+
+		dataManager.mapNameProperty().bindBidirectional(mapNameTF.textProperty());
+
+		borderCP.setOnAction(e -> dataManager.setBorderColor(borderCP.getValue().toString()));
+		backgroundCP.setOnAction(e -> {
+			setBackgroundColorPicker();
+			dataManager.setBackgroundColor(backgroundCP.getValue().toString());
+		});
+		zoom.setOnMouseReleased(e -> dataManager.setZoomLevel(zoom.getValue()));
+		borderWidth.setOnMouseReleased(e -> dataManager.setBorderWidth(borderWidth.getValue()));
+
+		zoom.setMin(1);
+		zoom.setMax(1000);
+		borderWidth.setMax(2);
 		table.setOnMouseClicked(e -> {
 			if(e.getClickCount() == 2) {
 				SubRegion sb = table.getSelectionModel().getSelectedItem();
@@ -76,7 +88,11 @@ public class Controller implements Initializable {
 	}
 
 	public void setSaveButton() {
-
+		try {
+			fileManager.processSaveRequest();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void setExportButton() {
@@ -120,8 +136,8 @@ public class Controller implements Initializable {
 
 	public void enableButtons() {
 		saveButton.setDisable(false);
-		ExportButton.setDisable(false);
-		ExitButton.setDisable(false);
+		exportButton.setDisable(false);
+		exitButton.setDisable(false);
 		addPictureButton.setDisable(false);
 		playButton.setDisable(false);
 		recolorButton.setDisable(false);
@@ -130,15 +146,13 @@ public class Controller implements Initializable {
 
 	public void reload(){
 		pane.getChildren().remove(gp);
-		pane.setMaxWidth(dataManager.getWidth());
-		pane.setMaxHeight(dataManager.getHeight());
-		gp = new Group();
-		pane.scaleXProperty().bind(zoom.valueProperty().divide(15));
-		pane.scaleYProperty().bind(zoom.valueProperty().divide(15));
-		randomAssignment();
-		subRegionsdata = dataManager.getSubRegions();
-		for (int i = 0; i < subRegionsdata.length; i++) {
-			SubRegion temp = subRegionsdata[i];
+		init();
+
+
+
+		SubRegion[] region = dataManager.getSubRegions();
+		for (int i = 0; i < region.length; i++) {
+			SubRegion temp = region[i];
 			ob.add(temp);
 			double[][] ww = temp.getSubPoints();
 			for (double[] f : ww) {
@@ -173,7 +187,7 @@ public class Controller implements Initializable {
 		int subregions = dataManager.getSubRegions().length;
 		int numberOfColors = 254/subregions;
 		grayScaleArray = new Color[subregions];
-		int jump = numberOfColors;
+		int jump = 1;
 		for(int x = 0; x < subregions; x++){
 			jump += numberOfColors;
 			grayScaleArray[x] = Color.grayRgb(jump);
@@ -189,5 +203,26 @@ public class Controller implements Initializable {
 			grayScaleArray[i] = grayScaleArray[randomPosition];
 			grayScaleArray[randomPosition] = temp;
 		}
+	}
+
+	private void init(){
+		pane.setMaxWidth(dataManager.getWidth());
+		pane.setMinWidth(dataManager.getWidth());
+		pane.setMaxHeight(dataManager.getHeight());
+		pane.setMinHeight(dataManager.getHeight());
+
+		gp = new Group();
+		gp.scaleXProperty().bind(zoom.valueProperty());
+		gp.scaleYProperty().bind(zoom.valueProperty());
+	    Rectangle clip = new Rectangle(dataManager.getWidth(), dataManager.getHeight());
+	    pane.setClip(clip);
+		mapNameTF.setText(dataManager.getMapName());
+		randomAssignment();
+		backgroundCP.setValue(Color.valueOf(dataManager.getBackgroundColor()));
+		borderCP.setValue(Color.valueOf(dataManager.getBorderColor()));
+		setBackgroundColorPicker();
+		zoom.setValue(dataManager.getZoomLevel());
+		borderWidth.setValue(dataManager.getBorderWidth());
+
 	}
 }

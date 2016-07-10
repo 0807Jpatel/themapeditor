@@ -46,6 +46,9 @@ public class SubRegionDialog {
 	}
 
 	public void show(SubRegion subRegion){
+		subRegionNameString = subRegion.getName();
+		subRegionCapitalString = subRegion.getCapital();
+		subRegionLeaderString = subRegion.getLeader();
 		PropertiesManager prop = PropertiesManager.getPropertiesManager();
 		Stage dim = new Stage();
 		dim.setHeight(350);
@@ -70,17 +73,17 @@ public class SubRegionDialog {
 
 		gp.add(new Label(prop.getProperty(PropertyType.SUBREGION_NAME)), 0 , 1);
 		TextField subRegionName = new TextField();
-		subRegionName.setText(subRegion.getName());
+		subRegionName.setText(subRegionNameString);
 		gp.add(subRegionName, 1 , 1);
 
 		gp.add(new Label(prop.getProperty(PropertyType.SUBREGON_CAPITAL)), 0 , 2);
 		TextField subRegionCapital = new TextField();
-		subRegionCapital.setText(subRegion.getCapital());
+		subRegionCapital.setText(subRegionCapitalString);
 		gp.add(subRegionCapital, 1 , 2);
 
 		gp.add(new Label(prop.getProperty(PropertyType.SUBREGON_LEADER)), 0 , 3);
 		TextField subRegionLeader = new TextField();
-		subRegionLeader.setText(subRegion.getLeader());
+		subRegionLeader.setText(subRegionLeaderString);
 		gp.add(subRegionLeader, 1 , 3);
 
 		try {
@@ -126,8 +129,8 @@ public class SubRegionDialog {
 		});
 
 		cancelButton.setOnAction(e -> {
-			e.consume();
 			dim.close();
+			e.consume();
 		});
 
 

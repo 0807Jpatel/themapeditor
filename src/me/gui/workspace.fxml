@@ -18,14 +18,15 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="816.0" prefWidth="1281.0" styleClass="bordered_pane" stylesheets="@../css/workspace.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="871.0" prefWidth="1383.0" styleClass="bordered_pane" stylesheets="@../css/workspace.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
    <center>
       <SplitPane fx:id="splitPane" dividerPositions="0.6" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
-            <FlowPane alignment="CENTER_LEFT" columnHalignment="CENTER">
+            <FlowPane alignment="CENTER" columnHalignment="CENTER">
                <children>
-                  <AnchorPane fx:id="pane" prefHeight="187.0" prefWidth="180.0" />
+                  <StackPane fx:id="pane" prefHeight="150.0" prefWidth="200.0" />
                </children>
             </FlowPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
@@ -48,11 +49,11 @@
                <tooltip>
                   <Tooltip text="New" />
                </tooltip></Button>
-            <Button fx:id="loadButton" mnemonicParsing="false" styleClass="loadButton" stylesheets="@../css/workspace.css">
+            <Button fx:id="loadButton" mnemonicParsing="false" onAction="#setLoadButton" styleClass="loadButton" stylesheets="@../css/workspace.css">
                <tooltip>
                   <Tooltip text="Load" />
                </tooltip></Button>
-            <Button fx:id="saveButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="32.0" styleClass="saveButton" stylesheets="@../css/workspace.css">
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#setSaveButton" prefHeight="30.0" prefWidth="32.0" styleClass="saveButton" stylesheets="@../css/workspace.css">
                <tooltip>
                   <Tooltip text="Save" />
                </tooltip></Button>
@@ -60,7 +61,7 @@
                <tooltip>
                   <Tooltip text="Export" />
                </tooltip></Button>
-            <Button fx:id="ExitButton" mnemonicParsing="false" styleClass="exitButton" stylesheets="@../css/workspace.css">
+            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#setExitButton" styleClass="exitButton" stylesheets="@../css/workspace.css">
                <tooltip>
                   <Tooltip text="Exit" />
                </tooltip></Button>
@@ -101,7 +102,7 @@
                   <Label prefHeight="35.0" prefWidth="151.0" text="Border-Color:" />
                   <Label text="Background-Color:" GridPane.rowIndex="1" />
                   <ColorPicker fx:id="borderCP" prefWidth="50.0" GridPane.columnIndex="1" />
-                  <ColorPicker fx:id="backgroundCP" onAction="#setBackgroundColorPicker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <ColorPicker fx:id="backgroundCP" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <Separator orientation="VERTICAL" prefHeight="200.0">
@@ -121,7 +122,7 @@
                   <Tooltip text="Dimensions" />
                </tooltip>
             </Button>
-            <GridPane prefHeight="71.0" prefWidth="229.0">
+            <GridPane prefHeight="65.0" prefWidth="282.0">
               <columnConstraints>
                 <ColumnConstraints />
                   <ColumnConstraints />
@@ -137,7 +138,7 @@
                   <Label prefWidth="123.0" text="Border Width:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <Label text="Zoom:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                   <Slider fx:id="zoom" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                  <Slider fx:id="borderWidth" prefHeight="16.0" prefWidth="124.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Slider fx:id="borderWidth" prefHeight="16.0" prefWidth="144.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>

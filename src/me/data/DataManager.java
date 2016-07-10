@@ -1,8 +1,11 @@
 package data;
 
-import javafx.beans.property.SimpleDoubleProperty;
+import file.FileManager;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -11,24 +14,28 @@ import java.util.ArrayList;
 public class DataManager {
 	private SubRegion[] subRegions;
 	private SimpleStringProperty mapName;
-	private SimpleStringProperty backgroundColor;
-	private SimpleStringProperty borderColor;
-	private SimpleDoubleProperty zoomLevel;
-	private SimpleDoubleProperty borderWidth;
+	private String backgroundColor;
+	private String borderColor;
+	private double zoomLevel;
+	private double borderWidth;
 	private ArrayList<ImageDetail> images;
-	private SimpleDoubleProperty height;
-	private SimpleDoubleProperty width;
-	private String parentDirecotryPath;
+	private double height;
+	private double width;
+	private String directoryPath;
+	private boolean allCapital;
+	private boolean allLeaders;
+	private boolean allName;
 
 	public DataManager(){
 		images = new ArrayList<>(3);
 		mapName = new SimpleStringProperty("");
-		backgroundColor = new SimpleStringProperty("#ffffff");
-		borderColor = new SimpleStringProperty("#000000");
-		zoomLevel = new SimpleDoubleProperty(0);
-		borderWidth = new SimpleDoubleProperty(1);
-		height = new SimpleDoubleProperty(650);
-		width = new SimpleDoubleProperty(1000);
+		backgroundColor = "0x8099ffff";
+		borderColor = "0x333333ff";
+		zoomLevel = 1;
+		borderWidth = .2;
+		height = 536;
+		width = 802;
+		directoryPath = "";
 	}
 
 	public SubRegion[] getSubRegions() {
@@ -52,51 +59,35 @@ public class DataManager {
 	}
 
 	public String getBackgroundColor() {
-		return backgroundColor.get();
-	}
-
-	public SimpleStringProperty backgroundColorProperty() {
 		return backgroundColor;
 	}
 
 	public void setBackgroundColor(String backgroundColor) {
-		this.backgroundColor.set(backgroundColor);
+		this.backgroundColor = backgroundColor;
 	}
 
 	public String getBorderColor() {
-		return borderColor.get();
-	}
-
-	public SimpleStringProperty borderColorProperty() {
 		return borderColor;
 	}
 
 	public void setBorderColor(String borderColor) {
-		this.borderColor.set(borderColor);
+		this.borderColor = borderColor;
 	}
 
 	public double getZoomLevel() {
-		return zoomLevel.get();
-	}
-
-	public SimpleDoubleProperty zoomLevelProperty() {
 		return zoomLevel;
 	}
 
 	public void setZoomLevel(double zoomLevel) {
-		this.zoomLevel.set(zoomLevel);
+		this.zoomLevel = zoomLevel;
 	}
 
 	public double getBorderWidth() {
-		return borderWidth.get();
-	}
-
-	public SimpleDoubleProperty borderWidthProperty() {
 		return borderWidth;
 	}
 
 	public void setBorderWidth(double borderWidth) {
-		this.borderWidth.set(borderWidth);
+		this.borderWidth = borderWidth;
 	}
 
 	public ArrayList<ImageDetail> getImages() {
@@ -108,34 +99,52 @@ public class DataManager {
 	}
 
 	public double getHeight() {
-		return height.get();
-	}
-
-	public SimpleDoubleProperty heightProperty() {
 		return height;
 	}
 
 	public void setHeight(double height) {
-		this.height.set(height);
+		this.height = height;
 	}
 
 	public double getWidth() {
-		return width.get();
-	}
-
-	public SimpleDoubleProperty widthProperty() {
 		return width;
 	}
 
 	public void setWidth(double width) {
-		this.width.set(width);
+		this.width = width;
 	}
 
-	public String getParentDirecotryPath() {
-		return parentDirecotryPath;
+	public String getDirectoryPath() {
+		return directoryPath;
 	}
 
-	public void setParentDirecotryPath(String parentDirecotryPath) {
-		this.parentDirecotryPath = parentDirecotryPath;
+	public void setDirectoryPath(String directoryPath) {
+		this.directoryPath = directoryPath;
 	}
+
+	public boolean getAllName(){
+		for(SubRegion temp: subRegions){
+			if(temp.getName().equals(""))
+				return false;
+		}
+		return true;
+	}
+
+	public boolean getAllCapital(){
+		for(SubRegion temp: subRegions){
+			if(temp.getName().equals(""))
+				return false;
+		}
+		return true;
+	}
+
+	public boolean getAllLeaders(){
+		for(SubRegion temp: subRegions) {
+			File file = new File();
+			if (temp.getName().equals(""))
+				return false;
+		}
+		return true;
+	}
+
 }
