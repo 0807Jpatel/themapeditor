@@ -1,0 +1,149 @@
+
+.bordered_pane {
+    -fx-background-color: #AAB3B1;
+    -fx-background-radius: 5.0;
+    -fx-padding: 10;
+    -fx-spacing: 10;
+    -fx-border-width: 2px;
+    -fx-border-color: #808080;
+}
+
+.heading_label {
+    -fx-font-size: 20pt;
+    -fx-font-weight: bold;
+}
+
+.subheading_label {
+    -fx-font-size: 14pt;
+    -fx-font-weight: bold;
+}
+
+.prompt_label {
+    -fx-font-size: 10pt;
+    -fx-font-weight: bold;
+}
+
+
+.text-field{
+    -fx-font-size: 13px;
+    -fx-background: #fff;
+    -fx-border: none;
+    -fx-background-radius: 0;
+    -fx-color: #e74c3c;
+    -fx-outline: none;
+}
+
+.text-field:focused{
+    -fx-border: solid 1px #707070;
+}
+
+.label{
+    -fx-font-family:"Roboto";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+
+.table-view{
+    -fx-table-cell-border-color: transparent;
+    -fx-effect: dropshadow( gaussian,rgba(0,0,0,0.16),5,0,0,2);
+    -fx-background-radius: 3px;
+    -fx-background-color: white;
+    -fx-background-insets: 0;
+
+}
+
+.table-view .column-header{
+    -fx-border-width: 0 1 1 0;
+    -fx-border-color: rgba(1,1,1,0.15);
+}
+.table-view .column-header .label{
+    -fx-font-size:13px;
+    -fx-padding:10 0 10 0;
+    -fx-alignment:CENTER;
+    -fx-font-weight:bold;
+}
+
+.table-view .table-column{
+    -fx-alignment:CENTER-LEFT;
+    -fx-padding:0 16 0 16;
+}
+
+.table-view .table-cell{
+    -fx-font-size: 16px;
+}
+
+
+.button{
+    -fx-color: #fff;
+    -fx-background-color: #AAB3B1;
+    -fx-border: none;
+}
+
+.button:hover{
+    -fx-background-color: #2980b9;
+}
+
+.button:active{
+    -fx-background-color: #2980b9;
+}
+
+
+.hbox{
+    -fx-spacing: 25px;
+}
+
+.hboxL{
+    -fx-spacing: 5px;
+}
+
+.newButton{
+    -fx-graphic: url("../images/New.png");
+}
+
+.loadButton{
+    -fx-graphic: url("../images/Load.png");
+}
+
+.saveButton{
+    -fx-graphic: url("../images/Save.png");
+}
+
+.exitButton{
+    -fx-graphic: url("../images/Exit.png");
+}
+
+.exportButton{
+    -fx-graphic: url("../images/Export.png");
+}
+
+.addImageButton{
+    -fx-graphic: url("../images/AddImage.png");
+}
+
+.removeImageButton{
+    -fx-graphic: url("../images/RemoveImage.png");
+}
+
+.reassignButton{
+    -fx-graphic: url("../images/ReassignColor.png");
+}
+
+.dimensionButton{
+    -fx-graphic: url("../images/Dimension.png");
+}
+
+.playButton{
+    -fx-graphic: url("../images/Play.png");
+}
+
+.background{
+    -fx-background-image: url("../world.png");
+}
+.color-picker{
+    -fx-color-label-visible: false;
+}
+
+.separator{
+    -fx-padding: 5;
+}

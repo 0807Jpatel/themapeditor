@@ -34,6 +34,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 
 public class Controller implements Initializable {
 	@FXML Button newButton, loadButton, saveButton, exportButton, exitButton,
@@ -44,12 +46,14 @@ public class Controller implements Initializable {
 	@FXML ColorPicker backgroundCP, borderCP;
 	@FXML Slider zoom, borderWidth;
 	@FXML TextField mapNameTF;
-
+	@FXML ProgressBar progressBar;
+	
 	private ObservableList<SubRegion> ob = FXCollections.observableArrayList();
 	private DataManager dataManager = new DataManager();
 	private FileManager fileManager = new FileManager(dataManager, this);
 	private Group gp;
 	private boolean first = true;
+	static double progress;
 	/**
 	 * All the binding and new data and stuff goes here
 	 *
@@ -58,6 +62,8 @@ public class Controller implements Initializable {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+	    Path p = Paths.get("");
+	    System.out.println(p.toAbsolutePath().toString());
 		nameColumn.prefWidthProperty().bind(table.widthProperty().multiply(.32));
 		nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 		leaderColumn.prefWidthProperty().bind(table.widthProperty().multiply(.32));
@@ -237,4 +243,5 @@ public class Controller implements Initializable {
 			pane.getChildren().add(iv);
 		}
 	}
+	
 }

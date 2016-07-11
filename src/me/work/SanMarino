@@ -1,0 +1,68 @@
+
+{
+    "NAME_OF_MAP":"SanMarino",
+    "BACKGROUND_COLOR":"#dc6e00",
+    "BORDER_COLOR":"#000000",
+    "BORDER_WIDTH":0.1,
+    "ZOOM":400.0,
+    "PARENT_DIRECTORY":"src/me/export/The World/Europe",
+    "IMAGES":[
+    ],
+    "COORDINATE_FILE_PATH":"/home/jappatel/Downloads/TheMapEditor/build/classes/raw_map_data/SanMarino.json",
+    "SUBREGION_CONTENT":[
+        {
+            "NAME_OF_SUBREGION":"Acquaviva",
+            "CAPITAL_OF_SUBREGION":"",
+            "LEADER_OF_SUBREGION":"Lucia Tamagnini",
+            "COLOR_OF_SUBREGION":0.8823529481887817
+        },
+        {
+            "NAME_OF_SUBREGION":"Borgo Maggiore",
+            "CAPITAL_OF_SUBREGION":"",
+            "LEADER_OF_SUBREGION":"Sergio Nanni",
+            "COLOR_OF_SUBREGION":0.7843137383460999
+        },
+        {
+            "NAME_OF_SUBREGION":"Chiesanuova",
+            "CAPITAL_OF_SUBREGION":"",
+            "LEADER_OF_SUBREGION":"Franco Santi",
+            "COLOR_OF_SUBREGION":0.686274528503418
+        },
+        {
+            "NAME_OF_SUBREGION":"Domagnano",
+            "CAPITAL_OF_SUBREGION":"",
+            "LEADER_OF_SUBREGION":"Gabriel Guidi",
+            "COLOR_OF_SUBREGION":0.5882353186607361
+        },
+        {
+            "NAME_OF_SUBREGION":"Faetano",
+            "CAPITAL_OF_SUBREGION":"",
+            "LEADER_OF_SUBREGION":"Pier Mario Bedetti",
+            "COLOR_OF_SUBREGION":0.4901960790157318
+        },
+        {
+            "NAME_OF_SUBREGION":"Fiorentino",
+            "CAPITAL_OF_SUBREGION":"",
+            "LEADER_OF_SUBREGION":"Gerri Fabbri",
+            "COLOR_OF_SUBREGION":0.3921568691730499
+        },
+        {
+            "NAME_OF_SUBREGION":"Montegiardino",
+            "CAPITAL_OF_SUBREGION":"",
+            "LEADER_OF_SUBREGION":"Marta Fabbri",
+            "COLOR_OF_SUBREGION":0.29411765933036804
+        },
+        {
+            "NAME_OF_SUBREGION":"City of San Marino",
+            "CAPITAL_OF_SUBREGION":"",
+            "LEADER_OF_SUBREGION":"Maria Teresa Beccari",
+            "COLOR_OF_SUBREGION":0.19607843458652496
+        },
+        {
+            "NAME_OF_SUBREGION":"Serravalle",
+            "CAPITAL_OF_SUBREGION":"",
+            "LEADER_OF_SUBREGION":"Leandro Maiani",
+            "COLOR_OF_SUBREGION":0.09803921729326248
+        }
+    ]
+}

@@ -1,0 +1,72 @@
+
+{
+    "NAME_OF_MAP":"Slovakia",
+    "BACKGROUND_COLOR":"#dc6e00",
+    "BORDER_COLOR":"#000000",
+    "BORDER_WIDTH":0.1,
+    "ZOOM":200.0,
+    "PARENT_DIRECTORY":"src/me/export/The World/Europe",
+    "IMAGES":[
+        {
+            "IMAGE_PATH":"src/me/export/The World/Europe/Solvakia Flag.png",
+            "IMAGE_X":543.0,
+            "IMAGE_Y":369.0
+        },
+        {
+            "IMAGE_PATH":"src/me/export/The World/Europe/image3.png",
+            "IMAGE_X":24.0,
+            "IMAGE_Y":32.0
+        }
+    ],
+    "COORDINATE_FILE_PATH":"/home/jappatel/Downloads/TheMapEditor/build/classes/raw_map_data/Slovakia.json",
+    "SUBREGION_CONTENT":[
+        {
+            "NAME_OF_SUBREGION":"Bratislava",
+            "CAPITAL_OF_SUBREGION":"",
+            "LEADER_OF_SUBREGION":"",
+            "COLOR_OF_SUBREGION":0.9803921580314636
+        },
+        {
+            "NAME_OF_SUBREGION":"Trnava",
+            "CAPITAL_OF_SUBREGION":"",
+            "LEADER_OF_SUBREGION":"",
+            "COLOR_OF_SUBREGION":0.9764705896377563
+        },
+        {
+            "NAME_OF_SUBREGION":"Trencin",
+            "CAPITAL_OF_SUBREGION":"",
+            "LEADER_OF_SUBREGION":"",
+            "COLOR_OF_SUBREGION":0.9725490212440491
+        },
+        {
+            "NAME_OF_SUBREGION":"Nitra",
+            "CAPITAL_OF_SUBREGION":"",
+            "LEADER_OF_SUBREGION":"",
+            "COLOR_OF_SUBREGION":0.9686274528503418
+        },
+        {
+            "NAME_OF_SUBREGION":"Zilina",
+            "CAPITAL_OF_SUBREGION":"",
+            "LEADER_OF_SUBREGION":"",
+            "COLOR_OF_SUBREGION":0.9647058844566345
+        },
+        {
+            "NAME_OF_SUBREGION":"Banska Bystrica",
+            "CAPITAL_OF_SUBREGION":"",
+            "LEADER_OF_SUBREGION":"",
+            "COLOR_OF_SUBREGION":0.9607843160629272
+        },
+        {
+            "NAME_OF_SUBREGION":"Presov",
+            "CAPITAL_OF_SUBREGION":"",
+            "LEADER_OF_SUBREGION":"",
+            "COLOR_OF_SUBREGION":0.95686274766922
+        },
+        {
+            "NAME_OF_SUBREGION":"Kosice",
+            "CAPITAL_OF_SUBREGION":"",
+            "LEADER_OF_SUBREGION":"",
+            "COLOR_OF_SUBREGION":0.7372549176216125
+        }
+    ]
+}

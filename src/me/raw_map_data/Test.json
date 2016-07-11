@@ -1,0 +1,15 @@
+{
+	"NAME_OF_MAP":"India",
+	"BACKGROUND_COLOR":"Red",
+	"BORDER_COLOR": "Black",
+	"BORDER_WIDTH": 1,
+	"ZOOM": 1,
+	"IMAGES":[
+		{
+		"IMAGE_PATH": "NOTHING",
+		"IMAGE_X": 10,
+		"IMAGE_Y": 10
+		}
+	]
+
+}

@@ -131,7 +131,7 @@ public class DataManager {
 
 	public boolean getAllFlag(){
 		for(SubRegion temp: subRegions) {
-			File file = new File(FileManager.regionPath + "/" + temp.getName());
+			File file = new File(FileManager.regionPath + "/" + temp.getName()+ " Flag.png");
 			if ((!file.exists()))
 				return false;
 		}
@@ -147,7 +147,7 @@ public class DataManager {
 
 	public boolean getAllLeaders(){
 		for(SubRegion temp: subRegions) {
-			File file = new File(FileManager.regionPath + "/" + temp.getLeader());
+			File file = new File(FileManager.regionPath + "/" + temp.getLeader() + ".png");
 			if (temp.getLeader().equals("") || (!file.exists()))
 				return false;
 		}

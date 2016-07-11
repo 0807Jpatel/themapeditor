@@ -57,7 +57,7 @@ public class FileManager {
 	private Controller controller;
 	public static String regionPath; //After creating new Directory
 	private String coordinatePath;
-
+	private static double progress;
 
 	private boolean allLeaders, allCapital;
 	// TODO add the save boolean and alert dialog for robust design
@@ -114,7 +114,7 @@ public class FileManager {
 
 	public void processSaveRequest() throws IOException{
 
-		File filePath = new File("work/" + dataManager.getMapName());
+		File filePath = new File("src/me/work/" + dataManager.getMapName());
 
 		JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
 		SubRegion[] subRegions = dataManager.getSubRegions();
@@ -185,13 +185,11 @@ public class FileManager {
 			JsonWriter jsonWriter = writerFactory.createWriter(sw);
 			jsonWriter.writeObject(exportFile);
 			jsonWriter.close();
-
-			OutputStream os = new FileOutputStream(regionPath+".rvm");
-			System.out.println(regionPath);
+			OutputStream os = new FileOutputStream(regionPath+"/"+dataManager.getMapName() +".rvm");
 			JsonWriter jsonFileWriter = Json.createWriter(os);
 			jsonFileWriter.writeObject(exportFile);
 			String prettyPrinted = sw.toString();
-			PrintWriter pw = new PrintWriter(regionPath+".rvm");
+			PrintWriter pw = new PrintWriter(regionPath+"/"+dataManager.getMapName()+".rvm");
 			pw.write(prettyPrinted);
 			pw.close();
 
@@ -393,6 +391,10 @@ public class FileManager {
 
 	public void setEdited(boolean edited) {
 		this.edited = edited;
+	}
+	
+	public static double getDouble(){
+	    return progress;
 	}
 
 }

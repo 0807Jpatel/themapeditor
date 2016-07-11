@@ -1,41 +1,33 @@
-package testbed;
+package test_bed;
 
 import controller.Controller;
 import data.DataManager;
 import data.ImageDetail;
 import data.SubRegion;
 import file.FileManager;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.IOException;
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
-
 /**
- * Created by jappatel on 7/10/16.
+ * Created by jappatel on 7/11/16.
  */
 public class LoadTest {
-	private DataManager dataManager;
-	private FileManager fileManager;
-
-	@Before
-	public void setUP() throws Exception{
-		dataManager = new DataManager();
-		fileManager = new FileManager(dataManager, new Controller());
+	static DataManager dataManager;
+	static FileManager fileManager;
+	public static void main(String[] args) throws IOException{
+		System.out.println("ntohing");
+		load("src/me/work/Andorra");
+		print();
 	}
 
-	@Test
-	public void processLoadRequest() throws Exception {
-		String path = "work/Andorra";
+	public static void load(String path) throws IOException{
+		dataManager = new DataManager();
+		fileManager = new FileManager(dataManager, new Controller());
 		fileManager.loadData(path);
 	}
 
-	@After
-	public void tearDown() throws Exception{
+	private static void print(){
 		System.out.println(dataManager.getMapName());
 		System.out.println(dataManager.getBackgroundColor());
 		System.out.println(dataManager.getBorderColor());
@@ -45,11 +37,9 @@ public class LoadTest {
 		System.out.println(dataManager.getWidth());
 		System.out.println(dataManager.getDirectoryPath());
 		ArrayList<ImageDetail> id = dataManager.getImages();
-		for(int x = 0; x < id.size(); x++)
-			System.out.println(id.get(x));
+		for (ImageDetail anId : id) System.out.println(anId);
 		SubRegion[] sub = dataManager.getSubRegions();
 		for(SubRegion temp: sub)
 			System.out.println(temp);
 	}
-
 }
