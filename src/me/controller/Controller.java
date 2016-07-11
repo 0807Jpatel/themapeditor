@@ -1,6 +1,7 @@
 package controller;
 
 import data.DataManager;
+import data.ImageDetail;
 import data.SubRegion;
 import file.FileManager;
 import gui.DimensionDialog;
@@ -14,14 +15,22 @@ import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 
+import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -31,7 +40,7 @@ public class Controller implements Initializable {
 			addPictureButton, removePictureButton, playButton, recolorButton, dimensionButton;
 	@FXML TableColumn nameColumn, leaderColumn, capitalColumn;
 	@FXML TableView<SubRegion> table;
-	@FXML StackPane pane;
+	@FXML Pane pane;
 	@FXML ColorPicker backgroundCP, borderCP;
 	@FXML Slider zoom, borderWidth;
 	@FXML TextField mapNameTF;
@@ -39,9 +48,8 @@ public class Controller implements Initializable {
 	private ObservableList<SubRegion> ob = FXCollections.observableArrayList();
 	private DataManager dataManager = new DataManager();
 	private FileManager fileManager = new FileManager(dataManager, this);
-	private Color[] grayScaleArray;
 	private Group gp;
-
+	private boolean first = true;
 	/**
 	 * All the binding and new data and stuff goes here
 	 *
@@ -96,7 +104,11 @@ public class Controller implements Initializable {
 	}
 
 	public void setExportButton() {
-
+		try {
+			fileManager.processExportRequest();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void setExitButton() {
@@ -147,18 +159,17 @@ public class Controller implements Initializable {
 	public void reload(){
 		pane.getChildren().remove(gp);
 		init();
-
-
-
 		SubRegion[] region = dataManager.getSubRegions();
 		for (int i = 0; i < region.length; i++) {
 			SubRegion temp = region[i];
-			ob.add(temp);
+			if(first)
+				ob.add(temp);
 			double[][] ww = temp.getSubPoints();
 			for (double[] f : ww) {
 				Polygon polygon = new Polygon(f);
 				polygon.setId(i+"");
-				polygon.setFill(grayScaleArray[i]);
+				polygon.setFill(temp.getColor());
+//				System.out.println(temp.getColor());
 //				System.out.println(polygon.getFill());
 				polygon.setOnMouseClicked(e->{
 					if(e.getClickCount() == 2)
@@ -171,6 +182,8 @@ public class Controller implements Initializable {
 		}
 		pane.getChildren().add(gp);
 		table.setItems(ob);
+		addImages();
+		first = false;
 		mapNameTF.setText(dataManager.getMapName());
 	}
 
@@ -183,25 +196,14 @@ public class Controller implements Initializable {
 		table.scrollTo(subRegion);
 	}
 
-	private void randomAssignment(){
-		int subregions = dataManager.getSubRegions().length;
-		int numberOfColors = 254/subregions;
-		grayScaleArray = new Color[subregions];
-		int jump = 1;
-		for(int x = 0; x < subregions; x++){
-			jump += numberOfColors;
-			grayScaleArray[x] = Color.grayRgb(jump);
-		}
-		randomizeColor();
-	}
-
 	private void randomizeColor(){
 		Random rgen = new Random();  // Random number generator
-		for (int i=0; i<grayScaleArray.length; i++) {
-			int randomPosition = rgen.nextInt(grayScaleArray.length);
-			Color temp = grayScaleArray[i];
-			grayScaleArray[i] = grayScaleArray[randomPosition];
-			grayScaleArray[randomPosition] = temp;
+		SubRegion[] x = dataManager.getSubRegions();
+		for (SubRegion aX : x) {
+			int randomPosition = rgen.nextInt(x.length);
+			Color temp = aX.getColor();
+			aX.setColor(x[randomPosition].getColor());
+			x[randomPosition].setColor(temp);
 		}
 	}
 
@@ -217,12 +219,22 @@ public class Controller implements Initializable {
 	    Rectangle clip = new Rectangle(dataManager.getWidth(), dataManager.getHeight());
 	    pane.setClip(clip);
 		mapNameTF.setText(dataManager.getMapName());
-		randomAssignment();
 		backgroundCP.setValue(Color.valueOf(dataManager.getBackgroundColor()));
 		borderCP.setValue(Color.valueOf(dataManager.getBorderColor()));
 		setBackgroundColorPicker();
 		zoom.setValue(dataManager.getZoomLevel());
 		borderWidth.setValue(dataManager.getBorderWidth());
 
+	}
+
+	private void addImages(){
+		ArrayList<ImageDetail> id = dataManager.getImages();
+		for(ImageDetail temp : id){
+			Image image = new Image("file:" + temp.getImage());
+			ImageView iv = new ImageView(image);
+			iv.setX(temp.getX());
+			iv.setY(temp.getY());
+			pane.getChildren().add(iv);
+		}
 	}
 }

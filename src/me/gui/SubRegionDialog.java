@@ -89,8 +89,8 @@ public class SubRegionDialog {
 		try {
 			String leaderPath = subRegion.getLeader() + ".png";
 			ImageView leaderiv = new ImageView(leaderPath);
-			leaderiv.setFitHeight(90);
-			leaderiv.setFitWidth(100);
+			leaderiv.setFitHeight(120);
+			leaderiv.setFitWidth(200);
 			gp.add(leaderiv, 0, 4);
 		}catch (IllegalArgumentException ex){
 			gp.add(new Label(prop.getProperty(PropertyType.SUBREGION_NO_PICTURE)), 0, 4);
@@ -99,8 +99,8 @@ public class SubRegionDialog {
 		try{
 		String flagPath = subRegion.getName() + ".png";
 		ImageView flagiv = new ImageView(flagPath);
-		flagiv.setFitHeight(90);
-		flagiv.setFitWidth(150);
+		flagiv.setFitHeight(130);
+		flagiv.setFitWidth(200);
 		gp.add(flagiv, 1, 4);
 		}catch (IllegalArgumentException ex){
 			gp.add(new Label(prop.getProperty(PropertyType.SUBREGION_NO_PICTURE)), 1, 4);

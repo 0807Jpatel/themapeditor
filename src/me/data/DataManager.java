@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -22,9 +23,7 @@ public class DataManager {
 	private double height;
 	private double width;
 	private String directoryPath;
-	private boolean allCapital;
-	private boolean allLeaders;
-	private boolean allName;
+	static Color[] subRegionColor;
 
 	public DataManager(){
 		images = new ArrayList<>(3);
@@ -130,9 +129,17 @@ public class DataManager {
 		return true;
 	}
 
+	public boolean getAllFlag(){
+		for(SubRegion temp: subRegions) {
+			File file = new File(FileManager.regionPath + "/" + temp.getName());
+			if ((!file.exists()))
+				return false;
+		}
+		return true;
+	}
 	public boolean getAllCapital(){
 		for(SubRegion temp: subRegions){
-			if(temp.getName().equals(""))
+			if(temp.getCapital().equals(""))
 				return false;
 		}
 		return true;
@@ -140,8 +147,8 @@ public class DataManager {
 
 	public boolean getAllLeaders(){
 		for(SubRegion temp: subRegions) {
-			File file = new File();
-			if (temp.getName().equals(""))
+			File file = new File(FileManager.regionPath + "/" + temp.getLeader());
+			if (temp.getLeader().equals("") || (!file.exists()))
 				return false;
 		}
 		return true;

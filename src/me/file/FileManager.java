@@ -6,6 +6,7 @@ import data.ImageDetail;
 import data.SubRegion;
 import gui.NewDialog;
 import javafx.collections.ObservableList;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 
 import javax.json.*;
@@ -45,14 +46,20 @@ public class FileManager {
 	private final String SUBREGIONCOLOR = "COLOR_OF_SUBREGION";
 	private final String NUMBEROFSUBREGIONPOLYGON = "NUMBER_OF_SUBREGION_POLYGONS";
 	private final String SUBREGIONPOLYGON = "SUBREGION_POLYGONS";
+	private final String EXPORTMAPNAME = "name";
+	private final String EXPORTCAPITAL = "subregions_have_capitals";
+	private final String EXPORTFLAG  = "subregions_have_flags";
+	private final String EXPORTLEADERS = "subregions_have_leaders";
 
 
 	private boolean edited;
 	private DataManager dataManager;
 	private Controller controller;
-	private String regionPath; //After creating new Directory
+	public static String regionPath; //After creating new Directory
 	private String coordinatePath;
 
+
+	private boolean allLeaders, allCapital;
 	// TODO add the save boolean and alert dialog for robust design
 
 
@@ -86,6 +93,7 @@ public class FileManager {
 		}
 		dataManager.setDirectoryPath(regionPath);
 		dataManager.setMapName(name);
+		assignRandColor();
 		controller.setBackgroundColorPicker();
 		controller.reload();
 	}
@@ -98,17 +106,15 @@ public class FileManager {
 		File file = fileChooser.showOpenDialog(null);
 		try {
 			loadData(file.getPath());
-			System.out.println(dataManager.getBorderWidth());
-			System.out.println(dataManager.getBackgroundColor());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		controller.reload();
 	}
 
 	public void processSaveRequest() throws IOException{
 
-		FileChooser fc = new FileChooser();
-		File filePath = fc.showOpenDialog(null);
+		File filePath = new File("work/" + dataManager.getMapName());
 
 		JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
 		SubRegion[] subRegions = dataManager.getSubRegions();
@@ -117,7 +123,7 @@ public class FileManager {
 					.add(SUBREGIONNAME, temp.getName())
 					.add(SUBREGIONCAPITAL, temp.getCapital())
 					.add(SUBREGIONLEADER, temp.getLeader())
-					.add(SUBREGIONCOLOR, temp.getColor()).build();
+					.add(SUBREGIONCOLOR, temp.getColor().getBlue()).build();
 			arrayBuilder.add(jsonObject);
 		}
 		JsonArray subRegionArray = arrayBuilder.build();
@@ -161,13 +167,46 @@ public class FileManager {
 
 	}
 
+	public void processExportRequest() throws IOException{
+		if(dataManager.getAllName()){
+			JsonArrayBuilder arrayBuilder = exportArray();
+			boolean allFlag = dataManager.getAllFlag();
+			JsonObject exportFile =  Json.createObjectBuilder()
+					.add(EXPORTMAPNAME, dataManager.getMapName())
+					.add(EXPORTCAPITAL, allCapital)
+					.add(EXPORTFLAG, allFlag)
+					.add(EXPORTLEADERS, allLeaders)
+					.add("subRegions", arrayBuilder).build();
+
+			Map<String, Object> properties = new HashMap<>(1);
+			properties.put(JsonGenerator.PRETTY_PRINTING, true);
+			JsonWriterFactory writerFactory = Json.createWriterFactory(properties);
+			StringWriter sw = new StringWriter();
+			JsonWriter jsonWriter = writerFactory.createWriter(sw);
+			jsonWriter.writeObject(exportFile);
+			jsonWriter.close();
+
+			OutputStream os = new FileOutputStream(regionPath+".rvm");
+			System.out.println(regionPath);
+			JsonWriter jsonFileWriter = Json.createWriter(os);
+			jsonFileWriter.writeObject(exportFile);
+			String prettyPrinted = sw.toString();
+			PrintWriter pw = new PrintWriter(regionPath+".rvm");
+			pw.write(prettyPrinted);
+			pw.close();
+
+		}else{
+			System.out.println("Not all the name are there");
+		}
+	}
+
 	/**
 	 * this method is used to by loadrequest to load all the data from the last saved status
 	 *
 	 * @param filePath
 	 * @throws IOException
 	 */
-	private void loadData(String filePath) throws IOException {
+	public void loadData(String filePath) throws IOException {
 		JsonObject jsonObject = loadJSONFile(filePath);
 		dataManager.setMapName(jsonObject.getString(NAMEOFMAP));
 		dataManager.setBackgroundColor(jsonObject.getString(BACKGROUNDCOLOR));
@@ -175,13 +214,14 @@ public class FileManager {
 		dataManager.setBorderWidth(getDataAsDouble(jsonObject, BORDERWIDTH));
 		dataManager.setZoomLevel(getDataAsDouble(jsonObject, ZOOMLEVEL));
 		dataManager.setDirectoryPath(jsonObject.getString(PARENTDIRECTORY));
+		regionPath = dataManager.getDirectoryPath() + "/" + dataManager.getMapName();
 		JsonArray imageArray = jsonObject.getJsonArray(IMAGES);
 		loadImages(imageArray);
+
 		coordinatePath = jsonObject.getString(COORDINATESFILEPATH);
 		loadSubRegionCoordinates(coordinatePath);
 		JsonArray contentArray = jsonObject.getJsonArray(SUBREGIONCONTENT);
 		loadSubRegionContents(contentArray);
-		controller.reload();
 	}
 
 	private void loadSubRegionContents(JsonArray contentArray) {
@@ -192,9 +232,8 @@ public class FileManager {
 			temp.setName(jobject.getString(SUBREGIONNAME));
 			temp.setCapital(jobject.getString(SUBREGIONCAPITAL));
 			temp.setLeader(jobject.getString(SUBREGIONLEADER));
-			temp.setColor(getDataAsDouble(jobject, SUBREGIONCOLOR));
+			temp.setColor(javafx.scene.paint.Color.gray(getDataAsDouble(jobject, SUBREGIONCOLOR)));
 		}
-
 	}
 
 	/**
@@ -282,6 +321,74 @@ public class FileManager {
 		jsonReader.close();
 		is.close();
 		return json;
+	}
+
+	private JsonArrayBuilder exportArray(){
+		JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
+		SubRegion[] subRegions = dataManager.getSubRegions();
+		allLeaders  = dataManager.getAllLeaders();
+		allCapital = dataManager.getAllCapital();
+		if(allLeaders && allCapital) {
+			for (SubRegion temp : subRegions) {
+				JsonObject jsonObject = Json.createObjectBuilder()
+						.add("name", temp.getName())
+						.add("capital", temp.getCapital())
+						.add("leader", temp.getLeader())
+						.add("red", (int)(temp.getColor().getRed() * 255))
+						.add("blue", (int)(temp.getColor().getBlue() * 255))
+						.add("green",(int)(temp.getColor().getGreen() * 255))   .build();
+				arrayBuilder.add(jsonObject);
+			}
+		}
+		else if(allLeaders ||allCapital){
+			if(allCapital){
+				for (SubRegion temp : subRegions) {
+					JsonObject jsonObject = Json.createObjectBuilder()
+							.add("name", temp.getName())
+							.add("capital", temp.getCapital())
+							.add("red", (int)(temp.getColor().getRed() * 255))
+							.add("blue",(int) (temp.getColor().getBlue() * 255))
+							.add("green", (int) (temp.getColor().getGreen() * 255)).build();
+					arrayBuilder.add(jsonObject);
+				}
+			}
+			if(allLeaders){
+				for (SubRegion temp : subRegions) {
+					JsonObject jsonObject = Json.createObjectBuilder()
+							.add("name", temp.getName())
+							.add("leader", temp.getLeader())
+							.add("red", (int)(temp.getColor().getRed() * 255))
+							.add("blue", (int)(temp.getColor().getBlue() * 255))
+							.add("green", (int)(temp.getColor().getGreen() * 255)).build();
+					arrayBuilder.add(jsonObject);
+				}
+			}
+		}
+		else{
+			for (SubRegion temp : subRegions) {
+				JsonObject jsonObject = Json.createObjectBuilder()
+						.add("name", temp.getName())
+						.add("RED", (int)(temp.getColor().getRed() * 255))
+						.add("BLUE", (int)(temp.getColor().getBlue() * 255))
+						.add("GREEN", (int)(temp.getColor().getGreen() * 255)).build();
+				arrayBuilder.add(jsonObject);
+			}
+		}
+		return arrayBuilder;
+	}
+
+	private void assignRandColor(){
+		SubRegion[] s = dataManager.getSubRegions();
+		double number = .99 / s.length;
+		double jump = number;
+		for(SubRegion temp: s){
+			temp.setColor(Color.gray(jump));
+			jump += number;
+		}
+	}
+
+	public void setCoordinatePath(String coordinatePath){
+		this.coordinatePath = coordinatePath;
 	}
 
 	public void setEdited(boolean edited) {

@@ -39,4 +39,8 @@ public class ImageDetail {
 	public void setY(double y) {
 		this.y = y;
 	}
+
+	public String toString(){
+		return "Path: " + image + " x: " + x + " y: "  + y;
+	}
 }

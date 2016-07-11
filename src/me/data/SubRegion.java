@@ -18,19 +18,19 @@ public class SubRegion {
 	private StringProperty name;
 	private StringProperty leader;
 	private StringProperty capital;
-	private double color;
+	private Color color;
 
 	public SubRegion(){
 		name = new SimpleStringProperty("");
 		leader = new SimpleStringProperty("");
 		capital = new SimpleStringProperty("");
-		color = 255;
+		color = Color.gray(1);
 	}
 
 	public SubRegion(String name, String leader, String capital){
-		this.name.set(name);
-		this.leader.set(leader);
-		this.capital.set(capital);
+		this.name = new SimpleStringProperty(name);
+		this.leader = new SimpleStringProperty(leader);
+		this.capital = new SimpleStringProperty(capital);
 	}
 
 	public double[][] getSubPoints() {
@@ -77,15 +77,15 @@ public class SubRegion {
 		this.capital.set(capital);
 	}
 
-	public double getColor() {
+	public Color getColor() {
 		return color;
 	}
 
-	public void setColor(double color) {
+	public void setColor(Color color) {
 		this.color = color;
 	}
 
 	public String toString(){
-		return name.getValue() + " " + leader.getValue() + " " + capital.get() + " " + color;
+		return "Name: " + name.getValue() + " Leader: " + leader.getValue() + " Capital: " + capital.get() + " " + color;
 	}
 }

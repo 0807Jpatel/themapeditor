@@ -17,8 +17,8 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="871.0" prefWidth="1383.0" styleClass="bordered_pane" stylesheets="@../css/workspace.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
    <center>
@@ -26,7 +26,7 @@
         <items>
             <FlowPane alignment="CENTER" columnHalignment="CENTER">
                <children>
-                  <StackPane fx:id="pane" prefHeight="150.0" prefWidth="200.0" />
+                  <Pane fx:id="pane" prefHeight="200.0" prefWidth="200.0" />
                </children>
             </FlowPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
@@ -57,7 +57,7 @@
                <tooltip>
                   <Tooltip text="Save" />
                </tooltip></Button>
-            <Button fx:id="ExportButton" mnemonicParsing="false" styleClass="exportButton" stylesheets="@../css/workspace.css">
+            <Button fx:id="exportButton" mnemonicParsing="false" onAction="#setExportButton" styleClass="exportButton" stylesheets="@../css/workspace.css">
                <tooltip>
                   <Tooltip text="Export" />
                </tooltip></Button>
