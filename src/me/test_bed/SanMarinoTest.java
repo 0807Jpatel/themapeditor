@@ -27,9 +27,8 @@ public class SanMarinoTest{
 	assertEquals("SanMarino", dataManager.getMapName());
 	assertEquals("#dc6e00", dataManager.getBackgroundColor());
 	assertEquals("#000000", dataManager.getBorderColor());
-	assertEquals(0.1, dataManager.getBorderWidth(), .01);
-	assertEquals(0.1, dataManager.getBorderWidth(), .01);
-	assertEquals(400.0, dataManager.getZoomLevel(), .01);
+	assertEquals(0.03, dataManager.getBorderWidth(), .01);
+	assertEquals(1200.0, dataManager.getZoomLevel(), .01);
 	assertEquals("src/me/export/The World/Europe", dataManager.getDirectoryPath());
 
 	SubRegion[] subRegions = dataManager.getSubRegions();

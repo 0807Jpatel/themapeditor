@@ -16,7 +16,7 @@ public class SaveTest {
     private static DataManager dataManager = new DataManager();
     private static FileManager fileManager;
     public static void main(String[] args) throws Exception{
-	    makeAndorra("raw_map_data/Andorra.json");
+	    makeAndorra("src/me/raw_map_data/Andorra.json");
     }
 
     public static void makeAndorra(String path) throws Exception{
@@ -26,22 +26,24 @@ public class SaveTest {
 	dataManager.setMapName("Andorra");
 	dataManager.setBackgroundColor("#dc6e00");
 	dataManager.setBorderColor("#000000");
-	dataManager.setZoomLevel(400);
-	dataManager.setBorderWidth(.1);
+	dataManager.setZoomLevel(650);
+	dataManager.setBorderWidth(.08);
+	dataManager.setTranslatex(10);
+	dataManager.setTranslatey(100);
 	dataManager.setHeight(536);
 	dataManager.setWidth(802);
 	dataManager.setDirectoryPath("src/me/export/The World/Europe");
 
-	SubRegion s1 = new SubRegion("Ordino", "Ventura Espot", "Oridino (Town)");
+	SubRegion s1 = new SubRegion("Ordino", "Ventura Espot", "Oridino (town)");
 	s1.setColor(Color.grayRgb(200));
 
-	SubRegion s2 = new SubRegion("Canillo",  "Enric Casadevall Medrano", "Canillo (Town)");
+	SubRegion s2 = new SubRegion("Carillo",  "Enric Casadevall Medrano", "Canillo (town)");
 	s2.setColor(Color.grayRgb(198));
 
-	SubRegion s3 = new SubRegion("Encamp",  "Miquel Alis Font", "Encamp (Town)");
+	SubRegion s3 = new SubRegion("Encamp",  "Miquel Alis Font", "Encamp (town)");
 	s3.setColor(Color.grayRgb(196));
 
-	SubRegion s4 = new SubRegion("Escaldes-Engrodany", "Montserrat Capdevila Pallarés", "Escaldes-Engordany (town)");
+	SubRegion s4 = new SubRegion("Escaldes-Engordany", "Montserrat Capdevila Pallarés", "Escaldes-Engordany (town)");
 	s4.setColor(Color.grayRgb(194));
 
 	SubRegion s5 = new SubRegion("La Massana","Josep Areny", "La Massana (town)");
@@ -71,8 +73,10 @@ public class SaveTest {
 	dataManager.setMapName("SanMarino");
 	dataManager.setBackgroundColor("#dc6e00");
 	dataManager.setBorderColor("#000000");
-	dataManager.setZoomLevel(400);
-	dataManager.setBorderWidth(.1);
+	dataManager.setZoomLevel(1200);
+	dataManager.setBorderWidth(.03);
+	dataManager.setTranslatex(-20);
+	dataManager.setTranslatey(100);
 	dataManager.setHeight(536);
 	dataManager.setWidth(802);
 	dataManager.setDirectoryPath("src/me/export/The World/Europe");
@@ -123,8 +127,10 @@ public class SaveTest {
 	dataManager.setMapName("Slovakia");
 	dataManager.setBackgroundColor("#dc6e00");
 	dataManager.setBorderColor("#000000");
-	dataManager.setZoomLevel(200);
-	dataManager.setBorderWidth(.1);
+	dataManager.setZoomLevel(50);
+	dataManager.setBorderWidth(.08);
+	dataManager.setTranslatex(-20);
+	dataManager.setTranslatey(100);
 	dataManager.setHeight(536);
 	dataManager.setWidth(802);
 	dataManager.setDirectoryPath("src/me/export/The World/Europe");
@@ -157,7 +163,7 @@ public class SaveTest {
 	dataManager.setSubRegions(subRegions);
 
 	ArrayList<ImageDetail> id = new ArrayList<>();
-	id.add(new ImageDetail("src/me/export/The World/Europe/Solvakia Flag.png", 543, 369));
+	id.add(new ImageDetail("src/me/export/The World/Europe/Slovakia Flag.png", 543, 369));
 	id.add(new ImageDetail("src/me/export/The World/Europe/image3.png", 24, 32));
 
 	dataManager.setImages(id);

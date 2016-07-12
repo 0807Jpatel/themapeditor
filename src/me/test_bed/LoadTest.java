@@ -16,7 +16,6 @@ public class LoadTest {
 	static DataManager dataManager;
 	static FileManager fileManager;
 	public static void main(String[] args) throws IOException{
-		System.out.println("ntohing");
 		load("src/me/work/Andorra");
 		print();
 	}

@@ -29,16 +29,15 @@ public class AndorraTest{
 	assertEquals("Andorra", dataManager.getMapName());
 	assertEquals("#dc6e00", dataManager.getBackgroundColor());
 	assertEquals("#000000", dataManager.getBorderColor());
-	assertEquals(0.1, dataManager.getBorderWidth(), .01);
-	assertEquals(0.1, dataManager.getBorderWidth(), .01);
-	assertEquals(400.0, dataManager.getZoomLevel(), .01);
+	assertEquals(0.08, dataManager.getBorderWidth(), .01);
+	assertEquals(650.0, dataManager.getZoomLevel(), .01);
 	assertEquals("src/me/export/The World/Europe", dataManager.getDirectoryPath());
 
 	SubRegion[] subRegions = dataManager.getSubRegions();
 
 	assertEquals("Ordino", subRegions[0].getName());
 	assertEquals("Ventura Espot", subRegions[0].getLeader());
-	assertEquals("Oridino (Town)", subRegions[0].getCapital());
+	assertEquals("Oridino (town)", subRegions[0].getCapital());
 
 	assertEquals("Sant Julia de Loria", subRegions[6].getName());
 	assertEquals("Josep Pintat Forné", subRegions[6].getLeader());

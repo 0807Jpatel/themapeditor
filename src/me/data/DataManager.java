@@ -22,6 +22,24 @@ public class DataManager {
 	private ArrayList<ImageDetail> images;
 	private double height;
 	private double width;
+	private double translatex;
+
+    public double getTranslatex() {
+	return translatex;
+    }
+
+    public void setTranslatex(double translatex) {
+	this.translatex = translatex;
+    }
+
+    public double getTranslatey() {
+	return translatey;
+    }
+
+    public void setTranslatey(double translatey) {
+	this.translatey = translatey;
+    }
+	private double translatey;
 	private String directoryPath;
 	static Color[] subRegionColor;
 
@@ -32,6 +50,8 @@ public class DataManager {
 		borderColor = "0x333333ff";
 		zoomLevel = 1;
 		borderWidth = .2;
+		translatex = 0;
+		translatey = 0;
 		height = 536;
 		width = 802;
 		directoryPath = "";
@@ -132,6 +152,7 @@ public class DataManager {
 	public boolean getAllFlag(){
 		for(SubRegion temp: subRegions) {
 			File file = new File(FileManager.regionPath + "/" + temp.getName()+ " Flag.png");
+//			   System.out.println(file.exists());
 			if ((!file.exists()))
 				return false;
 		}
@@ -148,6 +169,7 @@ public class DataManager {
 	public boolean getAllLeaders(){
 		for(SubRegion temp: subRegions) {
 			File file = new File(FileManager.regionPath + "/" + temp.getLeader() + ".png");
+//			   System.out.println(file.exists());
 			if (temp.getLeader().equals("") || (!file.exists()))
 				return false;
 		}

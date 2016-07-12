@@ -3,12 +3,14 @@
     "NAME_OF_MAP":"Slovakia",
     "BACKGROUND_COLOR":"#dc6e00",
     "BORDER_COLOR":"#000000",
-    "BORDER_WIDTH":0.1,
-    "ZOOM":200.0,
+    "BORDER_WIDTH":0.08,
+    "ZOOM":50.0,
+    "TRANSLATEX":-20.0,
+    "TRANSLATEY":100.0,
     "PARENT_DIRECTORY":"src/me/export/The World/Europe",
     "IMAGES":[
         {
-            "IMAGE_PATH":"src/me/export/The World/Europe/Solvakia Flag.png",
+            "IMAGE_PATH":"src/me/export/The World/Europe/Slovakia Flag.png",
             "IMAGE_X":543.0,
             "IMAGE_Y":369.0
         },

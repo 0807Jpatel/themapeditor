@@ -82,7 +82,7 @@ public class Controller implements Initializable {
 		borderWidth.setOnMouseReleased(e -> dataManager.setBorderWidth(borderWidth.getValue()));
 
 		zoom.setMin(1);
-		zoom.setMax(1000);
+		zoom.setMax(1200);
 		borderWidth.setMax(2);
 		table.setOnMouseClicked(e -> {
 			if(e.getClickCount() == 2) {
@@ -187,6 +187,8 @@ public class Controller implements Initializable {
 			}
 		}
 		pane.getChildren().add(gp);
+		gp.setTranslateX(dataManager.getTranslatex());
+		gp.setTranslateY(dataManager.getTranslatey());
 		table.setItems(ob);
 		addImages();
 		first = false;

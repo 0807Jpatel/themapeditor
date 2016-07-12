@@ -5,6 +5,7 @@ import data.DataManager;
 import data.ImageDetail;
 import data.SubRegion;
 import gui.NewDialog;
+import gui.ProgressDialog;
 import javafx.collections.ObservableList;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
@@ -13,12 +14,16 @@ import javax.json.*;
 import javax.json.stream.JsonGenerator;
 import java.awt.*;
 import java.io.*;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.application.Platform;
 
 /**
  * Created by jappatel on 6/29/16.
@@ -31,6 +36,8 @@ public class FileManager {
 	private final String BORDERCOLOR = "BORDER_COLOR";
 	private final String BORDERWIDTH = "BORDER_WIDTH";
 	private final String ZOOMLEVEL = "ZOOM";
+	private final String TRANSLATEX = "TRANSLATEX";
+	private final String TRANSLATEY = "TRANSLATEY";
 	private final String IMAGES = "IMAGES";
 	private final String IMAGEPATH = "IMAGE_PATH";
 	private final String IMAGEX = "IMAGE_X";
@@ -62,6 +69,8 @@ public class FileManager {
 	private boolean allLeaders, allCapital;
 	// TODO add the save boolean and alert dialog for robust design
 
+	
+	
 
 	public FileManager(DataManager dataManger, Controller controller) {
 		this.dataManager = dataManger;
@@ -102,17 +111,39 @@ public class FileManager {
 	 * This method is called by the controller as handler to Load Button
 	 */
 	public void processLoadRequest() {
+	    try{
 		FileChooser fileChooser = new FileChooser();
 		File file = fileChooser.showOpenDialog(null);
-		try {
-			loadData(file.getPath());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		controller.reload();
+		ProgressDialog pd = new ProgressDialog();
+		pd.show();
+		progress = 1;
+		Thread th = new Thread(new Runnable() {
+		    @Override
+		    public void run() {
+			try {
+			    loadData(file.getPath());
+			    Platform.runLater(new Runnable() {
+				@Override
+				public void run() {
+				    controller.reload();
+				}
+			    });
+			    
+			} catch (IOException ex) {
+			   ex.printStackTrace();
+			}
+		    }
+		});
+		th.start();
+	    }
+	    catch(NullPointerException ex){
+		//TODO
+	    }
+		
 	}
 
 	public void processSaveRequest() throws IOException{
+	    try{
 
 		File filePath = new File("src/me/work/" + dataManager.getMapName());
 
@@ -144,6 +175,8 @@ public class FileManager {
 					.add(BORDERCOLOR, dataManager.getBorderColor())
 					.add(BORDERWIDTH, dataManager.getBorderWidth())
 					.add(ZOOMLEVEL, dataManager.getZoomLevel())
+					.add(TRANSLATEX, dataManager.getTranslatex())
+					.add(TRANSLATEY, dataManager.getTranslatey())
 					.add(PARENTDIRECTORY, dataManager.getDirectoryPath())
 					.add(IMAGES, imageArray)
 					.add(COORDINATESFILEPATH, coordinatePath)
@@ -164,10 +197,14 @@ public class FileManager {
 		PrintWriter pw = new PrintWriter(filePath.toString());
 		pw.write(prettyPrinted);
 		pw.close();
+	    }catch(NullPointerException ex){
+		//TODO
+	    }
 
 	}
 
 	public void processExportRequest() throws IOException{
+	    try{
 		if(dataManager.getAllName()){
 			JsonArrayBuilder arrayBuilder = exportArray();
 			boolean allFlag = dataManager.getAllFlag();
@@ -196,6 +233,9 @@ public class FileManager {
 		}else{
 			System.out.println("Not all the name are there");
 		}
+	    }catch(NullPointerException ex){
+		//TODO
+	    }
 	}
 
 	/**
@@ -206,20 +246,37 @@ public class FileManager {
 	 */
 	public void loadData(String filePath) throws IOException {
 		JsonObject jsonObject = loadJSONFile(filePath);
+		progress++;
 		dataManager.setMapName(jsonObject.getString(NAMEOFMAP));
+		progress++;
 		dataManager.setBackgroundColor(jsonObject.getString(BACKGROUNDCOLOR));
+		progress++;
 		dataManager.setBorderColor(jsonObject.getString(BORDERCOLOR));
+		progress++;
 		dataManager.setBorderWidth(getDataAsDouble(jsonObject, BORDERWIDTH));
+		progress++;
+		dataManager.setTranslatex(getDataAsDouble(jsonObject, TRANSLATEX));
+		progress++;
+		dataManager.setTranslatey(getDataAsDouble(jsonObject, TRANSLATEY));
+		progress++;
 		dataManager.setZoomLevel(getDataAsDouble(jsonObject, ZOOMLEVEL));
+		progress++;
 		dataManager.setDirectoryPath(jsonObject.getString(PARENTDIRECTORY));
+		progress++;
 		regionPath = dataManager.getDirectoryPath() + "/" + dataManager.getMapName();
+		progress++;
 		JsonArray imageArray = jsonObject.getJsonArray(IMAGES);
+		progress++;
 		loadImages(imageArray);
-
+		progress++;
 		coordinatePath = jsonObject.getString(COORDINATESFILEPATH);
+		progress++;
 		loadSubRegionCoordinates(coordinatePath);
+		progress++;
 		JsonArray contentArray = jsonObject.getJsonArray(SUBREGIONCONTENT);
+		progress++;
 		loadSubRegionContents(contentArray);
+		progress++;
 	}
 
 	private void loadSubRegionContents(JsonArray contentArray) {

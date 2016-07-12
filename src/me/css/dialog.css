@@ -74,3 +74,7 @@
 .nextPrev{
     -fx-spacing: 290px;
 }
+
+.progress-bar{
+    -fx-background-color:#A2D4AB;
+}
