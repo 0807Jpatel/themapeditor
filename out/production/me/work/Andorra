@@ -5,7 +5,7 @@
     "BORDER_COLOR":"#000000",
     "BORDER_WIDTH":0.1,
     "ZOOM":400.0,
-    "PARENT_DIRECTORY":"World/Europe",
+    "PARENT_DIRECTORY":"src/me/export/The World/Europe",
     "IMAGES":[
         {
             "IMAGE_PATH":"src/me/export/The World/Europe/Andorra Flag.png",
@@ -18,7 +18,7 @@
             "IMAGE_Y":6.0
         }
     ],
-    "COORDINATE_FILE_PATH":"/home/jappatel/IdeaProjects/TheMapEditor/out/production/me/raw_map_data/Andorra.json",
+    "COORDINATE_FILE_PATH":"/home/jappatel/Downloads/TheMapEditor/build/classes/raw_map_data/Andorra.json",
     "SUBREGION_CONTENT":[
         {
             "NAME_OF_SUBREGION":"Ordino",
