@@ -9,6 +9,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -43,15 +44,18 @@ public class SubRegionDialog {
 	private ImageView flagiv;
 	private SubRegion[] data;
 	private IntegerProperty index;
+	private TableView table;
 
-	public SubRegionDialog(SubRegion[] data){
+	public SubRegionDialog(SubRegion[] data, TableView table){
 		this.data = data;
+		this.table = table;
 	}
 
 	public void show(int i){
 		this.index = new SimpleIntegerProperty(i);
 		subRegion = data[index.get()];
-
+		table.getSelectionModel().select(index.get());
+		table.getFocusModel().focus(index.get());
 		prop = PropertiesManager.getPropertiesManager();
 		Stage dim = new Stage();
 		dim.setHeight(400);
@@ -126,6 +130,8 @@ public class SubRegionDialog {
 		data[index.get()].capitalProperty().unbind();
 		data[index.get()].leaderProperty().unbind();
 		index.set(index.get() + x);
+		table.getFocusModel().focus(index.get());
+		table.getSelectionModel().select(index.get());
 		subRegionName.setText(data[index.get()].getName());
 		subRegionLeader.setText(data[index.get()].getLeader());
 		subRegionCapital.setText(data[index.get()].getCapital());

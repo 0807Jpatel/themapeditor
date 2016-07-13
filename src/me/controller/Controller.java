@@ -6,6 +6,7 @@ import data.SubRegion;
 import file.FileManager;
 import gui.DimensionDialog;
 import gui.DraggableImageView;
+import gui.SelectablePolygons;
 import gui.SubRegionDialog;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,6 +19,7 @@ import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -56,9 +58,8 @@ public class Controller implements Initializable {
 	private ObservableList<SubRegion> ob = FXCollections.observableArrayList();
 	private DataManager dataManager = new DataManager();
 	private FileManager fileManager = new FileManager(dataManager, this);
-	private Group gp;
+	private SelectablePolygons gp;
 	private boolean first = true;
-	static double progress;
 	/**
 	 * All the binding and new data and stuff goes here
 	 *
@@ -90,22 +91,40 @@ public class Controller implements Initializable {
 				return 0;
 			}
 		};
+		gp = new SelectablePolygons() {
+			@Override
+			public void onMouseClickedHook(MouseEvent e) {
+				if(e.getClickCount() == 1){
+					table.scrollTo(gp.getSelectionModel().getSelectedIndex());
+					table.getSelectionModel().select(gp.getSelectionModel().getSelectedIndex());
+					table.getFocusModel().focus(gp.getSelectionModel().getSelectedIndex());
+				}
+				if(e.getClickCount() == 2){
+					subRegionHandler(gp.getSelectionModel().getSelectedIndex(), table);
+				}
+			}
+		};
+
 		table.setRowFactory(a -> {
 			final TableRow<SubRegion> row = new TableRow<>();
 			row.setOnMouseClicked(e -> {
 				if(row.getIndex()>= table.getItems().size()){
 					table.getSelectionModel().clearSelection();
 				}
+				if(e.getClickCount() == 1){
+					gp.setSelected(table.getSelectionModel().getSelectedIndex());
+					table.getFocusModel().focus(table.getSelectionModel().getSelectedIndex());
+				}
+				if(e.getClickCount() == 2){
+					if(table.getSelectionModel().getSelectedItem() != null)
+						subRegionHandler(table.getSelectionModel().getSelectedIndex(), table);
+				}
 			});
 			return row;
 		});
 
-		table.setOnMouseClicked(e -> {
-			if(e.getClickCount() == 2) {
-				int sb = table.getSelectionModel().getSelectedIndex();
-				if(sb != -1)
-					subRegionHandler(sb);
-			}
+		table.getFocusModel().focusedIndexProperty().addListener(e -> {
+			gp.setSelected(table.getFocusModel().getFocusedIndex());
 		});
 
 		dataManager.mapNameProperty().bindBidirectional(mapNameTF.textProperty());
@@ -226,13 +245,13 @@ public class Controller implements Initializable {
 				polygon.setFill(temp.getColor());
 //				System.out.println(temp.getColor());
 //				System.out.println(polygon.getFill());
-				polygon.setOnMouseClicked(e->{
-					if(e.getClickCount() == 2)
-						subRegionHandler(j);
-				});
+//				polygon.setOnMouseClicked(e->{
+//					if(e.getClickCount() == 2)
+//						subRegionHandler(j);
+//				});
 				polygon.strokeWidthProperty().bind(borderWidth.valueProperty().divide(14));
 				polygon.strokeProperty().bind(borderCP.valueProperty());
-				gp.getChildren().add(polygon);
+				gp.add(polygon);
 			}
 		}
 		pane.getChildren().add(gp);
@@ -244,8 +263,8 @@ public class Controller implements Initializable {
 		mapNameTF.setText(dataManager.getMapName());
 	}
 
-	private void subRegionHandler(int i){
-		SubRegionDialog srd = new SubRegionDialog(dataManager.getSubRegions());
+	private void subRegionHandler(int i, TableView table){
+		SubRegionDialog srd = new SubRegionDialog(dataManager.getSubRegions(), table);
 		table.scrollTo(i);
 		table.getSelectionModel().select(i);
 		srd.show(i);
@@ -267,7 +286,6 @@ public class Controller implements Initializable {
 		pane.setMinWidth(dataManager.getWidth());
 		pane.setMaxHeight(dataManager.getHeight());
 		pane.setMinHeight(dataManager.getHeight());
-		gp = new Group();
 		gp.scaleXProperty().bind(zoom.valueProperty());
 		gp.scaleYProperty().bind(zoom.valueProperty());
 	    Rectangle clip = new Rectangle(dataManager.getWidth(), dataManager.getHeight());
@@ -309,5 +327,7 @@ public class Controller implements Initializable {
 		iv.setY(temp.getY());
 		pane.getChildren().add(iv);
 	}
+
+
 
 }
