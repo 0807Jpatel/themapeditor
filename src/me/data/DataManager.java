@@ -176,4 +176,10 @@ public class DataManager {
 		return true;
 	}
 
+	public void remove(int key){
+		for(ImageDetail temp: images)
+			if(temp.getKey() == key)
+				images.remove(temp);
+	}
+
 }

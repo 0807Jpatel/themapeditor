@@ -11,13 +11,13 @@
     "IMAGES":[
         {
             "IMAGE_PATH":"src/me/export/The World/Europe/Andorra Flag.png",
-            "IMAGE_X":580.0,
-            "IMAGE_Y":390.0
+            "IMAGE_X":598.0,
+            "IMAGE_Y":414.0
         },
         {
             "IMAGE_PATH":"src/me/export/The World/Europe/image2.png",
-            "IMAGE_X":6.0,
-            "IMAGE_Y":6.0
+            "IMAGE_X":-1.0,
+            "IMAGE_Y":2.0
         }
     ],
     "COORDINATE_FILE_PATH":"src/me/raw_map_data/Andorra.json",

@@ -337,7 +337,7 @@ public class FileManager {
 			String path = jo.getString(IMAGEPATH);
 			double imx = getDataAsDouble(jo, IMAGEX);
 			double imy = getDataAsDouble(jo, IMAGEY);
-			ImageDetail id = new ImageDetail(path, imx, imy);
+			ImageDetail id = new ImageDetail(path, imx, imy, x);
 			imageD.add(id);
 		}
 		dataManager.setImages(imageD);
@@ -453,5 +453,7 @@ public class FileManager {
 	public static double getDouble(){
 	    return progress;
 	}
+
+	public static String getRegionPath(){return regionPath;}
 
 }

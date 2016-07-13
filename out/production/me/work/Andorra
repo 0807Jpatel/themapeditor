@@ -3,43 +3,45 @@
     "NAME_OF_MAP":"Andorra",
     "BACKGROUND_COLOR":"#dc6e00",
     "BORDER_COLOR":"#000000",
-    "BORDER_WIDTH":0.1,
-    "ZOOM":400.0,
-    "PARENT_DIRECTORY":"World/Europe",
+    "BORDER_WIDTH":0.08,
+    "ZOOM":650.0,
+    "TRANSLATEX":10.0,
+    "TRANSLATEY":100.0,
+    "PARENT_DIRECTORY":"src/me/export/The World/Europe",
     "IMAGES":[
         {
             "IMAGE_PATH":"src/me/export/The World/Europe/Andorra Flag.png",
-            "IMAGE_X":580.0,
-            "IMAGE_Y":390.0
+            "IMAGE_X":598.0,
+            "IMAGE_Y":414.0
         },
         {
             "IMAGE_PATH":"src/me/export/The World/Europe/image2.png",
-            "IMAGE_X":6.0,
-            "IMAGE_Y":6.0
+            "IMAGE_X":-1.0,
+            "IMAGE_Y":2.0
         }
     ],
-    "COORDINATE_FILE_PATH":"/home/jappatel/IdeaProjects/TheMapEditor/out/production/me/raw_map_data/Andorra.json",
+    "COORDINATE_FILE_PATH":"src/me/raw_map_data/Andorra.json",
     "SUBREGION_CONTENT":[
         {
             "NAME_OF_SUBREGION":"Ordino",
-            "CAPITAL_OF_SUBREGION":"Oridino (Town)",
+            "CAPITAL_OF_SUBREGION":"Oridino (town)",
             "LEADER_OF_SUBREGION":"Ventura Espot",
             "COLOR_OF_SUBREGION":0.7843137383460999
         },
         {
-            "NAME_OF_SUBREGION":"Canillo",
-            "CAPITAL_OF_SUBREGION":"Canillo (Town)",
+            "NAME_OF_SUBREGION":"Carillo",
+            "CAPITAL_OF_SUBREGION":"Canillo (town)",
             "LEADER_OF_SUBREGION":"Enric Casadevall Medrano",
             "COLOR_OF_SUBREGION":0.7764706015586853
         },
         {
             "NAME_OF_SUBREGION":"Encamp",
-            "CAPITAL_OF_SUBREGION":"Encamp (Town)",
+            "CAPITAL_OF_SUBREGION":"Encamp (town)",
             "LEADER_OF_SUBREGION":"Miquel Alis Font",
             "COLOR_OF_SUBREGION":0.7686274647712708
         },
         {
-            "NAME_OF_SUBREGION":"Escaldes-Engrodany",
+            "NAME_OF_SUBREGION":"Escaldes-Engordany",
             "CAPITAL_OF_SUBREGION":"Escaldes-Engordany (town)",
             "LEADER_OF_SUBREGION":"Montserrat Capdevila Pallarés",
             "COLOR_OF_SUBREGION":0.7607843279838562

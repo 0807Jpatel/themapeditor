@@ -23,8 +23,8 @@ public class SubRegionDriver extends Application {
 			if (success){
 
 				SubRegion sr = new SubRegion("Name", "Leader", "Capital");
-				SubRegionDialog sd = new SubRegionDialog();
-				sd.show(sr);
+//				SubRegionDialog sd = new SubRegionDialog();
+//				sd.show();
 			}
 		}catch (Exception e/*IOException ioe*/) {
 			e.printStackTrace();

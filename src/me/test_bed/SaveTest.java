@@ -59,8 +59,8 @@ public class SaveTest {
 	dataManager.setSubRegions(subRegions);
 
 	ArrayList<ImageDetail> id = new ArrayList<>();
-	id.add(new ImageDetail("src/me/export/The World/Europe/Andorra Flag.png", 580, 390));
-	id.add(new ImageDetail("src/me/export/The World/Europe/image2.png", 6, 6));
+	id.add(new ImageDetail("src/me/export/The World/Europe/Andorra Flag.png", 580, 390, 0));
+	id.add(new ImageDetail("src/me/export/The World/Europe/image2.png", 6, 6, 1));
 
 	dataManager.setImages(id);
 	fileManager.processSaveRequest();
@@ -163,8 +163,8 @@ public class SaveTest {
 	dataManager.setSubRegions(subRegions);
 
 	ArrayList<ImageDetail> id = new ArrayList<>();
-	id.add(new ImageDetail("src/me/export/The World/Europe/Slovakia Flag.png", 543, 369));
-	id.add(new ImageDetail("src/me/export/The World/Europe/image3.png", 24, 32));
+	id.add(new ImageDetail("src/me/export/The World/Europe/Slovakia Flag.png", 543, 369, 0));
+	id.add(new ImageDetail("src/me/export/The World/Europe/image3.png", 24, 32, 1));
 
 	dataManager.setImages(id);
 	fileManager.processSaveRequest();

@@ -1,6 +1,11 @@
 package gui;
 
+import data.DataManager;
 import data.SubRegion;
+import file.FileManager;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -28,35 +33,33 @@ public class SubRegionDialog {
 	private final String NEXT_BUTTON = "nextButton";
 	private final String NEXTPREV_HBOX = "nextPrev";
 
-	private String subRegionNameString;
-	private String subRegionCapitalString;
-	private String subRegionLeaderString;
+	private GridPane gp;
+	private TextField subRegionName;
+	private TextField subRegionCapital;
+	private TextField subRegionLeader;
+	private SubRegion subRegion;
+	private PropertiesManager prop;
+	private ImageView leaderiv;
+	private ImageView flagiv;
+	private SubRegion[] data;
+	private IntegerProperty index;
 
-
-	public String getSubRegionNameString() {
-		return subRegionNameString;
+	public SubRegionDialog(SubRegion[] data){
+		this.data = data;
 	}
 
-	public String getSubRegionCapitalString() {
-		return subRegionCapitalString;
-	}
+	public void show(int i){
+		this.index = new SimpleIntegerProperty(i);
+		subRegion = data[index.get()];
 
-	public String getSubRegionLeaderString() {
-		return subRegionLeaderString;
-	}
-
-	public void show(SubRegion subRegion){
-		subRegionNameString = subRegion.getName();
-		subRegionCapitalString = subRegion.getCapital();
-		subRegionLeaderString = subRegion.getLeader();
-		PropertiesManager prop = PropertiesManager.getPropertiesManager();
+		prop = PropertiesManager.getPropertiesManager();
 		Stage dim = new Stage();
-		dim.setHeight(350);
+		dim.setHeight(400);
 		dim.setWidth(450);
 		dim.initModality(Modality.APPLICATION_MODAL);
 		dim.setTitle(prop.getProperty(PropertyType.SUBREGION_TITLE_LABEL));
 
-		GridPane gp = new GridPane();
+		gp = new GridPane();
 
 
 		HBox nextPrevious = new HBox();
@@ -70,26 +73,74 @@ public class SubRegionDialog {
 		nextPrevious.getChildren().addAll(previous, next);
 		gp.add(nextPrevious, 0, 0);
 		GridPane.setColumnSpan(nextPrevious, 2);
-
+		next.setOnMouseClicked(e -> next());
+		previous.setOnMouseClicked(e -> previous());
+		next.disableProperty().bind(Bindings.createBooleanBinding((() -> index.get() >= data.length-1), index));
+		previous.disableProperty().bind(Bindings.createBooleanBinding((() -> index.get() <= 0), index));
 		gp.add(new Label(prop.getProperty(PropertyType.SUBREGION_NAME)), 0 , 1);
-		TextField subRegionName = new TextField();
-		subRegionName.setText(subRegionNameString);
+		subRegionName = new TextField();
 		gp.add(subRegionName, 1 , 1);
 
 		gp.add(new Label(prop.getProperty(PropertyType.SUBREGON_CAPITAL)), 0 , 2);
-		TextField subRegionCapital = new TextField();
-		subRegionCapital.setText(subRegionCapitalString);
+		subRegionCapital = new TextField();
 		gp.add(subRegionCapital, 1 , 2);
 
 		gp.add(new Label(prop.getProperty(PropertyType.SUBREGON_LEADER)), 0 , 3);
-		TextField subRegionLeader = new TextField();
-		subRegionLeader.setText(subRegionLeaderString);
+		subRegionLeader = new TextField();
 		gp.add(subRegionLeader, 1 , 3);
 
+		Button okButton = new Button(prop.getProperty(PropertyType.OK_BUTTON));
+		okButton.getStyleClass().add(BUTTON_WIDTH);
+		gp.add(okButton, 1, 5);
+		gp.getStyleClass().add(GRIDPANE_STYLE);
+		okButton.getStyleClass().add(BUTTON_WIDTH);
+
+		current();
+
+		okButton.setOnAction(e -> {
+			dim.close();
+		});
+
+		Scene scene = new Scene(gp);
+		scene.getStylesheets().add(getClass().getClassLoader().getResource(prop.getProperty(PropertyType.DIALOG_CSS)).toString());
+		dim.setScene(scene);
+		dim.showAndWait();
+	}
+
+
+	private void current(){
+		setWindow(0);
+	}
+
+
+	private void next(){
+		setWindow(1);
+	}
+
+	private void previous(){
+		setWindow(-1);
+	}
+
+	private void setWindow(int x){
+		data[index.get()].nameProperty().unbind();
+		data[index.get()].capitalProperty().unbind();
+		data[index.get()].leaderProperty().unbind();
+		index.set(index.get() + x);
+		subRegionName.setText(data[index.get()].getName());
+		subRegionLeader.setText(data[index.get()].getLeader());
+		subRegionCapital.setText(data[index.get()].getCapital());
+		data[index.get()].nameProperty().bind(subRegionName.textProperty());
+		data[index.get()].leaderProperty().bind(subRegionLeader.textProperty());
+		data[index.get()].capitalProperty().bind(subRegionCapital.textProperty());
+		addImage();
+	}
+
+	private void addImage(){
+		gp.getChildren().removeAll(leaderiv, flagiv);
 		try {
-			String leaderPath = subRegion.getLeader() + ".png";
-			ImageView leaderiv = new ImageView(leaderPath);
-			leaderiv.setFitHeight(120);
+			String leaderPath = "file:" + FileManager.getRegionPath() + "/" + data[index.get()].getLeader() + ".png";
+			leaderiv = new ImageView(leaderPath);
+			leaderiv.setFitHeight(150);
 			leaderiv.setFitWidth(200);
 			gp.add(leaderiv, 0, 4);
 		}catch (IllegalArgumentException ex){
@@ -97,46 +148,14 @@ public class SubRegionDialog {
 		}
 
 		try{
-		String flagPath = subRegion.getName() + ".png";
-		ImageView flagiv = new ImageView(flagPath);
-		flagiv.setFitHeight(130);
-		flagiv.setFitWidth(200);
-		gp.add(flagiv, 1, 4);
+			String flagPath = "file:" + FileManager.regionPath +"/"+ data[index.get()].getName() + " Flag.png";
+//			System.out.println(flagPath);
+			flagiv = new ImageView(flagPath);
+			flagiv.setFitHeight(150);
+			flagiv.setFitWidth(200);
+			gp.add(flagiv, 1, 4);
 		}catch (IllegalArgumentException ex){
 			gp.add(new Label(prop.getProperty(PropertyType.SUBREGION_NO_PICTURE)), 1, 4);
 		}
-
-		HBox hbox = new HBox();
-		Button okButton = new Button(prop.getProperty(PropertyType.OK_BUTTON));
-		Button cancelButton = new Button(prop.getProperty(PropertyType.CANCEL_BUTTON));
-		okButton.getStyleClass().add(BUTTON_WIDTH);
-		cancelButton.getStyleClass().add(BUTTON_WIDTH);
-		hbox.getChildren().addAll(cancelButton, okButton);
-		hbox.getStyleClass().add(HBOX);
-
-		gp.add(hbox, 1, 5);
-
-		gp.getStyleClass().add(GRIDPANE_STYLE);
-		okButton.getStyleClass().add(BUTTON_WIDTH);
-
-		cancelButton.getStyleClass().add(BUTTON_WIDTH);
-
-		okButton.setOnAction(e -> {
-			subRegionNameString = subRegionName.getText();
-			subRegionCapitalString = subRegionCapital.getText();
-			subRegionLeaderString = subRegionLeader.getText();
-			dim.close();
-		});
-
-		cancelButton.setOnAction(e -> {
-			dim.close();
-			e.consume();
-		});
-
-
-		Scene scene = new Scene(gp);
-		scene.getStylesheets().add(getClass().getClassLoader().getResource(prop.getProperty(PropertyType.DIALOG_CSS)).toString());
-		dim.setScene(scene);
-		dim.showAndWait();
 	}
 }
