@@ -10,7 +10,7 @@
     "PARENT_DIRECTORY":"src/me/export/The World/Europe",
     "IMAGES":[
     ],
-    "COORDINATE_FILE_PATH":"/home/jappatel/Downloads/TheMapEditor/build/classes/raw_map_data/SanMarino.json",
+    "COORDINATE_FILE_PATH":"src/me/raw_map_data/SanMarino.json",
     "SUBREGION_CONTENT":[
         {
             "NAME_OF_SUBREGION":"Acquaviva",

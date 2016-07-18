@@ -6,7 +6,7 @@ import data.SubRegion;
 import file.FileManager;
 import gui.DimensionDialog;
 import gui.DraggableImageView;
-import gui.SelectablePolygons;
+import gui.SelectableNode;
 import gui.SubRegionDialog;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -58,7 +58,8 @@ public class Controller implements Initializable {
 	private ObservableList<SubRegion> ob = FXCollections.observableArrayList();
 	private DataManager dataManager = new DataManager();
 	private FileManager fileManager = new FileManager(dataManager, this);
-	private SelectablePolygons gp;
+	private SelectableNode polygonGroup;
+	private SelectableNode imageGroup;
 	private boolean first = true;
 	/**
 	 * All the binding and new data and stuff goes here
@@ -91,16 +92,16 @@ public class Controller implements Initializable {
 				return 0;
 			}
 		};
-		gp = new SelectablePolygons() {
+		polygonGroup = new SelectableNode() {
 			@Override
 			public void onMouseClickedHook(MouseEvent e) {
 				if(e.getClickCount() == 1){
-					table.scrollTo(gp.getSelectionModel().getSelectedIndex());
-					table.getSelectionModel().select(gp.getSelectionModel().getSelectedIndex());
-					table.getFocusModel().focus(gp.getSelectionModel().getSelectedIndex());
+					table.scrollTo(polygonGroup.getSelectionModel().getSelectedIndex());
+					table.getSelectionModel().select(polygonGroup.getSelectionModel().getSelectedIndex());
+					table.getFocusModel().focus(polygonGroup.getSelectionModel().getSelectedIndex());
 				}
 				if(e.getClickCount() == 2){
-					subRegionHandler(gp.getSelectionModel().getSelectedIndex(), table);
+					subRegionHandler(polygonGroup.getSelectionModel().getSelectedIndex(), table);
 				}
 			}
 		};
@@ -112,7 +113,7 @@ public class Controller implements Initializable {
 					table.getSelectionModel().clearSelection();
 				}
 				if(e.getClickCount() == 1){
-					gp.setSelected(table.getSelectionModel().getSelectedIndex());
+					polygonGroup.setSelected(table.getSelectionModel().getSelectedIndex());
 					table.getFocusModel().focus(table.getSelectionModel().getSelectedIndex());
 				}
 				if(e.getClickCount() == 2){
@@ -124,7 +125,7 @@ public class Controller implements Initializable {
 		});
 
 		table.getFocusModel().focusedIndexProperty().addListener(e -> {
-			gp.setSelected(table.getFocusModel().getFocusedIndex());
+			polygonGroup.setSelected(table.getFocusModel().getFocusedIndex());
 		});
 
 		dataManager.mapNameProperty().bindBidirectional(mapNameTF.textProperty());
@@ -211,7 +212,7 @@ public class Controller implements Initializable {
 		dd.show();
 		dataManager.setHeight(dd.getHeight());
 		dataManager.setWidth(dd.getWidth());
-		pane.getChildren().remove(gp);
+		pane.getChildren().remove(polygonGroup);
 		addImage();
 	}
 
@@ -231,7 +232,7 @@ public class Controller implements Initializable {
 	}
 
 	public void reload(){
-		pane.getChildren().remove(gp);
+		pane.getChildren().remove(polygonGroup);
 		init();
 		SubRegion[] region = dataManager.getSubRegions();
 		for (int i = 0; i < region.length; i++) {
@@ -239,6 +240,7 @@ public class Controller implements Initializable {
 			if(first)
 				ob.add(temp);
 			double[][] ww = temp.getSubPoints();
+			Group g = new Group();
 			for (double[] f : ww) {
 				Polygon polygon = new Polygon(f);
 				int j = i;
@@ -251,12 +253,13 @@ public class Controller implements Initializable {
 //				});
 				polygon.strokeWidthProperty().bind(borderWidth.valueProperty().divide(14));
 				polygon.strokeProperty().bind(borderCP.valueProperty());
-				gp.add(polygon);
+				g.getChildren().add(polygon);
 			}
+			polygonGroup.add(g);
 		}
-		pane.getChildren().add(gp);
-		gp.setTranslateX(dataManager.getTranslatex());
-		gp.setTranslateY(dataManager.getTranslatey());
+		pane.getChildren().add(polygonGroup);
+		polygonGroup.setTranslateX(dataManager.getTranslatex());
+		polygonGroup.setTranslateY(dataManager.getTranslatey());
 		table.setItems(ob);
 		if(first) addImages();
 		first = false;
@@ -286,8 +289,8 @@ public class Controller implements Initializable {
 		pane.setMinWidth(dataManager.getWidth());
 		pane.setMaxHeight(dataManager.getHeight());
 		pane.setMinHeight(dataManager.getHeight());
-		gp.scaleXProperty().bind(zoom.valueProperty());
-		gp.scaleYProperty().bind(zoom.valueProperty());
+		polygonGroup.scaleXProperty().bind(zoom.valueProperty());
+		polygonGroup.scaleYProperty().bind(zoom.valueProperty());
 	    Rectangle clip = new Rectangle(dataManager.getWidth(), dataManager.getHeight());
 	    pane.setClip(clip);
 		mapNameTF.setText(dataManager.getMapName());
@@ -301,16 +304,20 @@ public class Controller implements Initializable {
 
 	private void addImages(){
 		ArrayList<ImageDetail> id = dataManager.getImages();
+		imageGroup = new SelectableNode() {
+			@Override
+			public void onMouseClickedHook(MouseEvent e) {
+
+			}
+		};
 		for (ImageDetail temp : id) {
 			Image image = new Image("file:" + temp.getImage());
 			DraggableImageView iv = new DraggableImageView(image, temp);
 			iv.setId(temp.getKey() + "");
-			iv.setOnMouseClicked(e -> {
-				selectionModel.select(e.getSource());
-			});
 			iv.setX(temp.getX());
 			iv.setY(temp.getY());
-			pane.getChildren().add(iv);
+			imageGroup.add(iv);
+			pane.getChildren().add(imageGroup);
 		}
 	}
 
@@ -320,12 +327,9 @@ public class Controller implements Initializable {
 		Image image = new Image("file:" + temp.getImage());
 		DraggableImageView iv = new DraggableImageView(image, temp);
 		iv.setId(temp.getKey() + "");
-		iv.setOnMouseClicked(e-> {
-			selectionModel.select(e.getSource());
-		});
 		iv.setX(temp.getX());
 		iv.setY(temp.getY());
-		pane.getChildren().add(iv);
+		imageGroup.add(iv);
 	}
 
 

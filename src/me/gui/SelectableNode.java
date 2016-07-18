@@ -5,6 +5,7 @@ import javafx.scene.Node;
 import javafx.scene.control.SelectionModel;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.InnerShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -13,10 +14,10 @@ import javafx.scene.shape.Polygon;
 /**
  * Created by jappatel on 7/13/16.
  */
-public abstract class SelectablePolygons extends Group{
+public abstract class SelectableNode extends Group{
 	private SelectionModel<Node> selectionModel;
-
-	public SelectablePolygons(){
+	private InnerShadow e = new InnerShadow(0, 10, 10, Color.rgb(206,44,101));
+	public SelectableNode(){
 		selectionModel = new SingleSelectionModel<Node>() {
 			@Override
 			protected Node getModelItem(int index) {
@@ -45,9 +46,9 @@ public abstract class SelectablePolygons extends Group{
 	public void setSelected(Node node){
 		Node selectedItem = selectionModel.getSelectedItem();
 		if(selectedItem!=null) {
-			((Polygon)selectedItem).setFill(((Polygon)node).getFill());
+			selectedItem.setEffect(null);
 		}
-		((Polygon)node).setFill(Paint.valueOf("#000000"));
+		node.setEffect(e);
 		selectionModel.select(node);
 	}
 
@@ -55,9 +56,9 @@ public abstract class SelectablePolygons extends Group{
 		Node selectedItem = selectionModel.getSelectedItem();
 		Node node = getChildren().get(index);
 		if(selectedItem!=null) {
-			((Polygon)selectedItem).setFill(((Polygon)node).getFill());
+				selectedItem.setEffect(null);
 		}
-		((Polygon)node).setFill(Paint.valueOf("#000000"));
+		node.setEffect(e);
 		selectionModel.select(node);
 	}
 

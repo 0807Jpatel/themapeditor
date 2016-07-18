@@ -20,7 +20,7 @@
             "IMAGE_Y":32.0
         }
     ],
-    "COORDINATE_FILE_PATH":"/home/jappatel/Downloads/TheMapEditor/build/classes/raw_map_data/Slovakia.json",
+    "COORDINATE_FILE_PATH":"src/me/raw_map_data/Slovakia.json",
     "SUBREGION_CONTENT":[
         {
             "NAME_OF_SUBREGION":"Bratislava",
