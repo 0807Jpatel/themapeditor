@@ -246,12 +246,11 @@ public class Controller implements Initializable {
 	}
 
 	public void setDimensionButton() {
-		DimensionDialog dd = new DimensionDialog();
-		dd.show();
-		dataManager.setHeight(dd.getHeight());
-		dataManager.setWidth(dd.getWidth());
-		pane.getChildren().remove(polygonGroup);
-		addImage();
+//		DimensionDialog dd = new DimensionDialog();
+//		dd.show();
+//		dataManager.setHeight(dd.getHeight());
+//		dataManager.setWidth(dd.getWidth());
+		pane.setPrefSize(10, 10);
 	}
 
 	public void setBackgroundColorPicker() {
@@ -317,10 +316,7 @@ public class Controller implements Initializable {
 	}
 
 	private void init(){
-		pane.setMaxWidth(dataManager.getWidth());
-		pane.setMinWidth(dataManager.getWidth());
-		pane.setMaxHeight(dataManager.getHeight());
-		pane.setMinHeight(dataManager.getHeight());
+		pane.setPrefSize(dataManager.getWidth(), dataManager.getHeight());
 		polygonGroup.scaleXProperty().bind(zoom.valueProperty());
 		polygonGroup.scaleYProperty().bind(zoom.valueProperty());
 	    Rectangle clip = new Rectangle(dataManager.getWidth(), dataManager.getHeight());
