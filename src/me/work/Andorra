@@ -1,7 +1,7 @@
 
 {
     "NAME_OF_MAP":"Andorra",
-    "BACKGROUND_COLOR":"#dc6e00",
+    "BACKGROUND_COLOR":"0xcc6633ff",
     "BORDER_COLOR":"#000000",
     "BORDER_WIDTH":0.08,
     "ZOOM":650.0,

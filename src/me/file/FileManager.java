@@ -145,6 +145,31 @@ public class FileManager {
 	public void processSaveRequest() throws IOException{
 	    try{
 
+		if(!controller.getMapNameText().equals(dataManager.getMapName())){
+			String oldName = dataManager.getMapName();
+			dataManager.setMapName(controller.getMapNameText());
+			File oldPath = new File(regionPath);
+			if(oldPath.exists()) {
+				File newPath = new File(dataManager.getDirectoryPath() + "/" + dataManager.getMapName());
+				oldPath.renameTo(newPath);
+				regionPath = newPath.toString();
+			}
+			File saveWork = new File("src/me/work/" + oldName);
+			if(saveWork.exists())
+				saveWork.delete();
+			File oldRVM = new File(regionPath + "/" + oldName +".rvm");
+			if(oldRVM.exists()) {
+				File newRVM = new File(regionPath + "/" + dataManager.getMapName() + ".rvm");
+				oldRVM.renameTo(newRVM);
+			}
+			File oldPNG = new File(regionPath + "/" + oldName +".png");
+			if(oldPNG.exists()) {
+				File newPNG = new File(regionPath + "/" + dataManager.getMapName() + ".png");
+				oldPNG.renameTo(newPNG);
+			}
+
+		}
+
 		File filePath = new File("src/me/work/" + dataManager.getMapName());
 
 		JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
@@ -206,6 +231,7 @@ public class FileManager {
 	public void processExportRequest() throws IOException{
 	    try{
 		if(dataManager.getAllName()){
+			processSaveRequest();
 			JsonArrayBuilder arrayBuilder = exportArray();
 			boolean allFlag = dataManager.getAllFlag();
 			JsonObject exportFile =  Json.createObjectBuilder()

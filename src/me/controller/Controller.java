@@ -137,7 +137,6 @@ public class Controller implements Initializable {
 			polygonGroup.setSelected(table.getFocusModel().getFocusedIndex());
 		});
 
-		dataManager.mapNameProperty().bindBidirectional(mapNameTF.textProperty());
 		borderCP.setOnAction(e -> dataManager.setBorderColor(borderCP.getValue().toString()));
 		backgroundCP.setOnAction(e -> {
 			setBackgroundColorPicker();
@@ -175,7 +174,7 @@ public class Controller implements Initializable {
 			snapshotParameters.setTransform(Transform.translate(flowPane.getLayoutX() - pane.getLayoutX(), flowPane.getLayoutY() - pane.getLayoutY() ));
 			snapshotParameters.setViewport(new Rectangle2D(0, 0, dataManager.getWidth(), dataManager.getHeight()));
 			WritableImage image = pane.snapshot(snapshotParameters, null);
-			File file = new File("test.png");
+			File file = new File(FileManager.getRegionPath() + "/" + dataManager.getMapName() + ".png");
 			ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -246,11 +245,10 @@ public class Controller implements Initializable {
 	}
 
 	public void setDimensionButton() {
-//		DimensionDialog dd = new DimensionDialog();
-//		dd.show();
-//		dataManager.setHeight(dd.getHeight());
-//		dataManager.setWidth(dd.getWidth());
-		pane.setPrefSize(10, 10);
+		DimensionDialog dd = new DimensionDialog();
+		dd.show();
+		dataManager.setHeight(dd.getHeight());
+		dataManager.setWidth(dd.getWidth());
 	}
 
 	public void setBackgroundColorPicker() {
@@ -360,6 +358,8 @@ public class Controller implements Initializable {
 		imageGroup.add(iv);
 	}
 
-
+	public String getMapNameText(){
+		return mapNameTF.getText();
+	}
 
 }
