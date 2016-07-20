@@ -137,9 +137,10 @@
     -fx-graphic: url("../images/Play.png");
 }
 
-.background{
-    -fx-background-image: url("../world.png");
+.stopButton{
+    -fx-graphic: url("../images/Stop.png");
 }
+
 .color-picker{
     -fx-color-label-visible: false;
 }

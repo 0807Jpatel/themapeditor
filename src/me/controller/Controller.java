@@ -1,5 +1,6 @@
 package controller;
 
+import audio_manager.AudioManager;
 import com.sun.javafx.geom.transform.Affine3D;
 import com.sun.javafx.geom.transform.BaseTransform;
 import data.DataManager;
@@ -29,6 +30,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
@@ -53,6 +56,10 @@ import javafx.scene.transform.Transform;
 import javafx.stage.FileChooser;
 
 import javax.imageio.ImageIO;
+import javax.sound.midi.InvalidMidiDataException;
+import javax.sound.midi.MidiUnavailableException;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Controller implements Initializable {
 	@FXML Button newButton, loadButton, saveButton, exportButton, exitButton,
@@ -69,6 +76,7 @@ public class Controller implements Initializable {
 	private ObservableList<SubRegion> ob = FXCollections.observableArrayList();
 	private DataManager dataManager = new DataManager();
 	private FileManager fileManager = new FileManager(dataManager, this);
+	AudioManager audioManager = new AudioManager();
 	private SelectableNode polygonGroup;
 	private SelectableNode imageGroup;
 	private boolean first = true;
@@ -206,6 +214,29 @@ public class Controller implements Initializable {
 	}
 
 	public void setPlayButton() {
+		String song = dataManager.getMapName() + " National Anthem.mid";
+		if(audioManager.isPlaying(song)) {
+			audioManager.stop(song);
+			File file = new File("src/me/images/Play.png");
+			playButton.setGraphic(new ImageView(file.toURI().toString()));
+		}else{
+			try {
+				audioManager.loadAudio(song, FileManager.getRegionPath() + "/" + dataManager.getMapName() + " National Anthem.mid");
+				audioManager.play(song, false);
+				File file = new File("src/me/images/Stop.png");
+				playButton.setGraphic(new ImageView(file.toURI().toString()));
+			} catch (UnsupportedAudioFileException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (LineUnavailableException e) {
+				e.printStackTrace();
+			} catch (InvalidMidiDataException e) {
+				e.printStackTrace();
+			} catch (MidiUnavailableException e) {
+				e.printStackTrace();
+			}
+		}
 
 	}
 
