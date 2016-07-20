@@ -5,6 +5,7 @@ import javafx.scene.Node;
 import javafx.scene.control.SelectionModel;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Effect;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -16,8 +17,9 @@ import javafx.scene.shape.Polygon;
  */
 public abstract class SelectableNode extends Group{
 	private SelectionModel<Node> selectionModel;
-	private InnerShadow e = new InnerShadow(0, 10, 10, Color.rgb(206,44,101));
-	public SelectableNode(){
+	private Effect effect;
+
+	public SelectableNode(Effect effect){
 		selectionModel = new SingleSelectionModel<Node>() {
 			@Override
 			protected Node getModelItem(int index) {
@@ -29,6 +31,7 @@ public abstract class SelectableNode extends Group{
 				return getChildren().size();
 			}
 		};
+		this.effect = effect;
 	}
 
 	public void add(Node node){
@@ -48,7 +51,7 @@ public abstract class SelectableNode extends Group{
 		if(selectedItem!=null) {
 			selectedItem.setEffect(null);
 		}
-		node.setEffect(e);
+		node.setEffect(effect);
 		selectionModel.select(node);
 	}
 
@@ -58,7 +61,7 @@ public abstract class SelectableNode extends Group{
 		if(selectedItem!=null) {
 				selectedItem.setEffect(null);
 		}
-		node.setEffect(e);
+		node.setEffect(effect);
 		selectionModel.select(node);
 	}
 

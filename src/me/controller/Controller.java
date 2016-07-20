@@ -1,5 +1,7 @@
 package controller;
 
+import com.sun.javafx.geom.transform.Affine3D;
+import com.sun.javafx.geom.transform.BaseTransform;
 import data.DataManager;
 import data.ImageDetail;
 import data.SubRegion;
@@ -10,15 +12,21 @@ import gui.SelectableNode;
 import gui.SubRegionDialog;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.InnerShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -41,7 +49,10 @@ import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
+import javafx.scene.transform.Transform;
 import javafx.stage.FileChooser;
+
+import javax.imageio.ImageIO;
 
 public class Controller implements Initializable {
 	@FXML Button newButton, loadButton, saveButton, exportButton, exitButton,
@@ -52,9 +63,9 @@ public class Controller implements Initializable {
 	@FXML ColorPicker backgroundCP, borderCP;
 	@FXML Slider zoom, borderWidth;
 	@FXML TextField mapNameTF;
-	@FXML ProgressBar progressBar;
+	@FXML FlowPane flowPane;
 
-	private SingleSelectionModel selectionModel;
+
 	private ObservableList<SubRegion> ob = FXCollections.observableArrayList();
 	private DataManager dataManager = new DataManager();
 	private FileManager fileManager = new FileManager(dataManager, this);
@@ -81,18 +92,8 @@ public class Controller implements Initializable {
 		leaderColumn.setSortable(false);
 		capitalColumn.setSortable(false);
 
-		selectionModel = new SingleSelectionModel() {
-			@Override
-			protected ImageView getModelItem(int index) {
-				return null;
-			}
-
-			@Override
-			protected int getItemCount() {
-				return 0;
-			}
-		};
-		polygonGroup = new SelectableNode() {
+		InnerShadow is = new InnerShadow(0, 2, 2, Color.rgb(206,74,73));
+		polygonGroup = new SelectableNode(is) {
 			@Override
 			public void onMouseClickedHook(MouseEvent e) {
 				if(e.getClickCount() == 1){
@@ -162,6 +163,12 @@ public class Controller implements Initializable {
 	public void setExportButton() {
 		try {
 			fileManager.processExportRequest();
+			SnapshotParameters snapshotParameters = new SnapshotParameters();
+			snapshotParameters.setTransform(Transform.translate(flowPane.getLayoutX() - pane.getLayoutX(), flowPane.getLayoutY() - pane.getLayoutY() ));
+			snapshotParameters.setViewport(new Rectangle2D(0, 0, dataManager.getWidth(), dataManager.getHeight()));
+			WritableImage image = pane.snapshot(snapshotParameters, null);
+			File file = new File("test.png");
+			ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -189,9 +196,9 @@ public class Controller implements Initializable {
 	}
 
 	public void setRemovePictureButton() {
-		if(selectionModel.getSelectedItem() != null) {
-			dataManager.remove(Integer.parseInt(((ImageView)selectionModel.getSelectedItem()).getId()));
-			pane.getChildren().remove(selectionModel.getSelectedItem());
+		if(imageGroup.getSelectionModel().getSelectedItem() != null) {
+			dataManager.remove(Integer.parseInt(imageGroup.getSelectionModel().getSelectedItem().getId()));
+			imageGroup.getChildren().remove(imageGroup.getSelectionModel().getSelectedItem());
 		}
 //		ArrayList<ImageDetail> id = dataManager.getImages();
 //		for(ImageDetail temp: id)
@@ -245,12 +252,6 @@ public class Controller implements Initializable {
 				Polygon polygon = new Polygon(f);
 				int j = i;
 				polygon.setFill(temp.getColor());
-//				System.out.println(temp.getColor());
-//				System.out.println(polygon.getFill());
-//				polygon.setOnMouseClicked(e->{
-//					if(e.getClickCount() == 2)
-//						subRegionHandler(j);
-//				});
 				polygon.strokeWidthProperty().bind(borderWidth.valueProperty().divide(14));
 				polygon.strokeProperty().bind(borderCP.valueProperty());
 				g.getChildren().add(polygon);
@@ -261,7 +262,7 @@ public class Controller implements Initializable {
 		polygonGroup.setTranslateX(dataManager.getTranslatex());
 		polygonGroup.setTranslateY(dataManager.getTranslatey());
 		table.setItems(ob);
-		if(first) addImages();
+		if(first) {addImages(); pane.getChildren().add(imageGroup);}
 		first = false;
 		mapNameTF.setText(dataManager.getMapName());
 	}
@@ -304,11 +305,12 @@ public class Controller implements Initializable {
 
 	private void addImages(){
 		ArrayList<ImageDetail> id = dataManager.getImages();
-		imageGroup = new SelectableNode() {
+		DropShadow ds = new DropShadow();
+		ds.setOffsetY(6);
+		ds.setOffsetY(6);
+		imageGroup = new SelectableNode(ds) {
 			@Override
-			public void onMouseClickedHook(MouseEvent e) {
-
-			}
+			public void onMouseClickedHook(MouseEvent e) {}
 		};
 		for (ImageDetail temp : id) {
 			Image image = new Image("file:" + temp.getImage());
@@ -317,7 +319,6 @@ public class Controller implements Initializable {
 			iv.setX(temp.getX());
 			iv.setY(temp.getY());
 			imageGroup.add(iv);
-			pane.getChildren().add(imageGroup);
 		}
 	}
 

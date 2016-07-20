@@ -177,9 +177,9 @@ public class DataManager {
 	}
 
 	public void remove(int key){
-		for(ImageDetail temp: images)
-			if(temp.getKey() == key)
-				images.remove(temp);
+		for(int x = 0; x < images.size(); x++)
+			if(images.get(x).getKey() == key)
+				images.remove(x);
 	}
 
 }

@@ -3,12 +3,11 @@
     "name":"Andorra",
     "subregions_have_capitals":true,
     "subregions_have_flags":true,
-    "subregions_have_leaders":true,
+    "subregions_have_leaders":false,
     "subRegions":[
         {
             "name":"Ordino",
             "capital":"Oridino (town)",
-            "leader":"Ventura Espot",
             "red":200,
             "blue":200,
             "green":200
@@ -16,7 +15,6 @@
         {
             "name":"Carillo",
             "capital":"Canillo (town)",
-            "leader":"Enric Casadevall Medrano",
             "red":198,
             "blue":198,
             "green":198
@@ -24,7 +22,6 @@
         {
             "name":"Encamp",
             "capital":"Encamp (town)",
-            "leader":"Miquel Alis Font",
             "red":196,
             "blue":196,
             "green":196
@@ -32,7 +29,6 @@
         {
             "name":"Escaldes-Engordany",
             "capital":"Escaldes-Engordany (town)",
-            "leader":"Montserrat Capdevila Pallarés",
             "red":194,
             "blue":194,
             "green":194
@@ -40,7 +36,6 @@
         {
             "name":"La Massana",
             "capital":"La Massana (town)",
-            "leader":"Josep Areny",
             "red":192,
             "blue":192,
             "green":192
@@ -48,7 +43,6 @@
         {
             "name":"Andorra la Vella",
             "capital":"Andorra la Vella (city)",
-            "leader":"Maria Rosa Ferrer Obiols",
             "red":190,
             "blue":190,
             "green":190
@@ -56,7 +50,6 @@
         {
             "name":"Sant Julia de Loria",
             "capital":"Sant Julia de Loria (town)",
-            "leader":"Josep Pintat Forné",
             "red":188,
             "blue":188,
             "green":188
