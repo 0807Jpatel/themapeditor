@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a250106-bdeb-4d3c-b745-b034cbac9f23" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/me/controller/Controller.class" afterPath="$PROJECT_DIR$/out/production/me/controller/Controller.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/controller/Controller.java" afterPath="$PROJECT_DIR$/src/me/controller/Controller.java" />
     </list>
     <ignored path="TheMapEditor.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,8 +28,8 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/me/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="318" column="72" selection-start-line="318" selection-start-column="72" selection-end-line="318" selection-end-column="72" />
+            <state relative-caret-position="3575">
+              <caret line="312" column="54" selection-start-line="312" selection-start-column="54" selection-end-line="312" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -908,7 +908,7 @@
       <workItem from="1468820985162" duration="753000" />
       <workItem from="1468869221980" duration="13000" />
       <workItem from="1468975424384" duration="1557000" />
-      <workItem from="1469029923819" duration="13374000" />
+      <workItem from="1469029923819" duration="14881000" />
     </task>
     <task id="LOCAL-00001" summary="Got PropertiesManager, fxml and css files ready with the proper packages.">
       <created>1467227353196</created>
@@ -1050,7 +1050,14 @@
       <option name="project" value="LOCAL" />
       <updated>1469043910542</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="done with resizing the pane">
+      <created>1469045054385</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1469045054385</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1086,7 +1093,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37426000" />
+    <option name="totallyTimeSpent" value="38933000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1109,7 +1116,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297975" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.364513" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="613" y="323" width="1018" height="1040" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.364513" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="613" y="323" width="1018" height="1040" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1189,7 +1196,8 @@
     <MESSAGE value="Selection worrks fine" />
     <MESSAGE value="Selection, Image adding and removing with indicating witch image is selected works just fine" />
     <MESSAGE value="Play and stop button works fine" />
-    <option name="LAST_COMMIT_MESSAGE" value="Play and stop button works fine" />
+    <MESSAGE value="done with resizing the pane" />
+    <option name="LAST_COMMIT_MESSAGE" value="done with resizing the pane" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1752,8 +1760,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/me/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="318" column="72" selection-start-line="318" selection-start-column="72" selection-end-line="318" selection-end-column="72" />
+        <state relative-caret-position="3575">
+          <caret line="312" column="54" selection-start-line="312" selection-start-column="54" selection-end-line="312" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
