@@ -1,6 +1,7 @@
 package data;
 
 import file.FileManager;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,7 +18,7 @@ public class DataManager {
 	private SimpleStringProperty mapName;
 	private String backgroundColor;
 	private String borderColor;
-	private double zoomLevel;
+	private SimpleDoubleProperty zoomLevel;
 	private double borderWidth;
 	private ArrayList<ImageDetail> images;
 	private double height;
@@ -48,7 +49,7 @@ public class DataManager {
 		mapName = new SimpleStringProperty("");
 		backgroundColor = "0x8099ffff";
 		borderColor = "0x333333ff";
-		zoomLevel = 1;
+		zoomLevel = new SimpleDoubleProperty(1);
 		borderWidth = .2;
 		translatex = 0;
 		translatey = 0;
@@ -94,11 +95,15 @@ public class DataManager {
 	}
 
 	public double getZoomLevel() {
+		return zoomLevel.get();
+	}
+
+	public SimpleDoubleProperty zoomLevelProperty() {
 		return zoomLevel;
 	}
 
 	public void setZoomLevel(double zoomLevel) {
-		this.zoomLevel = zoomLevel;
+		this.zoomLevel.set(zoomLevel);
 	}
 
 	public double getBorderWidth() {

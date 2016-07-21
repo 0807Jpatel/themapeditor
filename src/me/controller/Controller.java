@@ -36,6 +36,7 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.FileAlreadyExistsException;
@@ -133,12 +134,12 @@ public class Controller implements Initializable {
 			setBackgroundColorPicker();
 			dataManager.setBackgroundColor(backgroundCP.getValue().toString());
 		});
-		zoom.setOnMouseReleased(e -> dataManager.setZoomLevel(zoom.getValue()));
+		zoom.valueProperty().bindBidirectional(dataManager.zoomLevelProperty());
 		borderWidth.setOnMouseReleased(e -> dataManager.setBorderWidth(borderWidth.getValue()));
 		setKeyPress();
 		zoom.setMin(1);
 		zoom.setMax(1200);
-		borderWidth.setMax(2);
+		borderWidth.setMax(10);
 		disableButtons(true);
 	}
 
@@ -220,15 +221,15 @@ public class Controller implements Initializable {
 				File file = new File("src/me/images/Stop.png");
 				playButton.setGraphic(new ImageView(file.toURI().toString()));
 			} catch (UnsupportedAudioFileException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (LineUnavailableException e) {
-				e.printStackTrace();
-			} catch (InvalidMidiDataException e) {
-				e.printStackTrace();
-			} catch (MidiUnavailableException e) {
-				e.printStackTrace();
+				Alert alert = new Alert(Alert.AlertType.INFORMATION, "Unsupported Audio Type (supported files : .mid)");
+				alert.show();
+			} catch (FileNotFoundException ex) {
+				Alert alert = new Alert(Alert.AlertType.INFORMATION, "No National Anthem found in F2older");
+				alert.show();
+			}
+			catch (Exception e) {
+				Alert alert = new Alert(Alert.AlertType.INFORMATION, "Something went wrong Loading file");
+				alert.show();
 			}
 		}
 
@@ -253,6 +254,7 @@ public class Controller implements Initializable {
 
 	public void reload(){
 		pane.getChildren().remove(polygonGroup);
+		pane.getChildren().remove(imageGroup);
 		init();
 		SubRegion[] region = dataManager.getSubRegions();
 		for (int i = 0; i < region.length; i++) {
@@ -265,7 +267,7 @@ public class Controller implements Initializable {
 				Polygon polygon = new Polygon(f);
 				int j = i;
 				polygon.setFill(temp.getColor());
-				polygon.strokeWidthProperty().bind(borderWidth.valueProperty().divide(14));
+				polygon.strokeWidthProperty().bind(borderWidth.valueProperty().divide(zoom.valueProperty()));
 				polygon.strokeProperty().bind(borderCP.valueProperty());
 				g.getChildren().add(polygon);
 			}
@@ -274,8 +276,9 @@ public class Controller implements Initializable {
 		pane.getChildren().add(polygonGroup);
 		polygonGroup.setTranslateX(dataManager.getTranslatex());
 		polygonGroup.setTranslateY(dataManager.getTranslatey());
+
 		table.setItems(ob);
-		if(first) {addImages(); pane.getChildren().add(imageGroup);}
+		addImages(); pane.getChildren().add(imageGroup);
 		first = false;
 		mapNameTF.setText(dataManager.getMapName());
 	}
@@ -364,15 +367,19 @@ public class Controller implements Initializable {
 			switch(e.getCode()){
 				case UP :
 					polygonGroup.setTranslateY(polygonGroup.getTranslateY() - 10);
+					dataManager.setTranslatey(polygonGroup.getTranslateY());
 					break;
 				case DOWN :
 					polygonGroup.setTranslateY(polygonGroup.getTranslateY() + 10);
+					dataManager.setTranslatey(polygonGroup.getTranslateY());
 					break;
 				case LEFT :
 					polygonGroup.setTranslateX(polygonGroup.getTranslateX() - 10);
+					dataManager.setTranslatex(polygonGroup.getTranslateX());
 					break;
 				case RIGHT :
 					polygonGroup.setTranslateX(polygonGroup.getTranslateX() + 10);
+					dataManager.setTranslatex(polygonGroup.getTranslateX());
 					break;
 				default:
 					e.consume();

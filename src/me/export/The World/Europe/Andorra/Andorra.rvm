@@ -1,51 +1,58 @@
 
 {
     "name":"Andorra",
-    "subregions_have_capitals":false,
+    "subregions_have_capitals":true,
     "subregions_have_flags":false,
     "subregions_have_leaders":false,
     "subRegions":[
         {
-            "name":"1",
-            "RED":36,
-            "BLUE":36,
-            "GREEN":36
+            "name":"Ordino",
+            "capital":"Ordino (town)",
+            "red":108,
+            "blue":108,
+            "green":108
         },
         {
-            "name":"2",
-            "RED":72,
-            "BLUE":72,
-            "GREEN":72
+            "name":"Canillo",
+            "capital":"Canillo (town)",
+            "red":72,
+            "blue":72,
+            "green":72
         },
         {
-            "name":"3",
-            "RED":108,
-            "BLUE":108,
-            "GREEN":108
+            "name":"Encamp",
+            "capital":"Encamp (town)",
+            "red":144,
+            "blue":144,
+            "green":144
         },
         {
-            "name":"4",
-            "RED":144,
-            "BLUE":144,
-            "GREEN":144
+            "name":"Escaldes-Engordany",
+            "capital":"Escaldes-Engordany (town)",
+            "red":216,
+            "blue":216,
+            "green":216
         },
         {
-            "name":"5",
-            "RED":180,
-            "BLUE":180,
-            "GREEN":180
+            "name":"La Massana",
+            "capital":"La Massana (town)",
+            "red":252,
+            "blue":252,
+            "green":252
         },
         {
-            "name":"6",
-            "RED":216,
-            "BLUE":216,
-            "GREEN":216
+            "name":"Andorra la Vella",
+            "capital":"Andorra la Vella (city)",
+            "red":180,
+            "blue":180,
+            "green":180
         },
         {
-            "name":"7",
-            "RED":252,
-            "BLUE":252,
-            "GREEN":252
+            "name":"Sant Julia de Loria",
+            "capital":"Sant Julia de Loria (town)",
+            "red":36,
+            "blue":36,
+            "green":36
         }
     ]
 }

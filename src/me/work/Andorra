@@ -1,58 +1,68 @@
 
 {
     "NAME_OF_MAP":"Andorra",
-    "BACKGROUND_COLOR":"0xe64d4dff",
-    "BORDER_COLOR":"0x336666ff",
-    "BORDER_WIDTH":0.2,
-    "ZOOM":361.76106194690266,
-    "TRANSLATEX":0.0,
-    "TRANSLATEY":0.0,
-    "PARENT_DIRECTORY":"/home/jappatel/IdeaProjects/themapeditor/src/me/export/The World/Europe/Andorra/Andorra",
+    "BACKGROUND_COLOR":"0xe6994dff",
+    "BORDER_COLOR":"0x333333ff",
+    "BORDER_WIDTH":2.3238938053097344,
+    "ZOOM":721.9115044247789,
+    "TRANSLATEX":30.0,
+    "TRANSLATEY":120.0,
+    "PARENT_DIRECTORY":"/home/jappatel/IdeaProjects/themapeditor/src/me/export/The World/Europe",
     "IMAGES":[
+        {
+            "IMAGE_PATH":"src/me/addedImage/image2.png",
+            "IMAGE_X":0.0,
+            "IMAGE_Y":0.0
+        },
+        {
+            "IMAGE_PATH":"src/me/addedImage/Andorra Flag.png",
+            "IMAGE_X":601.0,
+            "IMAGE_Y":413.0
+        }
     ],
     "COORDINATE_FILE_PATH":"/home/jappatel/IdeaProjects/themapeditor/src/me/raw_map_data/Andorra.json",
     "SUBREGION_CONTENT":[
         {
-            "NAME_OF_SUBREGION":"1",
-            "CAPITAL_OF_SUBREGION":"",
-            "LEADER_OF_SUBREGION":"",
-            "COLOR_OF_SUBREGION":0.14142857491970062
-        },
-        {
-            "NAME_OF_SUBREGION":"2",
-            "CAPITAL_OF_SUBREGION":"",
-            "LEADER_OF_SUBREGION":"",
-            "COLOR_OF_SUBREGION":0.28285714983940125
-        },
-        {
-            "NAME_OF_SUBREGION":"3",
-            "CAPITAL_OF_SUBREGION":"",
-            "LEADER_OF_SUBREGION":"",
+            "NAME_OF_SUBREGION":"Ordino",
+            "CAPITAL_OF_SUBREGION":"Ordino (town)",
+            "LEADER_OF_SUBREGION":"Ventura Espot",
             "COLOR_OF_SUBREGION":0.4242857098579407
         },
         {
-            "NAME_OF_SUBREGION":"4",
-            "CAPITAL_OF_SUBREGION":"",
-            "LEADER_OF_SUBREGION":"",
+            "NAME_OF_SUBREGION":"Canillo",
+            "CAPITAL_OF_SUBREGION":"Canillo (town)",
+            "LEADER_OF_SUBREGION":"Enric Casadevall Medrano",
+            "COLOR_OF_SUBREGION":0.28285714983940125
+        },
+        {
+            "NAME_OF_SUBREGION":"Encamp",
+            "CAPITAL_OF_SUBREGION":"Encamp (town)",
+            "LEADER_OF_SUBREGION":"Miquel Alís Font",
             "COLOR_OF_SUBREGION":0.5657142996788025
         },
         {
-            "NAME_OF_SUBREGION":"5",
-            "CAPITAL_OF_SUBREGION":"",
-            "LEADER_OF_SUBREGION":"",
-            "COLOR_OF_SUBREGION":0.7071428298950195
-        },
-        {
-            "NAME_OF_SUBREGION":"6",
-            "CAPITAL_OF_SUBREGION":"",
-            "LEADER_OF_SUBREGION":"",
+            "NAME_OF_SUBREGION":"Escaldes-Engordany",
+            "CAPITAL_OF_SUBREGION":"Escaldes-Engordany (town)",
+            "LEADER_OF_SUBREGION":"Montserrat Capdevila Pallarés",
             "COLOR_OF_SUBREGION":0.8485714197158813
         },
         {
-            "NAME_OF_SUBREGION":"7",
-            "CAPITAL_OF_SUBREGION":"",
-            "LEADER_OF_SUBREGION":"",
+            "NAME_OF_SUBREGION":"La Massana",
+            "CAPITAL_OF_SUBREGION":"La Massana (town)",
+            "LEADER_OF_SUBREGION":"Josep Areny",
             "COLOR_OF_SUBREGION":0.9900000095367432
+        },
+        {
+            "NAME_OF_SUBREGION":"Andorra la Vella",
+            "CAPITAL_OF_SUBREGION":"Andorra la Vella (city)",
+            "LEADER_OF_SUBREGION":"Maria Rosa Ferrer Obiols",
+            "COLOR_OF_SUBREGION":0.7071428298950195
+        },
+        {
+            "NAME_OF_SUBREGION":"Sant Julia de Loria",
+            "CAPITAL_OF_SUBREGION":"Sant Julia de Loria (town)",
+            "LEADER_OF_SUBREGION":"Josep Pintat Forné",
+            "COLOR_OF_SUBREGION":0.14142857491970062
         }
     ]
 }
