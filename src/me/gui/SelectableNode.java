@@ -23,6 +23,8 @@ public abstract class SelectableNode extends Group{
 		selectionModel = new SingleSelectionModel<Node>() {
 			@Override
 			protected Node getModelItem(int index) {
+				if(index < 0)
+					return getChildren().get(getChildren().size()-1);
 				return getChildren().get(index);
 			}
 
@@ -63,6 +65,10 @@ public abstract class SelectableNode extends Group{
 		}
 		node.setEffect(effect);
 		selectionModel.select(node);
+	}
+
+	public void deselect(){
+		(selectionModel.getSelectedItem()).setEffect(null);
 	}
 
 	public SelectionModel<Node> getSelectionModel(){

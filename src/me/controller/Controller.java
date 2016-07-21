@@ -114,8 +114,12 @@ public class Controller implements Initializable {
 					table.getSelectionModel().clearSelection();
 				}
 				if(e.getClickCount() == 1){
-					polygonGroup.setSelected(table.getSelectionModel().getSelectedIndex());
-					table.getFocusModel().focus(table.getSelectionModel().getSelectedIndex());
+					if(table.getSelectionModel().getFocusedIndex() >= 0) {
+						polygonGroup.setSelected(table.getSelectionModel().getSelectedIndex());
+						table.getFocusModel().focus(table.getSelectionModel().getSelectedIndex());
+					}else{
+						polygonGroup.deselect();
+					}
 				}
 				if(e.getClickCount() == 2){
 					if(table.getSelectionModel().getSelectedItem() != null)
@@ -126,7 +130,8 @@ public class Controller implements Initializable {
 		});
 
 		table.getFocusModel().focusedIndexProperty().addListener(e -> {
-			polygonGroup.setSelected(table.getFocusModel().getFocusedIndex());
+			if(table.getSelectionModel().getFocusedIndex() >= 0)
+				polygonGroup.setSelected(table.getFocusModel().getFocusedIndex());
 		});
 
 		borderCP.setOnAction(e -> dataManager.setBorderColor(borderCP.getValue().toString()));
@@ -161,9 +166,12 @@ public class Controller implements Initializable {
 	}
 
 	public void setExportButton() {
+
 		try {
 			boolean picture = fileManager.processExportRequest();
 			if(picture) {
+				polygonGroup.deselect();
+				imageGroup.deselect();
 				SnapshotParameters snapshotParameters = new SnapshotParameters();
 				snapshotParameters.setTransform(Transform.translate(scrollPane.getLayoutX() - pane.getLayoutX(), scrollPane.getLayoutY() - pane.getLayoutY()));
 				snapshotParameters.setViewport(new Rectangle2D(0, 0, dataManager.getWidth(), dataManager.getHeight()));
@@ -273,6 +281,7 @@ public class Controller implements Initializable {
 			}
 			polygonGroup.add(g);
 		}
+		polygonGroup.add(new Group());
 		pane.getChildren().add(polygonGroup);
 		polygonGroup.setTranslateX(dataManager.getTranslatex());
 		polygonGroup.setTranslateY(dataManager.getTranslatey());
