@@ -56,7 +56,7 @@ public class SaveTest {
 	s7.setColor(Color.grayRgb(188));
 
 	SubRegion[] subRegions = {s1, s2, s3, s4, s5, s6, s7};
-	dataManager.setSubRegions(subRegions);
+//	dataManager.setSubRegions(subRegions);
 
 	ArrayList<ImageDetail> id = new ArrayList<>();
 	id.add(new ImageDetail("src/me/export/The World/Europe/Andorra Flag.png", 580, 390, 0));
@@ -112,7 +112,7 @@ public class SaveTest {
 	
 
 	SubRegion[] subRegions = {s1, s2, s3, s4, s5, s6, s7, s8, s9};
-	dataManager.setSubRegions(subRegions);
+//	dataManager.setSubRegions(subRegions);
 
 	ArrayList<ImageDetail> id = new ArrayList<>();
 	dataManager.setImages(id);
@@ -160,13 +160,13 @@ public class SaveTest {
 	s8.setColor(Color.grayRgb(188));
 
 	SubRegion[] subRegions = {s1, s2, s3, s4, s5, s6, s7, s8};
-	dataManager.setSubRegions(subRegions);
-
-	ArrayList<ImageDetail> id = new ArrayList<>();
-	id.add(new ImageDetail("src/me/export/The World/Europe/Slovakia Flag.png", 543, 369, 0));
-	id.add(new ImageDetail("src/me/export/The World/Europe/image3.png", 24, 32, 1));
-
-	dataManager.setImages(id);
-	fileManager.processSaveRequest();
+//	dataManager.setSubRegions(subRegions);
+//
+//	ArrayList<ImageDetail> id = new ArrayList<>();
+//	id.add(new ImageDetail("src/me/export/The World/Europe/Slovakia Flag.png", 543, 369, 0));
+//	id.add(new ImageDetail("src/me/export/The World/Europe/image3.png", 24, 32, 1));
+//
+//	dataManager.setImages(id);
+//	fileManager.processSaveRequest();
     }
 }

@@ -4,20 +4,15 @@
     "BACKGROUND_COLOR":"#dc6e00",
     "BORDER_COLOR":"#000000",
     "BORDER_WIDTH":0.08,
-    "ZOOM":50.0,
-    "TRANSLATEX":-20.0,
-    "TRANSLATEY":100.0,
+    "ZOOM":1.0,
+    "TRANSLATEX":-410.0,
+    "TRANSLATEY":-100.0,
     "PARENT_DIRECTORY":"src/me/export/The World/Europe",
     "IMAGES":[
         {
             "IMAGE_PATH":"src/me/export/The World/Europe/Slovakia Flag.png",
             "IMAGE_X":597.0,
             "IMAGE_Y":398.0
-        },
-        {
-            "IMAGE_PATH":"src/me/export/The World/Europe/image3.png",
-            "IMAGE_X":24.0,
-            "IMAGE_Y":32.0
         }
     ],
     "COORDINATE_FILE_PATH":"src/me/raw_map_data/Slovakia.json",

@@ -6,6 +6,7 @@ import file.FileManager;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -42,18 +43,18 @@ public class SubRegionDialog {
 	private PropertiesManager prop;
 	private ImageView leaderiv;
 	private ImageView flagiv;
-	private SubRegion[] data;
+	private ObservableList<SubRegion> data;
 	private IntegerProperty index;
 	private TableView table;
 
-	public SubRegionDialog(SubRegion[] data, TableView table){
+	public SubRegionDialog(ObservableList<SubRegion> data, TableView table){
 		this.data = data;
 		this.table = table;
 	}
 
 	public void show(int i){
 		this.index = new SimpleIntegerProperty(i);
-		subRegion = data[index.get()];
+		subRegion = data.get(index.get());
 		table.getSelectionModel().select(index.get());
 		table.getFocusModel().focus(index.get());
 		prop = PropertiesManager.getPropertiesManager();
@@ -79,7 +80,7 @@ public class SubRegionDialog {
 		GridPane.setColumnSpan(nextPrevious, 2);
 		next.setOnMouseClicked(e -> next());
 		previous.setOnMouseClicked(e -> previous());
-		next.disableProperty().bind(Bindings.createBooleanBinding((() -> index.get() >= data.length-1), index));
+		next.disableProperty().bind(Bindings.createBooleanBinding((() -> index.get() >= data.size()-1), index));
 		previous.disableProperty().bind(Bindings.createBooleanBinding((() -> index.get() <= 0), index));
 		gp.add(new Label(prop.getProperty(PropertyType.SUBREGION_NAME)), 0 , 1);
 		subRegionName = new TextField();
@@ -126,25 +127,25 @@ public class SubRegionDialog {
 	}
 
 	private void setWindow(int x){
-		data[index.get()].nameProperty().unbind();
-		data[index.get()].capitalProperty().unbind();
-		data[index.get()].leaderProperty().unbind();
+		data.get(index.get()).nameProperty().unbind();
+		data.get(index.get()).capitalProperty().unbind();
+		data.get(index.get()).leaderProperty().unbind();
 		index.set(index.get() + x);
 		table.getFocusModel().focus(index.get());
 		table.getSelectionModel().select(index.get());
-		subRegionName.setText(data[index.get()].getName());
-		subRegionLeader.setText(data[index.get()].getLeader());
-		subRegionCapital.setText(data[index.get()].getCapital());
-		data[index.get()].nameProperty().bind(subRegionName.textProperty());
-		data[index.get()].leaderProperty().bind(subRegionLeader.textProperty());
-		data[index.get()].capitalProperty().bind(subRegionCapital.textProperty());
+		subRegionName.setText(data.get(index.get()).getName());
+		subRegionLeader.setText(data.get(index.get()).getLeader());
+		subRegionCapital.setText(data.get(index.get()).getCapital());
+		data.get(index.get()).nameProperty().bind(subRegionName.textProperty());
+		data.get(index.get()).leaderProperty().bind(subRegionLeader.textProperty());
+		data.get(index.get()).capitalProperty().bind(subRegionCapital.textProperty());
 		addImage();
 	}
 
 	private void addImage(){
 		gp.getChildren().removeAll(leaderiv, flagiv);
 		try {
-			String leaderPath = "file:" + FileManager.getRegionPath() + "/" + data[index.get()].getLeader() + ".png";
+			String leaderPath = "file:" + FileManager.getRegionPath() + "/" + data.get(index.get()).getLeader() + ".png";
 			leaderiv = new ImageView(leaderPath);
 			leaderiv.setFitHeight(150);
 			leaderiv.setFitWidth(200);
@@ -154,7 +155,7 @@ public class SubRegionDialog {
 		}
 
 		try{
-			String flagPath = "file:" + FileManager.regionPath +"/"+ data[index.get()].getName() + " Flag.png";
+			String flagPath = "file:" + FileManager.regionPath +"/"+ data.get(index.get()).getName() + " Flag.png";
 //			System.out.println(flagPath);
 			flagiv = new ImageView(flagPath);
 			flagiv.setFitHeight(150);

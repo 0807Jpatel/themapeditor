@@ -2,19 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a250106-bdeb-4d3c-b745-b034cbac9f23" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/gui/YesNoDialog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/me/Driver/DimensionDriver.class" afterPath="$PROJECT_DIR$/out/production/me/Driver/DimensionDriver.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/me/controller/Controller.class" afterPath="$PROJECT_DIR$/out/production/me/controller/Controller.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/me/export/The World/Europe/Slovakia/Slovakia.png" afterPath="$PROJECT_DIR$/out/production/me/export/The World/Europe/Slovakia/Slovakia.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/me/data/DataManager.class" afterPath="$PROJECT_DIR$/out/production/me/data/DataManager.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/me/file/FileManager.class" afterPath="$PROJECT_DIR$/out/production/me/file/FileManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/me/gui/DimensionDialog.class" afterPath="$PROJECT_DIR$/out/production/me/gui/DimensionDialog.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/me/gui/SubRegionDialog.class" afterPath="$PROJECT_DIR$/out/production/me/gui/SubRegionDialog.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/export/The World/Europe/Slovakia/Slovakia.png" afterPath="$PROJECT_DIR$/src/me/export/The World/Europe/Slovakia/Slovakia.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/Driver/DimensionDriver.java" afterPath="$PROJECT_DIR$/src/me/Driver/DimensionDriver.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/controller/Controller.java" afterPath="$PROJECT_DIR$/src/me/controller/Controller.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/data/DataManager.java" afterPath="$PROJECT_DIR$/src/me/data/DataManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/file/FileManager.java" afterPath="$PROJECT_DIR$/src/me/file/FileManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/gui/DimensionDialog.java" afterPath="$PROJECT_DIR$/src/me/gui/DimensionDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/gui/SubRegionDialog.java" afterPath="$PROJECT_DIR$/src/me/gui/SubRegionDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/test_bed/AndorraTest.java" afterPath="$PROJECT_DIR$/src/me/test_bed/AndorraTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/test_bed/LoadTest.java" afterPath="$PROJECT_DIR$/src/me/test_bed/LoadTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/test_bed/SanMarinoTest.java" afterPath="$PROJECT_DIR$/src/me/test_bed/SanMarinoTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/test_bed/SaveTest.java" afterPath="$PROJECT_DIR$/src/me/test_bed/SaveTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/test_bed/SlovakiaTest.java" afterPath="$PROJECT_DIR$/src/me/test_bed/SlovakiaTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/work/Slovakia" afterPath="$PROJECT_DIR$/src/me/work/Slovakia" />
     </list>
     <ignored path="TheMapEditor.iws" />
@@ -37,13 +39,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/me/controller/Controller.java">
+      <file leaf-file-name="FileManager.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/me/file/FileManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="26">
-              <caret line="373" column="39" selection-start-line="373" selection-start-column="39" selection-end-line="373" selection-end-column="39" />
+            <state relative-caret-position="334">
+              <caret line="167" column="27" selection-start-line="167" selection-start-column="25" selection-end-line="167" selection-end-column="27" />
               <folding>
-                <element signature="class#3458:3962" expanded="false" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -96,10 +98,8 @@
         <option value="$PROJECT_DIR$/src/me/testbed/SaveTest.java" />
         <option value="$PROJECT_DIR$/src/me/testbed/AndorraTest.java" />
         <option value="$PROJECT_DIR$/src/me/gui/DraggableImageView.java" />
-        <option value="$PROJECT_DIR$/src/me/test_bed/SaveTest.java" />
         <option value="$PROJECT_DIR$/src/me/data/ImageDetail.java" />
         <option value="$PROJECT_DIR$/src/me/Driver/SubRegionDriver.java" />
-        <option value="$PROJECT_DIR$/src/me/gui/SubRegionDialog.java" />
         <option value="$PROJECT_DIR$/src/me/gui/SelectablePolygons.java" />
         <option value="$PROJECT_DIR$/src/AudioManager/src/audio_manager/AudioManager.java" />
         <option value="$PROJECT_DIR$/src/me/css/workspace.css" />
@@ -112,8 +112,14 @@
         <option value="$PROJECT_DIR$/src/me/gui/asdf.java" />
         <option value="$PROJECT_DIR$/src/me/gui/YesNoDialog.java" />
         <option value="$PROJECT_DIR$/src/me/data/DataManager.java" />
-        <option value="$PROJECT_DIR$/src/me/controller/Controller.java" />
+        <option value="$PROJECT_DIR$/src/me/gui/SubRegionDialog.java" />
+        <option value="$PROJECT_DIR$/src/me/test_bed/AndorraTest.java" />
+        <option value="$PROJECT_DIR$/src/me/test_bed/LoadTest.java" />
+        <option value="$PROJECT_DIR$/src/me/test_bed/SanMarinoTest.java" />
+        <option value="$PROJECT_DIR$/src/me/test_bed/SlovakiaTest.java" />
+        <option value="$PROJECT_DIR$/src/me/test_bed/SaveTest.java" />
         <option value="$PROJECT_DIR$/src/me/file/FileManager.java" />
+        <option value="$PROJECT_DIR$/src/me/controller/Controller.java" />
       </list>
     </option>
   </component>
@@ -245,6 +251,34 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="test_bed" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themapeditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="me" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themapeditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="me" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="file" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
@@ -260,6 +294,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themapeditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="me" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -291,7 +339,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="SearchEverywhereHistoryKey" value="data&#9;FILE&#9;file:///home/jappatel/IdeaProjects/themapeditor/src/me/data/DataManager.java&#10;css&#9;FILE&#9;file:///home/jappatel/IdeaProjects/themapeditor/src/me/css/workspace.css&#10;co&#9;FILE&#9;file:///home/jappatel/IdeaProjects/themapeditor/src/me/controller/Controller.java&#10;con&#9;FILE&#9;file:///home/jappatel/IdeaProjects/themapeditor/src/me/controller/Controller.java&#10;su&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/SubRegionDialog.java&#10;sub&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/SubRegionDialog.java&#10;da&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/DataManager.java&#10;contr&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/controller/Controller.java&#10;c&#9;null&#9;null&#10;imageDe&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/ImageDetail.java&#10;ImageDet&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/ImageDetail.java&#10;image&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/ImageDetail.java&#10;fi&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/FileManager.java&#10;l&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/testbed/LoadTest.java&#10;file&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/FileManager.java&#10;load&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/testbed/LoadTest.java&#10;Image&#9;PSI&#9;JAVA://data.ImageDetail&#10;L&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/testbed/LoadTest.java&#10;Sub&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/SubRegion.java&#10;s&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/SaveTest.java&#10;sa&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/SaveTest.java&#10;save&#9;RUN_CONFIGURATION&#9;SaveTest&#10;fil&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/FileManager.java&#10;f&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/FileManager.java&#10;d&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/DataManager.java&#10;test&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/SaveTest.java&#10;File&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/FileManager.java&#10;cont&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/controller/Controller.java&#10;request&#9;PSI&#9;JAVA://file.FileManager#processSaveRequest&#10;subRE&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/SubRegionDialog.java&#10;subRe&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/SubRegion.java&#10;contro&#9;PSI&#9;JAVA://controller.Controller&#10;subREgion&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/SubRegion.java&#10;a&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/DataManager.java&#10;on&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/controller/Controller.java&#10;subregion&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/SubRegionDialog.java&#10;subre&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/SubRegion.java&#10;filemana&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/FileManager.java&#10;datamanager&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/DataManager.java&#10;dialog.css&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/css/dialog.css&#10;newdialog&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/NewDialog.java&#10;wo&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/workspace.fxml&#10;dialog&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/DimensionDialog.java&#10;ile&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/FileManager.java&#10;new&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/NewDialog.java&#10;Filem&#9;FILE&#9;file:///home/jappatel/Downloads/TheMapEditor/src/me/file/FileManager.java&#10;fxml&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/workspace.fxml&#10;workspace.css&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/css/workspace.css&#10;dim&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/DimensionDialog.java" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/jappatel/IdeaProjects/themapeditor/src/me/file/FileManager.java&#10;data&#9;FILE&#9;file:///home/jappatel/IdeaProjects/themapeditor/src/me/data/DataManager.java&#10;css&#9;FILE&#9;file:///home/jappatel/IdeaProjects/themapeditor/src/me/css/workspace.css&#10;co&#9;FILE&#9;file:///home/jappatel/IdeaProjects/themapeditor/src/me/controller/Controller.java&#10;con&#9;FILE&#9;file:///home/jappatel/IdeaProjects/themapeditor/src/me/controller/Controller.java&#10;su&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/SubRegionDialog.java&#10;sub&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/SubRegionDialog.java&#10;da&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/DataManager.java&#10;contr&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/controller/Controller.java&#10;c&#9;null&#9;null&#10;imageDe&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/ImageDetail.java&#10;ImageDet&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/ImageDetail.java&#10;image&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/ImageDetail.java&#10;fi&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/FileManager.java&#10;l&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/testbed/LoadTest.java&#10;file&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/FileManager.java&#10;load&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/testbed/LoadTest.java&#10;Image&#9;PSI&#9;JAVA://data.ImageDetail&#10;L&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/testbed/LoadTest.java&#10;Sub&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/SubRegion.java&#10;s&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/SaveTest.java&#10;sa&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/SaveTest.java&#10;save&#9;RUN_CONFIGURATION&#9;SaveTest&#10;fil&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/FileManager.java&#10;f&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/FileManager.java&#10;d&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/DataManager.java&#10;test&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/SaveTest.java&#10;File&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/FileManager.java&#10;cont&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/controller/Controller.java&#10;request&#9;PSI&#9;JAVA://file.FileManager#processSaveRequest&#10;subRE&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/SubRegionDialog.java&#10;subRe&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/SubRegion.java&#10;contro&#9;PSI&#9;JAVA://controller.Controller&#10;subREgion&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/SubRegion.java&#10;a&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/DataManager.java&#10;on&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/controller/Controller.java&#10;subregion&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/SubRegionDialog.java&#10;subre&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/SubRegion.java&#10;filemana&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/FileManager.java&#10;datamanager&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/DataManager.java&#10;dialog.css&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/css/dialog.css&#10;newdialog&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/NewDialog.java&#10;wo&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/workspace.fxml&#10;dialog&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/DimensionDialog.java&#10;ile&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/FileManager.java&#10;new&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/NewDialog.java&#10;Filem&#9;FILE&#9;file:///home/jappatel/Downloads/TheMapEditor/src/me/file/FileManager.java&#10;fxml&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/workspace.fxml&#10;workspace.css&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/css/workspace.css&#10;dim&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/DimensionDialog.java" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -886,7 +934,7 @@
       <workItem from="1469066064663" duration="11057000" />
       <workItem from="1469108145543" duration="1328000" />
       <workItem from="1469110735591" duration="3049000" />
-      <workItem from="1469118366887" duration="1249000" />
+      <workItem from="1469118366887" duration="4968000" />
     </task>
     <task id="LOCAL-00001" summary="Got PropertiesManager, fxml and css files ready with the proper packages.">
       <created>1467227353196</created>
@@ -1070,7 +1118,14 @@
       <option name="project" value="LOCAL" />
       <updated>1469071607518</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Everything seems to be working Except making  dimension smaller">
+      <created>1469119646497</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1469119646497</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1106,7 +1161,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67408000" />
+    <option name="totallyTimeSpent" value="71127000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1133,7 +1188,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15260416" sideWeight="0.49083894" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15260416" sideWeight="0.49083894" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1189,7 +1244,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added all the 5 basic buttons" />
     <MESSAGE value="Started working on DimensionDialog, just have to make the driver class for it" />
     <MESSAGE value="Added driver class for DiagonalDialogClass" />
     <MESSAGE value="done with the DimensionDialog with css and everything also added event filter to the text fields so it doesn't take anything but numbers" />
@@ -1214,7 +1268,8 @@
     <MESSAGE value="Moving work, all the functionality work fine have to test them and also make them ore robust" />
     <MESSAGE value="Everything works fine, disable and enable buttons is still left and some other tweaks but everything else is fine" />
     <MESSAGE value="Deselection works fine, Just have to make sure to disable buttons on right time" />
-    <option name="LAST_COMMIT_MESSAGE" value="Deselection works fine, Just have to make sure to disable buttons on right time" />
+    <MESSAGE value="Everything seems to be working Except making  dimension smaller" />
+    <option name="LAST_COMMIT_MESSAGE" value="Everything seems to be working Except making  dimension smaller" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1225,8 +1280,14 @@
           <properties />
           <option name="timeStamp" value="28" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/me/file/FileManager.java</url>
+          <line>370</line>
+          <properties />
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="34" />
+      <option name="time" value="38" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1235,14 +1296,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/me/testbed/AndorraTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/me/file/FileManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1425">
-          <caret line="169" column="57" selection-start-line="169" selection-start-column="57" selection-end-line="169" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/me/test_bed/TestSave.java" />
     <entry file="file://$PROJECT_DIR$/src/me/test_bed/TestSave.groovy" />
     <entry file="file://$PROJECT_DIR$/src/me/file/TestSave.groovy" />
@@ -1340,39 +1393,10 @@
     <entry file="file://$PROJECT_DIR$/src/me/testbed/SaveTest.java" />
     <entry file="file://$PROJECT_DIR$/src/me/testbed/LoadTest.java" />
     <entry file="file://$PROJECT_DIR$/src/me/testbed/AndorraTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/me/test_bed/SanMarinoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/test_bed/SaveTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="778">
-          <caret line="166" column="81" selection-start-line="166" selection-start-column="81" selection-end-line="166" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/test_bed/LoadTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/me/Driver/SubRegionDriver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/gui/SubRegionDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="133" column="52" selection-start-line="133" selection-start-column="52" selection-end-line="133" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1584,6 +1608,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="25" column="39" selection-start-line="25" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <marker date="1469055656752" expanded="false" signature="21:520" ph="..." />
+            <marker date="1469055656752" expanded="true" signature="522:564" ph="/**...*/" />
+            <marker date="1469055656752" expanded="false" signature="958:963" ph=" { " />
+            <marker date="1469055656752" expanded="false" signature="986:989" ph=" }" />
+            <marker date="1469055656752" expanded="false" signature="1015:1020" ph=" { " />
+            <marker date="1469055656752" expanded="false" signature="1032:1035" ph=" }" />
+            <marker date="1469055656752" expanded="false" signature="1069:1074" ph=" { " />
+            <marker date="1469055656752" expanded="false" signature="1096:1099" ph=" }" />
+            <marker date="1469055656752" expanded="true" signature="1120:3979" ph="{...}" />
+            <marker date="1469055656752" expanded="true" signature="4026:4133" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1661,7 +1697,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/me/data/SubRegion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="992">
+        <state relative-caret-position="1134">
           <caret line="88" column="121" selection-start-line="88" selection-start-column="121" selection-end-line="88" selection-end-column="121" />
           <folding>
             <marker date="1468781836929" expanded="false" signature="22:328" ph="..." />
@@ -1699,115 +1735,212 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/data/DataManager.java">
+    <entry file="file://$PROJECT_DIR$/src/me/test_bed/AndorraTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="845">
-          <caret line="201" column="36" selection-start-line="201" selection-start-column="36" selection-end-line="201" selection-end-column="36" />
+        <state relative-caret-position="609">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="2" selection-end-line="43" selection-end-column="75" />
           <folding>
-            <marker date="1469118803647" expanded="false" signature="22:293" ph="..." />
-            <marker date="1469118803647" expanded="true" signature="295:337" ph="/**...*/" />
-            <marker date="1469118803647" expanded="false" signature="718:722" ph=" { " />
-            <marker date="1469118803647" expanded="false" signature="740:746" ph=" }" />
-            <marker date="1469118803647" expanded="true" signature="797:835" ph="{...}" />
-            <marker date="1469118803647" expanded="false" signature="870:874" ph=" { " />
-            <marker date="1469118803647" expanded="false" signature="892:898" ph=" }" />
-            <marker date="1469118803647" expanded="true" signature="949:987" ph="{...}" />
-            <marker date="1469118803647" expanded="true" signature="1101:1394" ph="{...}" />
-            <marker date="1469118803647" expanded="false" signature="1431:1436" ph=" { " />
-            <marker date="1469118803647" expanded="false" signature="1454:1457" ph=" }" />
-            <marker date="1469118803647" expanded="true" signature="1510:1546" ph="{...}" />
-            <marker date="1469118803647" expanded="false" signature="1575:1580" ph=" { " />
-            <marker date="1469118803647" expanded="false" signature="1601:1604" ph=" }" />
-            <marker date="1469118803647" expanded="false" signature="1652:1657" ph=" { " />
-            <marker date="1469118803647" expanded="false" signature="1672:1675" ph=" }" />
-            <marker date="1469118803647" expanded="false" signature="1716:1721" ph=" { " />
-            <marker date="1469118803647" expanded="false" signature="1747:1750" ph=" }" />
-            <marker date="1469118803647" expanded="false" signature="1787:1792" ph=" { " />
-            <marker date="1469118803647" expanded="false" signature="1815:1818" ph=" }" />
-            <marker date="1469118803647" expanded="true" signature="1876:1922" ph="{...}" />
-            <marker date="1469118803647" expanded="false" signature="1955:1960" ph=" { " />
-            <marker date="1469118803647" expanded="false" signature="1979:1982" ph=" }" />
-            <marker date="1469118803647" expanded="true" signature="2032:2070" ph="{...}" />
-            <marker date="1469118803647" expanded="false" signature="2101:2106" ph=" { " />
-            <marker date="1469118803647" expanded="false" signature="2129:2132" ph=" }" />
-            <marker date="1469118803647" expanded="false" signature="2182:2187" ph=" { " />
-            <marker date="1469118803647" expanded="false" signature="2204:2207" ph=" }" />
-            <marker date="1469118803647" expanded="false" signature="2252:2257" ph=" { " />
-            <marker date="1469118803647" expanded="false" signature="2287:2290" ph=" }" />
-            <marker date="1469118803647" expanded="false" signature="2323:2328" ph=" { " />
-            <marker date="1469118803647" expanded="false" signature="2347:2350" ph=" }" />
-            <marker date="1469118803647" expanded="true" signature="2400:2438" ph="{...}" />
-            <marker date="1469118803647" expanded="false" signature="2482:2487" ph=" { " />
-            <marker date="1469118803647" expanded="false" signature="2501:2504" ph=" }" />
-            <marker date="1469118803647" expanded="false" signature="2559:2564" ph=" { " />
-            <marker date="1469118803647" expanded="false" signature="2585:2588" ph=" }" />
-            <marker date="1469118803647" expanded="false" signature="2616:2621" ph=" { " />
-            <marker date="1469118803647" expanded="false" signature="2635:2638" ph=" }" />
-            <marker date="1469118803647" expanded="false" signature="2677:2682" ph=" { " />
-            <marker date="1469118803647" expanded="false" signature="2703:2706" ph=" }" />
-            <marker date="1469118803647" expanded="false" signature="2733:2738" ph=" { " />
-            <marker date="1469118803647" expanded="false" signature="2751:2754" ph=" }" />
-            <marker date="1469118803647" expanded="false" signature="2791:2796" ph=" { " />
-            <marker date="1469118803647" expanded="false" signature="2815:2818" ph=" }" />
-            <marker date="1469118803647" expanded="false" signature="2853:2858" ph=" { " />
-            <marker date="1469118803647" expanded="false" signature="2879:2882" ph=" }" />
-            <marker date="1469118803647" expanded="true" signature="2936:2978" ph="{...}" />
-            <marker date="1469118803647" expanded="true" signature="3008:3117" ph="{...}" />
-            <marker date="1469118803647" expanded="true" signature="3147:3377" ph="{...}" />
-            <marker date="1469118803647" expanded="true" signature="3409:3521" ph="{...}" />
-            <marker date="1469118803647" expanded="true" signature="3554:3813" ph="{...}" />
-            <marker date="1469118803647" expanded="true" signature="3843:3947" ph="{...}" />
-            <marker date="1469118803647" expanded="true" signature="3969:4295" ph="{...}" />
+            <marker date="1469120346438" expanded="false" signature="26:220" ph="..." />
+            <marker date="1469120346438" expanded="true" signature="222:264" ph="/**...*/" />
+            <marker date="1469120346438" expanded="true" signature="321:378" ph="/**...*/" />
+            <marker date="1469120346438" expanded="true" signature="433:1509" ph="{...}" />
+            <marker date="1469120346438" expanded="true" signature="1059:1503" ph="//..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/me/file/FileManager.java">
+    <entry file="file://$PROJECT_DIR$/src/me/test_bed/LoadTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="309" column="28" selection-start-line="309" selection-start-column="0" selection-end-line="310" selection-end-column="0" />
+        <state relative-caret-position="672">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="2" selection-end-line="41" selection-end-column="37" />
           <folding>
-            <marker date="1469119611499" expanded="true" signature="22:773" ph="..." />
-            <marker date="1469119611499" expanded="true" signature="775:817" ph="/**...*/" />
-            <marker date="1469119611499" expanded="true" signature="2763:2875" ph="{...}" />
-            <marker date="1469119611499" expanded="true" signature="2878:2955" ph="/**...*/" />
-            <marker date="1469119611499" expanded="true" signature="2989:4290" ph="{...}" />
-            <marker date="1469119611499" expanded="true" signature="4293:4371" ph="/**...*/" />
-            <marker date="1469119611499" expanded="true" signature="4406:5268" ph="{...}" />
-            <marker date="1469119611499" expanded="true" signature="5322:8656" ph="{...}" />
-            <marker date="1469119611499" expanded="true" signature="8715:10167" ph="{...}" />
-            <marker date="1469119611499" expanded="true" signature="10201:10527" ph="{...}" />
-            <marker date="1469119611499" expanded="true" signature="10531:10677" ph="/**...*/" />
-            <marker date="1469119611499" expanded="true" signature="10736:12021" ph="{...}" />
-            <marker date="1469119611499" expanded="true" signature="12083:12519" ph="{...}" />
-            <marker date="1469119611499" expanded="true" signature="12522:12667" ph="/**...*/" />
-            <marker date="1469119611499" expanded="true" signature="12739:13957" ph="{...}" />
-            <marker date="1469119611499" expanded="true" signature="13960:14116" ph="/**...*/" />
-            <marker date="1469119611499" expanded="true" signature="14163:14558" ph="{...}" />
-            <marker date="1469119611499" expanded="true" signature="14561:14786" ph="/**...*/" />
-            <marker date="1469119611499" expanded="true" signature="14853:14988" ph="{...}" />
-            <marker date="1469119611499" expanded="true" signature="15050:15182" ph="{...}" />
-            <marker date="1469119611499" expanded="true" signature="15185:15372" ph="/**...*/" />
-            <marker date="1469119611499" expanded="true" signature="15446:15649" ph="{...}" />
-            <marker date="1469119611499" expanded="true" signature="15690:17657" ph="{...}" />
-            <marker date="1469119611499" expanded="true" signature="17690:17884" ph="{...}" />
-            <marker date="1469119611499" expanded="true" signature="17939:17983" ph="{...}" />
-            <marker date="1469119611499" expanded="false" signature="18019:18026" ph=" { " />
-            <marker date="1469119611499" expanded="false" signature="18042:18045" ph=" }" />
-            <marker date="1469119611499" expanded="true" signature="18084:18104" ph="{...}" />
-            <marker date="1469119611499" expanded="false" signature="18151:18156" ph=" { " />
-            <marker date="1469119611499" expanded="false" signature="18169:18172" ph=" }" />
-            <marker date="1469119611499" expanded="true" signature="18199:18220" ph="{...}" />
+            <marker date="1469120346478" expanded="false" signature="26:203" ph="..." />
+            <marker date="1469120346478" expanded="true" signature="205:247" ph="/**...*/" />
+            <marker date="1469120346478" expanded="true" signature="396:442" ph="{...}" />
+            <marker date="1469120346478" expanded="true" signature="500:633" ph="{...}" />
+            <marker date="1469120346478" expanded="true" signature="663:1296" ph="{...}" />
+            <marker date="1469120346478" expanded="true" signature="1181:1293" ph="//..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/test_bed/SanMarinoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="2" selection-end-line="39" selection-end-column="62" />
+          <folding>
+            <marker date="1469120346454" expanded="false" signature="26:161" ph="..." />
+            <marker date="1469120346454" expanded="true" signature="163:197" ph="/**...*/" />
+            <marker date="1469120346454" expanded="true" signature="256:313" ph="/**...*/" />
+            <marker date="1469120346454" expanded="true" signature="368:1312" ph="{...}" />
+            <marker date="1469120346454" expanded="true" signature="921:1305" ph="//..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/test_bed/SlovakiaTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="43" column="4" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
+          <folding>
+            <marker date="1469120346466" expanded="false" signature="0:30" ph="/**...*/" />
+            <marker date="1469120346466" expanded="false" signature="57:251" ph="..." />
+            <marker date="1469120346466" expanded="true" signature="253:287" ph="/**...*/" />
+            <marker date="1469120346466" expanded="true" signature="345:402" ph="/**...*/" />
+            <marker date="1469120346466" expanded="true" signature="457:1259" ph="{...}" />
+            <marker date="1469120346466" expanded="true" signature="1086:1251" ph="//..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/test_bed/SaveTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1025">
+          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding>
+            <marker date="1469120352170" expanded="false" signature="26:208" ph="..." />
+            <marker date="1469120352170" expanded="true" signature="210:252" ph="/**...*/" />
+            <marker date="1469120352170" expanded="true" signature="444:505" ph="{...}" />
+            <marker date="1469120352170" expanded="true" signature="571:2364" ph="{...}" />
+            <marker date="1469120352170" expanded="true" signature="2426:4098" ph="{...}" />
+            <marker date="1469120352170" expanded="true" signature="4169:5775" ph="{...}" />
+            <marker date="1469120352170" expanded="true" signature="5428:5769" ph="//..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/gui/SubRegionDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="88" column="82" selection-start-line="88" selection-start-column="82" selection-end-line="88" selection-end-column="82" />
+          <folding>
+            <marker date="1469120290650" expanded="false" signature="21:777" ph="..." />
+            <marker date="1469120290650" expanded="true" signature="779:821" ph="/**...*/" />
+            <marker date="1469120290650" expanded="true" signature="1572:1618" ph="{...}" />
+            <marker date="1469120290650" expanded="true" signature="1644:3694" ph="{...}" />
+            <marker date="1469120290650" expanded="false" signature="3720:3724" ph=" { " />
+            <marker date="1469120290650" expanded="false" signature="3737:3740" ph=" }" />
+            <marker date="1469120290650" expanded="false" signature="3763:3767" ph=" { " />
+            <marker date="1469120290650" expanded="false" signature="3780:3783" ph=" }" />
+            <marker date="1469120290650" expanded="false" signature="3809:3813" ph=" { " />
+            <marker date="1469120290650" expanded="false" signature="3827:3830" ph=" }" />
+            <marker date="1469120290650" expanded="true" signature="3862:4574" ph="{...}" />
+            <marker date="1469120290650" expanded="true" signature="4600:5421" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/data/DataManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="479">
+          <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+          <folding>
+            <marker date="1469119910781" expanded="false" signature="22:293" ph="..." />
+            <marker date="1469119910781" expanded="true" signature="295:337" ph="/**...*/" />
+            <marker date="1469119910781" expanded="false" signature="732:736" ph=" { " />
+            <marker date="1469119910781" expanded="false" signature="754:760" ph=" }" />
+            <marker date="1469119910781" expanded="true" signature="811:849" ph="{...}" />
+            <marker date="1469119910781" expanded="false" signature="884:888" ph=" { " />
+            <marker date="1469119910781" expanded="false" signature="906:912" ph=" }" />
+            <marker date="1469119910781" expanded="true" signature="963:1001" ph="{...}" />
+            <marker date="1469119910781" expanded="true" signature="1115:1460" ph="{...}" />
+            <marker date="1469119910781" expanded="false" signature="1511:1516" ph=" { " />
+            <marker date="1469119910781" expanded="false" signature="1534:1537" ph=" }" />
+            <marker date="1469119910781" expanded="true" signature="1593:1629" ph="{...}" />
+            <marker date="1469119910781" expanded="false" signature="1658:1663" ph=" { " />
+            <marker date="1469119910781" expanded="false" signature="1684:1687" ph=" }" />
+            <marker date="1469119910781" expanded="false" signature="1735:1740" ph=" { " />
+            <marker date="1469119910781" expanded="false" signature="1755:1758" ph=" }" />
+            <marker date="1469119910781" expanded="false" signature="1799:1804" ph=" { " />
+            <marker date="1469119910781" expanded="false" signature="1830:1833" ph=" }" />
+            <marker date="1469119910781" expanded="false" signature="1870:1875" ph=" { " />
+            <marker date="1469119910781" expanded="false" signature="1898:1901" ph=" }" />
+            <marker date="1469119910781" expanded="true" signature="1959:2005" ph="{...}" />
+            <marker date="1469119910781" expanded="false" signature="2038:2043" ph=" { " />
+            <marker date="1469119910781" expanded="false" signature="2062:2065" ph=" }" />
+            <marker date="1469119910781" expanded="true" signature="2115:2153" ph="{...}" />
+            <marker date="1469119910781" expanded="false" signature="2184:2189" ph=" { " />
+            <marker date="1469119910781" expanded="false" signature="2212:2215" ph=" }" />
+            <marker date="1469119910781" expanded="false" signature="2265:2270" ph=" { " />
+            <marker date="1469119910781" expanded="false" signature="2287:2290" ph=" }" />
+            <marker date="1469119910781" expanded="false" signature="2335:2340" ph=" { " />
+            <marker date="1469119910781" expanded="false" signature="2370:2373" ph=" }" />
+            <marker date="1469119910781" expanded="false" signature="2406:2411" ph=" { " />
+            <marker date="1469119910781" expanded="false" signature="2430:2433" ph=" }" />
+            <marker date="1469119910781" expanded="true" signature="2483:2521" ph="{...}" />
+            <marker date="1469119910781" expanded="false" signature="2565:2570" ph=" { " />
+            <marker date="1469119910781" expanded="false" signature="2584:2587" ph=" }" />
+            <marker date="1469119910781" expanded="false" signature="2642:2647" ph=" { " />
+            <marker date="1469119910781" expanded="false" signature="2668:2671" ph=" }" />
+            <marker date="1469119910781" expanded="false" signature="2699:2704" ph=" { " />
+            <marker date="1469119910781" expanded="false" signature="2718:2721" ph=" }" />
+            <marker date="1469119910781" expanded="false" signature="2760:2765" ph=" { " />
+            <marker date="1469119910781" expanded="false" signature="2786:2789" ph=" }" />
+            <marker date="1469119910781" expanded="false" signature="2816:2821" ph=" { " />
+            <marker date="1469119910781" expanded="false" signature="2834:2837" ph=" }" />
+            <marker date="1469119910781" expanded="false" signature="2874:2879" ph=" { " />
+            <marker date="1469119910781" expanded="false" signature="2898:2901" ph=" }" />
+            <marker date="1469119910781" expanded="false" signature="2936:2941" ph=" { " />
+            <marker date="1469119910781" expanded="false" signature="2962:2965" ph=" }" />
+            <marker date="1469119910781" expanded="true" signature="3019:3061" ph="{...}" />
+            <marker date="1469119910781" expanded="true" signature="3091:3200" ph="{...}" />
+            <marker date="1469119910781" expanded="true" signature="3230:3460" ph="{...}" />
+            <marker date="1469119910781" expanded="true" signature="3492:3604" ph="{...}" />
+            <marker date="1469119910781" expanded="true" signature="3637:3896" ph="{...}" />
+            <marker date="1469119910781" expanded="true" signature="3926:4030" ph="{...}" />
+            <marker date="1469119910781" expanded="true" signature="4052:4397" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/me/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="373" column="39" selection-start-line="373" selection-start-column="39" selection-end-line="373" selection-end-column="39" />
+        <state relative-caret-position="-4687">
+          <caret line="70" column="24" selection-start-line="70" selection-start-column="24" selection-end-line="70" selection-end-column="24" />
           <folding>
-            <element signature="class#3458:3962" expanded="false" />
+            <marker date="1469123336182" expanded="false" signature="28:1808" ph="..." />
+            <marker date="1469123336182" expanded="true" signature="2642:2748" ph="/**...*/" />
+            <marker date="1469123336182" expanded="true" signature="2824:5065" ph="{...}" />
+            <marker date="1469123336182" expanded="false" signature="5095:5100" ph=" { " />
+            <marker date="1469123336182" expanded="false" signature="5132:5135" ph=" }" />
+            <marker date="1469123336182" expanded="false" signature="5165:5170" ph=" { " />
+            <marker date="1469123336182" expanded="false" signature="5203:5206" ph=" }" />
+            <marker date="1469123336182" expanded="true" signature="5237:5342" ph="{...}" />
+            <marker date="1469123336182" expanded="true" signature="5375:6314" ph="{...}" />
+            <marker date="1469123336182" expanded="false" signature="6344:6348" ph=" { " />
+            <marker date="1469123336182" expanded="false" signature="6380:6383" ph=" }" />
+            <marker date="1469123336182" expanded="true" signature="6420:7133" ph="{...}" />
+            <marker date="1469123336182" expanded="true" signature="7173:7577" ph="{...}" />
+            <marker date="1469123336182" expanded="true" signature="7457:7574" ph="//..." />
+            <marker date="1469123336182" expanded="true" signature="7608:8637" ph="{...}" />
+            <marker date="1469123336182" expanded="true" signature="8671:8734" ph="{...}" />
+            <marker date="1469123336182" expanded="true" signature="8770:9056" ph="{...}" />
+            <marker date="1469123336182" expanded="true" signature="9098:9276" ph="{...}" />
+            <marker date="1469123336182" expanded="true" signature="9299:10265" ph="{...}" />
+            <marker date="1469123336182" expanded="true" signature="10321:10508" ph="{...}" />
+            <marker date="1469123336182" expanded="true" signature="10540:10807" ph="{...}" />
+            <marker date="1469123336182" expanded="true" signature="10829:11515" ph="{...}" />
+            <marker date="1469123336182" expanded="true" signature="11542:12106" ph="{...}" />
+            <marker date="1469123336182" expanded="true" signature="11702:11771" ph="{...}" />
+            <marker date="1469123336182" expanded="true" signature="12132:12521" ph="{...}" />
+            <marker date="1469123336182" expanded="true" signature="12566:12836" ph="{...}" />
+            <marker date="1469123336182" expanded="false" signature="12869:12873" ph=" { " />
+            <marker date="1469123336182" expanded="false" signature="12900:12903" ph=" }" />
+            <marker date="1469123336182" expanded="true" signature="12932:13790" ph="{...}" />
+            <marker date="1469123336182" expanded="true" signature="13813:14006" ph="{...}" />
+            <marker date="1469123336182" expanded="true" signature="14042:14634" ph="{...}" />
+            <marker date="1469123336182" expanded="true" signature="14141:14630" ph="{...}" />
+            <marker date="1469123336182" expanded="true" signature="14204:14626" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/me/file/FileManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="167" column="27" selection-start-line="167" selection-start-column="25" selection-end-line="167" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -67,13 +67,17 @@ public class Controller implements Initializable {
 	@FXML ScrollPane scrollPane;
 
 
-	private ObservableList<SubRegion> ob = FXCollections.observableArrayList();
+	private ObservableList<SubRegion> ob ;
 	private DataManager dataManager = new DataManager();
 	private FileManager fileManager = new FileManager(dataManager, this);
 	AudioManager audioManager = new AudioManager();
 	private SelectableNode polygonGroup;
 	private SelectableNode imageGroup;
 	private boolean first = true;
+	private DropShadow ds;
+	private InnerShadow is;
+
+
 	/**
 	 * All the binding and new data and stuff goes here
 	 *
@@ -82,6 +86,8 @@ public class Controller implements Initializable {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		ob = dataManager.getSubRegions();
+
 		nameColumn.prefWidthProperty().bind(table.widthProperty().multiply(.32));
 		nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 		leaderColumn.prefWidthProperty().bind(table.widthProperty().multiply(.32));
@@ -91,22 +97,6 @@ public class Controller implements Initializable {
 		nameColumn.setSortable(false);
 		leaderColumn.setSortable(false);
 		capitalColumn.setSortable(false);
-
-		InnerShadow is = new InnerShadow(0, 2, 2, Color.rgb(206,74,73));
-		polygonGroup = new SelectableNode(is) {
-			@Override
-			public void onMouseClickedHook(MouseEvent e) {
-				if(e.getClickCount() == 1){
-					table.scrollTo(polygonGroup.getSelectionModel().getSelectedIndex());
-					table.getSelectionModel().select(polygonGroup.getSelectionModel().getSelectedIndex());
-					table.getFocusModel().focus(polygonGroup.getSelectionModel().getSelectedIndex());
-				}
-				if(e.getClickCount() == 2){
-					subRegionHandler(polygonGroup.getSelectionModel().getSelectedIndex(), table);
-				}
-			}
-		};
-
 		table.setRowFactory(a -> {
 			final TableRow<SubRegion> row = new TableRow<>();
 			row.setOnMouseClicked(e -> {
@@ -133,7 +123,6 @@ public class Controller implements Initializable {
 			if(table.getSelectionModel().getFocusedIndex() >= 0)
 				polygonGroup.setSelected(table.getFocusModel().getFocusedIndex());
 		});
-
 		borderCP.setOnAction(e -> dataManager.setBorderColor(borderCP.getValue().toString()));
 		backgroundCP.setOnAction(e -> {
 			setBackgroundColorPicker();
@@ -274,14 +263,13 @@ public class Controller implements Initializable {
 	}
 
 	public void reload(){
+		ob = dataManager.getSubRegions();
 		pane.getChildren().remove(polygonGroup);
 		pane.getChildren().remove(imageGroup);
+		creatNewPolyGroup();
 		init();
-		SubRegion[] region = dataManager.getSubRegions();
-		for (int i = 0; i < region.length; i++) {
-			SubRegion temp = region[i];
-			if(first)
-				ob.add(temp);
+		for (int i = 0; i < ob.size(); i++) {
+			SubRegion temp = ob.get(i);
 			double[][] ww = temp.getSubPoints();
 			Group g = new Group();
 			for (double[] f : ww) {
@@ -314,12 +302,11 @@ public class Controller implements Initializable {
 
 	private void randomizeColor(){
 		Random rgen = new Random();  // Random number generator
-		SubRegion[] x = dataManager.getSubRegions();
-		for (SubRegion aX : x) {
-			int randomPosition = rgen.nextInt(x.length);
+		for (SubRegion aX : ob) {
+			int randomPosition = rgen.nextInt(ob.size());
 			Color temp = aX.getColor();
-			aX.setColor(x[randomPosition].getColor());
-			x[randomPosition].setColor(temp);
+			aX.setColor(ob.get(randomPosition).getColor());
+			ob.get(randomPosition).setColor(temp);
 		}
 	}
 
@@ -340,7 +327,7 @@ public class Controller implements Initializable {
 
 	private void addImages(){
 		ArrayList<ImageDetail> id = dataManager.getImages();
-		DropShadow ds = new DropShadow();
+		ds = new DropShadow();
 		ds.setOffsetY(6);
 		ds.setOffsetY(6);
 		imageGroup = new SelectableNode(ds) {
@@ -413,5 +400,31 @@ public class Controller implements Initializable {
 			}
 
 		});
+	}
+
+	public void unbind(){
+		try {
+			polygonGroup.scaleXProperty().unbind();
+			polygonGroup.scaleYProperty().unbind();
+			zoom.valueProperty().unbind();
+			dataManager.reset();
+		}catch (NullPointerException ex){}
+	}
+
+	private void creatNewPolyGroup() {
+		is = new InnerShadow(0, 2, 2, Color.rgb(206, 74, 73));
+		polygonGroup = new SelectableNode(is) {
+			@Override
+			public void onMouseClickedHook(MouseEvent e) {
+				if (e.getClickCount() == 1) {
+					table.scrollTo(polygonGroup.getSelectionModel().getSelectedIndex());
+					table.getSelectionModel().select(polygonGroup.getSelectionModel().getSelectedIndex());
+					table.getFocusModel().focus(polygonGroup.getSelectionModel().getSelectedIndex());
+				}
+				if (e.getClickCount() == 2) {
+					subRegionHandler(polygonGroup.getSelectionModel().getSelectedIndex(), table);
+				}
+			}
+		};
 	}
 }

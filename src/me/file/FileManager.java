@@ -8,6 +8,7 @@ import gui.NewDialog;
 import gui.ProgressDialog;
 import gui.YesNoDialog;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.paint.Color;
@@ -87,7 +88,7 @@ public class FileManager {
 				if (save)
 					processSaveRequest();
 			}
-//			dataManager.reset();
+			controller.unbind();
 			NewDialog nd = new NewDialog();
 			nd.show();
 			String directoryPath = nd.getParentDirectory().toPath().toString();
@@ -141,6 +142,7 @@ public class FileManager {
 			    progress = 1;
 			    Thread th = new Thread(() -> {
 				    try {
+				    	controller.unbind();
 					    loadData(file.getPath());
 					    Platform.runLater(() -> controller.reload());
 				    } catch (IOException ex) {
@@ -187,7 +189,7 @@ public class FileManager {
 		File filePath = new File("src/me/work/" + dataManager.getMapName());
 
 		JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
-		SubRegion[] subRegions = dataManager.getSubRegions();
+		ObservableList<SubRegion> subRegions = dataManager.getSubRegions();
 		for(SubRegion temp: subRegions){
 			JsonObject jsonObject = Json.createObjectBuilder()
 					.add(SUBREGIONNAME, temp.getName())
@@ -307,7 +309,6 @@ public class FileManager {
 	 * @throws IOException
 	 */
 	public void loadData(String filePath) throws IOException {
-//		dataManager.reset();
 		JsonObject jsonObject = loadJSONFile(filePath);
 		progress++;
 		dataManager.setMapName(jsonObject.getString(NAMEOFMAP));
@@ -345,10 +346,10 @@ public class FileManager {
 	}
 
 	private void loadSubRegionContents(JsonArray contentArray) {
-		SubRegion[] arra = dataManager.getSubRegions();
-		for(int x = 0; x < arra.length; x++){
+		ObservableList<SubRegion> arra = dataManager.getSubRegions();
+		for(int x = 0; x < arra.size(); x++){
 			JsonObject jobject = contentArray.getJsonObject(x);
-			SubRegion temp = arra[x];
+			SubRegion temp = arra.get(x);
 			temp.setName(jobject.getString(SUBREGIONNAME));
 			temp.setCapital(jobject.getString(SUBREGIONCAPITAL));
 			temp.setLeader(jobject.getString(SUBREGIONLEADER));
@@ -367,7 +368,7 @@ public class FileManager {
 		int numberOfSubRegions = getDataAsInt(jsonObject, NUMBEROFSUBREGION);
 		JsonArray firstSubRegions = jsonObject.getJsonArray(SUBREGION);
 
-		SubRegion[] subRegions = new SubRegion[numberOfSubRegions];
+		ObservableList<SubRegion> subRegions = FXCollections.observableArrayList();
 		for (int x = 0; x < firstSubRegions.size(); x++) {
 			JsonObject sr = firstSubRegions.getJsonObject(x);
 			SubRegion temp = new SubRegion();
@@ -385,7 +386,7 @@ public class FileManager {
 				polygonsPoints[q] = points;
 			}
 			temp.setSubPoints(polygonsPoints);
-			subRegions[x] = temp;
+			subRegions.add(temp);
 		}
 		dataManager.setSubRegions(subRegions);
 	}
@@ -445,7 +446,7 @@ public class FileManager {
 
 	private JsonArrayBuilder exportArray(){
 		JsonArrayBuilder arrayBuilder = Json.createArrayBuilder();
-		SubRegion[] subRegions = dataManager.getSubRegions();
+		ObservableList<SubRegion> subRegions = dataManager.getSubRegions();
 		allLeaders  = dataManager.getAllLeaders();
 		allCapital = dataManager.getAllCapital();
 		if(allLeaders && allCapital) {
@@ -498,8 +499,8 @@ public class FileManager {
 	}
 
 	private void assignRandColor(){
-		SubRegion[] s = dataManager.getSubRegions();
-		double number = .99 / s.length;
+		ObservableList<SubRegion> s = dataManager.getSubRegions();
+		double number = .99 / s.size();
 		double jump = number;
 		for(SubRegion temp: s){
 			temp.setColor(Color.gray(jump));

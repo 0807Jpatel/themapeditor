@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * Created by jappatel on 6/29/16.
  */
 public class DataManager {
-	private SubRegion[] subRegions;
+	private ObservableList<SubRegion> subRegions;
 	private SimpleStringProperty mapName;
 	private String backgroundColor;
 	private String borderColor;
@@ -45,6 +45,7 @@ public class DataManager {
 	static Color[] subRegionColor;
 
 	public DataManager(){
+		subRegions = FXCollections.observableArrayList();
 		images = new ArrayList<>(3);
 		mapName = new SimpleStringProperty("");
 		backgroundColor = "0x8099ffff";
@@ -58,11 +59,11 @@ public class DataManager {
 		directoryPath = "";
 	}
 
-	public SubRegion[] getSubRegions() {
+	public ObservableList<SubRegion> getSubRegions() {
 		return subRegions;
 	}
 
-	public void setSubRegions(SubRegion[] subRegions) {
+	public void setSubRegions(ObservableList subRegions) {
 		this.subRegions = subRegions;
 	}
 
@@ -199,6 +200,6 @@ public class DataManager {
 		height = 536;
 		width = 802;
 		directoryPath = "";
-		subRegions = new SubRegion[1];
+		subRegions = FXCollections.observableArrayList();
 	}
 }

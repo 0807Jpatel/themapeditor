@@ -37,8 +37,8 @@ public class LoadTest {
 		System.out.println(dataManager.getDirectoryPath());
 		ArrayList<ImageDetail> id = dataManager.getImages();
 		for (ImageDetail anId : id) System.out.println(anId);
-		SubRegion[] sub = dataManager.getSubRegions();
-		for(SubRegion temp: sub)
-			System.out.println(temp);
+////		SubRegion[] sub = dataManager.getSubRegions();
+//		for(SubRegion temp: sub)
+//			System.out.println(temp);
 	}
 }
