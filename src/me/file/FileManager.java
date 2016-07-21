@@ -7,6 +7,7 @@ import data.SubRegion;
 import gui.NewDialog;
 import gui.ProgressDialog;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 
@@ -81,65 +82,68 @@ public class FileManager {
 	 * This method is called by the controller as handler to New Button
 	 */
 	public void processNewRequest() {
-		NewDialog nd = new NewDialog();
-		nd.show();
-		String directoryPath = nd.getParentDirectory().toPath().toString();
-		coordinatePath = nd.getCoordinateFile().toPath().toString();
-		String name = nd.getName();
-		regionPath = directoryPath + "/" + name;
-		Path newDirectoryPath = Paths.get(regionPath);
-		if (!Files.exists(newDirectoryPath)) {
-			try {
-				Files.createDirectory(newDirectoryPath);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
 		try {
-			loadSubRegionCoordinates(coordinatePath);
-		} catch (IOException e) {
-			e.printStackTrace();
+			NewDialog nd = new NewDialog();
+			nd.show();
+			String directoryPath = nd.getParentDirectory().toPath().toString();
+			coordinatePath = nd.getCoordinateFile().toPath().toString();
+			String name = nd.getName();
+			regionPath = directoryPath + "/" + name;
+			Path newDirectoryPath = Paths.get(regionPath);
+			if (!Files.exists(newDirectoryPath)) {
+				try {
+					Files.createDirectory(newDirectoryPath);
+				} catch (IOException e) {
+					Alert alert = new Alert(Alert.AlertType.ERROR, "Error Creating Folder");
+					alert.show();
+				}
+			}
+			try {
+				loadSubRegionCoordinates(coordinatePath);
+			} catch (IOException e) {
+				Alert alert = new Alert(Alert.AlertType.ERROR, "Error Loading Coordinate File");
+				alert.show();
+			}
+			dataManager.setDirectoryPath(directoryPath);
+			dataManager.setMapName(name);
+			assignRandColor();
+			controller.setBackgroundColorPicker();
+			controller.reload();
+			controller.disableButtons(false);
+		}catch (NullPointerException ignored){}
+		catch(Exception ex){
+			Alert alert = new Alert(Alert.AlertType.ERROR,"Some thing went wrong Please try again");
+			alert.show();
 		}
-		dataManager.setDirectoryPath(regionPath);
-		dataManager.setMapName(name);
-		assignRandColor();
-		controller.setBackgroundColorPicker();
-		controller.reload();
 	}
 
 	/**
 	 * This method is called by the controller as handler to Load Button
 	 */
 	public void processLoadRequest() {
-	    try{
-		FileChooser fileChooser = new FileChooser();
-		File file = fileChooser.showOpenDialog(null);
-		ProgressDialog pd = new ProgressDialog();
-		pd.show();
-		progress = 1;
-		Thread th = new Thread(new Runnable() {
-		    @Override
-		    public void run() {
-			try {
-			    loadData(file.getPath());
-			    Platform.runLater(new Runnable() {
-				@Override
-				public void run() {
-				    controller.reload();
-				}
+	    try {
+		    FileChooser fileChooser = new FileChooser();
+		    fileChooser.setInitialDirectory(new File("src/me/work"));
+		    File file = fileChooser.showOpenDialog(null);
+		    if (file != null) {
+			    ProgressDialog pd = new ProgressDialog();
+			    pd.show();
+			    progress = 1;
+			    Thread th = new Thread(() -> {
+				    try {
+					    loadData(file.getPath());
+					    Platform.runLater(() -> controller.reload());
+				    } catch (IOException ex) {
+					    ex.printStackTrace();
+				    }
 			    });
-			    
-			} catch (IOException ex) {
-			   ex.printStackTrace();
-			}
+			    th.start();
 		    }
-		});
-		th.start();
 	    }
-	    catch(NullPointerException ex){
-		//TODO
+	    catch (Exception ex){
+		    Alert alert = new Alert(Alert.AlertType.ERROR,"Error Loading File");
+		    alert.show();
 	    }
-		
 	}
 
 	public void processSaveRequest() throws IOException{
@@ -150,7 +154,7 @@ public class FileManager {
 			dataManager.setMapName(controller.getMapNameText());
 			File oldPath = new File(regionPath);
 			if(oldPath.exists()) {
-				File newPath = new File(dataManager.getDirectoryPath() + "/" + dataManager.getMapName());
+				File newPath = new File(dataManager.getDirectoryPath()+ "/" + dataManager.getMapName());
 				oldPath.renameTo(newPath);
 				regionPath = newPath.toString();
 			}
@@ -223,12 +227,13 @@ public class FileManager {
 		pw.write(prettyPrinted);
 		pw.close();
 	    }catch(NullPointerException ex){
-		//TODO
+			Alert alert = new Alert(Alert.AlertType.ERROR, "Something went wrong Saving");
+		    alert.show();
 	    }
 
 	}
 
-	public void processExportRequest() throws IOException{
+	public boolean processExportRequest() throws IOException{
 	    try{
 		if(dataManager.getAllName()){
 			processSaveRequest();
@@ -248,20 +253,24 @@ public class FileManager {
 			JsonWriter jsonWriter = writerFactory.createWriter(sw);
 			jsonWriter.writeObject(exportFile);
 			jsonWriter.close();
-			OutputStream os = new FileOutputStream(regionPath+"/"+dataManager.getMapName() +".rvm");
+			OutputStream os = new FileOutputStream(regionPath + "/" + dataManager.getMapName()+".rvm");
 			JsonWriter jsonFileWriter = Json.createWriter(os);
 			jsonFileWriter.writeObject(exportFile);
 			String prettyPrinted = sw.toString();
-			PrintWriter pw = new PrintWriter(regionPath+"/"+dataManager.getMapName()+".rvm");
+			PrintWriter pw = new PrintWriter(regionPath + "/" + dataManager.getMapName()+".rvm");
 			pw.write(prettyPrinted);
 			pw.close();
+			return true;
 
 		}else{
-			System.out.println("Not all the name are there");
+			Alert alert = new Alert(Alert.AlertType.ERROR, "All Names are Required for Exporting");
+			alert.show();
+			return false;
 		}
-	    }catch(NullPointerException ex){
-		//TODO
+	    }catch(Exception ex){
+			Alert alert = new Alert(Alert.AlertType.ERROR, "Something went Wrong Exporting");
 	    }
+	    return false;
 	}
 
 	/**
@@ -303,6 +312,7 @@ public class FileManager {
 		progress++;
 		loadSubRegionContents(contentArray);
 		progress++;
+		controller.disableButtons(false);
 	}
 
 	private void loadSubRegionContents(JsonArray contentArray) {

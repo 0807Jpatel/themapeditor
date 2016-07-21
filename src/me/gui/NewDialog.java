@@ -2,6 +2,7 @@ package gui;
 
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -19,7 +20,7 @@ import java.io.File;
 /**
  * Created by jappatel on 6/29/16.
  */
-public class NewDialog {
+public class    NewDialog {
 	private final String GRIDPANE_STYLE = "gridpane";
 	private final String BUTTON_WIDTH = "buttonWidth";
 	private final String HBOX = "hBox";
@@ -67,6 +68,7 @@ public class NewDialog {
 
 		dirButton.setOnAction(e -> {
 			DirectoryChooser dc = new DirectoryChooser();
+			dc.setInitialDirectory(new File("src/me/export"));
 			parentDirectory = dc.showDialog(dim);
 			try {
 				dirLabel.setText("  " + parentDirectory.getName());
@@ -98,8 +100,15 @@ public class NewDialog {
 		hbox.getStyleClass().add(HBOX);
 
 		okButton.setOnAction(e -> {
-			name = regionName.getText();
-			dim.close();
+			if(regionName.getText() == null || parentDirectory == null || coordinateFile == null){
+				Alert alert = new Alert(Alert.AlertType.INFORMATION,"One of the Fields is Empty");
+				alert.show();
+				e.consume();
+			}
+			else {
+				name = regionName.getText();
+				dim.close();
+			}
 
 		});
 

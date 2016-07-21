@@ -21,7 +21,6 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.InnerShadow;
@@ -30,8 +29,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
@@ -40,18 +37,14 @@ import javafx.scene.shape.Rectangle;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Random;
 import java.util.ResourceBundle;
-import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.scene.transform.Transform;
 import javafx.stage.FileChooser;
 
@@ -70,7 +63,7 @@ public class Controller implements Initializable {
 	@FXML ColorPicker backgroundCP, borderCP;
 	@FXML Slider zoom, borderWidth;
 	@FXML TextField mapNameTF;
-	@FXML FlowPane flowPane;
+	@FXML ScrollPane scrollPane;
 
 
 	private ObservableList<SubRegion> ob = FXCollections.observableArrayList();
@@ -88,8 +81,6 @@ public class Controller implements Initializable {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-	    Path p = Paths.get("");
-	    System.out.println(p.toAbsolutePath().toString());
 		nameColumn.prefWidthProperty().bind(table.widthProperty().multiply(.32));
 		nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 		leaderColumn.prefWidthProperty().bind(table.widthProperty().multiply(.32));
@@ -144,10 +135,11 @@ public class Controller implements Initializable {
 		});
 		zoom.setOnMouseReleased(e -> dataManager.setZoomLevel(zoom.getValue()));
 		borderWidth.setOnMouseReleased(e -> dataManager.setBorderWidth(borderWidth.getValue()));
-
+		setKeyPress();
 		zoom.setMin(1);
 		zoom.setMax(1200);
 		borderWidth.setMax(2);
+		disableButtons(true);
 	}
 
 
@@ -169,15 +161,18 @@ public class Controller implements Initializable {
 
 	public void setExportButton() {
 		try {
-			fileManager.processExportRequest();
-			SnapshotParameters snapshotParameters = new SnapshotParameters();
-			snapshotParameters.setTransform(Transform.translate(flowPane.getLayoutX() - pane.getLayoutX(), flowPane.getLayoutY() - pane.getLayoutY() ));
-			snapshotParameters.setViewport(new Rectangle2D(0, 0, dataManager.getWidth(), dataManager.getHeight()));
-			WritableImage image = pane.snapshot(snapshotParameters, null);
-			File file = new File(FileManager.getRegionPath() + "/" + dataManager.getMapName() + ".png");
-			ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
+			boolean picture = fileManager.processExportRequest();
+			if(picture) {
+				SnapshotParameters snapshotParameters = new SnapshotParameters();
+				snapshotParameters.setTransform(Transform.translate(scrollPane.getLayoutX() - pane.getLayoutX(), scrollPane.getLayoutY() - pane.getLayoutY()));
+				snapshotParameters.setViewport(new Rectangle2D(0, 0, dataManager.getWidth(), dataManager.getHeight()));
+				WritableImage image = pane.snapshot(snapshotParameters, null);
+				File file = new File(FileManager.getRegionPath() +"/"+dataManager.getMapName()+ ".png");
+				ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
+			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			Alert alert = new Alert(Alert.AlertType.ERROR, "Something went Wrong Exporting");
+			alert.show();
 		}
 	}
 
@@ -256,16 +251,6 @@ public class Controller implements Initializable {
 		pane.setBackground(new Background(new BackgroundFill(fill, CornerRadii.EMPTY, Insets.EMPTY)));
 	}
 
-	public void enableButtons() {
-		saveButton.setDisable(false);
-		exportButton.setDisable(false);
-		exitButton.setDisable(false);
-		addPictureButton.setDisable(false);
-		playButton.setDisable(false);
-		recolorButton.setDisable(false);
-		dimensionButton.setDisable(false);
-	}
-
 	public void reload(){
 		pane.getChildren().remove(polygonGroup);
 		init();
@@ -325,7 +310,6 @@ public class Controller implements Initializable {
 		setBackgroundColorPicker();
 		zoom.setValue(dataManager.getZoomLevel());
 		borderWidth.setValue(dataManager.getBorderWidth());
-
 	}
 
 	private void addImages(){
@@ -358,8 +342,42 @@ public class Controller implements Initializable {
 		imageGroup.add(iv);
 	}
 
+	public void disableButtons(boolean value) {
+		saveButton.setDisable(value);
+		exportButton.setDisable(value);
+		exitButton.setDisable(value);
+		addPictureButton.setDisable(value);
+		playButton.setDisable(value);
+		recolorButton.setDisable(value);
+		dimensionButton.setDisable(value);
+		mapNameTF.setDisable(value);
+		zoom.setDisable(value);
+		borderWidth.setDisable(value);
+	}
+
 	public String getMapNameText(){
 		return mapNameTF.getText();
 	}
 
+	private void setKeyPress(){
+		scrollPane.setOnKeyPressed(e -> {
+			switch(e.getCode()){
+				case UP :
+					polygonGroup.setTranslateY(polygonGroup.getTranslateY() - 10);
+					break;
+				case DOWN :
+					polygonGroup.setTranslateY(polygonGroup.getTranslateY() + 10);
+					break;
+				case LEFT :
+					polygonGroup.setTranslateX(polygonGroup.getTranslateX() - 10);
+					break;
+				case RIGHT :
+					polygonGroup.setTranslateX(polygonGroup.getTranslateX() + 10);
+					break;
+				default:
+					e.consume();
+			}
+
+		});
+	}
 }

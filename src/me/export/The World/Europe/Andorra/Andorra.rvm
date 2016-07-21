@@ -1,58 +1,51 @@
 
 {
     "name":"Andorra",
-    "subregions_have_capitals":true,
-    "subregions_have_flags":true,
+    "subregions_have_capitals":false,
+    "subregions_have_flags":false,
     "subregions_have_leaders":false,
     "subRegions":[
         {
-            "name":"Ordino",
-            "capital":"Oridino (town)",
-            "red":200,
-            "blue":200,
-            "green":200
+            "name":"1",
+            "RED":36,
+            "BLUE":36,
+            "GREEN":36
         },
         {
-            "name":"Carillo",
-            "capital":"Canillo (town)",
-            "red":198,
-            "blue":198,
-            "green":198
+            "name":"2",
+            "RED":72,
+            "BLUE":72,
+            "GREEN":72
         },
         {
-            "name":"Encamp",
-            "capital":"Encamp (town)",
-            "red":196,
-            "blue":196,
-            "green":196
+            "name":"3",
+            "RED":108,
+            "BLUE":108,
+            "GREEN":108
         },
         {
-            "name":"Escaldes-Engordany",
-            "capital":"Escaldes-Engordany (town)",
-            "red":194,
-            "blue":194,
-            "green":194
+            "name":"4",
+            "RED":144,
+            "BLUE":144,
+            "GREEN":144
         },
         {
-            "name":"La Massana",
-            "capital":"La Massana (town)",
-            "red":192,
-            "blue":192,
-            "green":192
+            "name":"5",
+            "RED":180,
+            "BLUE":180,
+            "GREEN":180
         },
         {
-            "name":"Andorra la Vella",
-            "capital":"Andorra la Vella (city)",
-            "red":190,
-            "blue":190,
-            "green":190
+            "name":"6",
+            "RED":216,
+            "BLUE":216,
+            "GREEN":216
         },
         {
-            "name":"Sant Julia de Loria",
-            "capital":"Sant Julia de Loria (town)",
-            "red":188,
-            "blue":188,
-            "green":188
+            "name":"7",
+            "RED":252,
+            "BLUE":252,
+            "GREEN":252
         }
     ]
 }
