@@ -139,13 +139,17 @@ public class Controller implements Initializable {
 			setBackgroundColorPicker();
 			dataManager.setBackgroundColor(backgroundCP.getValue().toString());
 		});
+		borderCP.setOnAction(e -> fileManager.setEdited());
 		zoom.valueProperty().bindBidirectional(dataManager.zoomLevelProperty());
-		borderWidth.setOnMouseReleased(e -> dataManager.setBorderWidth(borderWidth.getValue()));
+		zoom.setOnMouseReleased(e -> fileManager.setEdited());
+		borderWidth.setOnMouseReleased(e -> {dataManager.setBorderWidth(borderWidth.getValue()); fileManager.setEdited();});
 		setKeyPress();
 		zoom.setMin(1);
 		zoom.setMax(1200);
 		borderWidth.setMax(10);
 		disableButtons(true);
+		removePictureButton.setDisable(true);
+		saveButton.setDisable(true);
 	}
 
 
@@ -166,27 +170,30 @@ public class Controller implements Initializable {
 	}
 
 	public void setExportButton() {
-
 		try {
 			boolean picture = fileManager.processExportRequest();
 			if(picture) {
-				polygonGroup.deselect();
-				imageGroup.deselect();
+				try {
+					polygonGroup.deselect();
+					imageGroup.deselect();
+				}catch(NullPointerException ignored){}
 				SnapshotParameters snapshotParameters = new SnapshotParameters();
-				snapshotParameters.setTransform(Transform.translate(scrollPane.getLayoutX() - pane.getLayoutX(), scrollPane.getLayoutY() - pane.getLayoutY()));
+				snapshotParameters.setTransform(Transform.translate(scrollPane.getLayoutX() - pane.getLayoutX(),
+						scrollPane.getLayoutY() - pane.getLayoutY()));
 				snapshotParameters.setViewport(new Rectangle2D(0, 0, dataManager.getWidth(), dataManager.getHeight()));
 				WritableImage image = pane.snapshot(snapshotParameters, null);
 				File file = new File(FileManager.getRegionPath() +"/"+dataManager.getMapName()+ ".png");
 				ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
+				removePictureButton.setDisable(true);
 			}
-		} catch (IOException e) {
+		} catch (Exception e) {
 			Alert alert = new Alert(Alert.AlertType.ERROR, "Something went Wrong Exporting");
 			alert.show();
 		}
 	}
 
-	public void setExitButton() {
-		System.exit(0);
+	public void setExitButton(){
+		fileManager.processExitButton();
 	}
 
 	public void setAddPictureButton() {
@@ -198,6 +205,7 @@ public class Controller implements Initializable {
 		try {
 			Files.copy(image.toPath(), dest.toPath());
 			dataManager.getImages().add(new ImageDetail(dest.getPath().toString(), 0, 0, dataManager.getImages().size()));
+			fileManager.setEdited();
 		} catch (FileAlreadyExistsException e){
 			dataManager.getImages().add(new ImageDetail("src/me/addedImage/"+image.getName(), 0, 0, dataManager.getImages().size()));
 		} catch (IOException e) {
@@ -210,6 +218,7 @@ public class Controller implements Initializable {
 		if(imageGroup.getSelectionModel().getSelectedItem() != null) {
 			dataManager.remove(Integer.parseInt(imageGroup.getSelectionModel().getSelectedItem().getId()));
 			imageGroup.getChildren().remove(imageGroup.getSelectionModel().getSelectedItem());
+			fileManager.setEdited();
 		}
 //		ArrayList<ImageDetail> id = dataManager.getImages();
 //		for(ImageDetail temp: id)
@@ -246,18 +255,22 @@ public class Controller implements Initializable {
 	public void setRecolorButton() {
 		randomizeColor();
 		reload();
+		fileManager.setEdited();
 	}
 
 	public void setDimensionButton() {
 		DimensionDialog dd = new DimensionDialog();
-		dd.show();
+		dd.show(dataManager.getWidth(), dataManager.getHeight());
 		dataManager.setHeight(dd.getHeight());
 		dataManager.setWidth(dd.getWidth());
+		pane.setPrefSize(dataManager.getWidth(), dataManager.getHeight());
+		fileManager.setEdited();
 	}
 
 	public void setBackgroundColorPicker() {
 		Paint fill = backgroundCP.getValue();
 		pane.setBackground(new Background(new BackgroundFill(fill, CornerRadii.EMPTY, Insets.EMPTY)));
+		if(!first)fileManager.setEdited();
 	}
 
 	public void reload(){
@@ -285,10 +298,9 @@ public class Controller implements Initializable {
 		pane.getChildren().add(polygonGroup);
 		polygonGroup.setTranslateX(dataManager.getTranslatex());
 		polygonGroup.setTranslateY(dataManager.getTranslatey());
-
+		first = false;
 		table.setItems(ob);
 		addImages(); pane.getChildren().add(imageGroup);
-		first = false;
 		mapNameTF.setText(dataManager.getMapName());
 	}
 
@@ -297,6 +309,7 @@ public class Controller implements Initializable {
 		table.scrollTo(i);
 		table.getSelectionModel().select(i);
 		srd.show(i);
+		fileManager.setEdited();
 	}
 
 	private void randomizeColor(){
@@ -322,6 +335,7 @@ public class Controller implements Initializable {
 		setBackgroundColorPicker();
 		zoom.setValue(dataManager.getZoomLevel());
 		borderWidth.setValue(dataManager.getBorderWidth());
+		saveButton.disableProperty().bind(fileManager.savedProperty());
 	}
 
 	private void addImages(){
@@ -336,6 +350,7 @@ public class Controller implements Initializable {
 		for (ImageDetail temp : id) {
 			Image image = new Image("file:" + temp.getImage());
 			DraggableImageView iv = new DraggableImageView(image, temp);
+			iv.setOnMouseReleased(e -> removePictureButton.setDisable(false));
 			iv.setId(temp.getKey() + "");
 			iv.setX(temp.getX());
 			iv.setY(temp.getY());
@@ -348,6 +363,7 @@ public class Controller implements Initializable {
 		ImageDetail temp = id.get(id.size()-1);
 		Image image = new Image("file:" + temp.getImage());
 		DraggableImageView iv = new DraggableImageView(image, temp);
+		iv.setOnMouseReleased(e -> removePictureButton.setDisable(false));
 		iv.setId(temp.getKey() + "");
 		iv.setX(temp.getX());
 		iv.setY(temp.getY());
@@ -355,9 +371,7 @@ public class Controller implements Initializable {
 	}
 
 	public void disableButtons(boolean value) {
-		saveButton.setDisable(value);
 		exportButton.setDisable(value);
-		exitButton.setDisable(value);
 		addPictureButton.setDisable(value);
 		playButton.setDisable(value);
 		recolorButton.setDisable(value);
@@ -377,18 +391,22 @@ public class Controller implements Initializable {
 				case UP :
 					polygonGroup.setTranslateY(polygonGroup.getTranslateY() - 10);
 					dataManager.setTranslatey(polygonGroup.getTranslateY());
+					fileManager.setEdited();
 					break;
 				case DOWN :
 					polygonGroup.setTranslateY(polygonGroup.getTranslateY() + 10);
 					dataManager.setTranslatey(polygonGroup.getTranslateY());
+					fileManager.setEdited();
 					break;
 				case LEFT :
 					polygonGroup.setTranslateX(polygonGroup.getTranslateX() - 10);
 					dataManager.setTranslatex(polygonGroup.getTranslateX());
+					fileManager.setEdited();
 					break;
 				case RIGHT :
 					polygonGroup.setTranslateX(polygonGroup.getTranslateX() + 10);
 					dataManager.setTranslatex(polygonGroup.getTranslateX());
+					fileManager.setEdited();
 					break;
 				default:
 					e.consume();

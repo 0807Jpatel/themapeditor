@@ -6,6 +6,8 @@ import data.ImageDetail;
 import data.SubRegion;
 import gui.NewDialog;
 import gui.ProgressDialog;
+import gui.YesNoDialog;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.paint.Color;
@@ -59,23 +61,20 @@ public class FileManager {
 	private final String EXPORTFLAG  = "subregions_have_flags";
 	private final String EXPORTLEADERS = "subregions_have_leaders";
 
-
-	private boolean edited;
 	private DataManager dataManager;
 	private Controller controller;
 	public static String regionPath; //After creating new Directory
 	private String coordinatePath;
 	private static double progress;
-
+	private SimpleBooleanProperty saved;
 	private boolean allLeaders, allCapital;
 	// TODO add the save boolean and alert dialog for robust design
 
-	
-	
 
 	public FileManager(DataManager dataManger, Controller controller) {
 		this.dataManager = dataManger;
 		this.controller = controller;
+		saved = new SimpleBooleanProperty(true);
 	}
 
 	/**
@@ -83,6 +82,12 @@ public class FileManager {
 	 */
 	public void processNewRequest() {
 		try {
+			if (!saved.getValue()) {
+				boolean save = YesNoDialog.getSingleton().show("Would you like to save this work");
+				if (save)
+					processSaveRequest();
+			}
+//			dataManager.reset();
 			NewDialog nd = new NewDialog();
 			nd.show();
 			String directoryPath = nd.getParentDirectory().toPath().toString();
@@ -110,8 +115,8 @@ public class FileManager {
 			controller.setBackgroundColorPicker();
 			controller.reload();
 			controller.disableButtons(false);
-		}catch (NullPointerException ignored){}
-		catch(Exception ex){
+			saved.set(false);
+		}catch(Exception ex){
 			Alert alert = new Alert(Alert.AlertType.ERROR,"Some thing went wrong Please try again");
 			alert.show();
 		}
@@ -122,6 +127,11 @@ public class FileManager {
 	 */
 	public void processLoadRequest() {
 	    try {
+		    if(!saved.getValue()){
+			    boolean save = YesNoDialog.getSingleton().show("Would you like to save this work");
+			    if(save)
+				    processSaveRequest();
+		    }
 		    FileChooser fileChooser = new FileChooser();
 		    fileChooser.setInitialDirectory(new File("src/me/work"));
 		    File file = fileChooser.showOpenDialog(null);
@@ -226,6 +236,7 @@ public class FileManager {
 		PrintWriter pw = new PrintWriter(filePath.toString());
 		pw.write(prettyPrinted);
 		pw.close();
+		saved.set(true);
 	    }catch(NullPointerException ex){
 			Alert alert = new Alert(Alert.AlertType.ERROR, "Something went wrong Saving");
 		    alert.show();
@@ -260,6 +271,7 @@ public class FileManager {
 			PrintWriter pw = new PrintWriter(regionPath + "/" + dataManager.getMapName()+".rvm");
 			pw.write(prettyPrinted);
 			pw.close();
+			saved.set(true);
 			return true;
 
 		}else{
@@ -273,6 +285,21 @@ public class FileManager {
 	    return false;
 	}
 
+	public void processExitButton(){
+		try {
+			if (!saved.getValue()) {
+				boolean save = YesNoDialog.getSingleton().show("Would you like to save this work");
+				if (save)
+					processSaveRequest();
+			}
+		}catch (Exception ex){
+			Alert alert = new Alert(Alert.AlertType.INFORMATION, "Something Went Wrong Saving");
+			alert.show();
+		}
+		System.exit(1);
+	}
+
+
 	/**
 	 * this method is used to by loadrequest to load all the data from the last saved status
 	 *
@@ -280,6 +307,7 @@ public class FileManager {
 	 * @throws IOException
 	 */
 	public void loadData(String filePath) throws IOException {
+//		dataManager.reset();
 		JsonObject jsonObject = loadJSONFile(filePath);
 		progress++;
 		dataManager.setMapName(jsonObject.getString(NAMEOFMAP));
@@ -312,6 +340,7 @@ public class FileManager {
 		progress++;
 		loadSubRegionContents(contentArray);
 		progress++;
+		saved.set(true);
 		controller.disableButtons(false);
 	}
 
@@ -481,15 +510,18 @@ public class FileManager {
 	public void setCoordinatePath(String coordinatePath){
 		this.coordinatePath = coordinatePath;
 	}
-
-	public void setEdited(boolean edited) {
-		this.edited = edited;
-	}
 	
 	public static double getDouble(){
 	    return progress;
 	}
 
 	public static String getRegionPath(){return regionPath;}
+
+	public SimpleBooleanProperty savedProperty() {
+		return saved;
+	}
+
+	public void setEdited() {saved.set(false);
+	}
 
 }

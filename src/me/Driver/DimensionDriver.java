@@ -20,7 +20,7 @@ public class DimensionDriver extends Application{
 			boolean success = loadProperties("workspace_properties.xml");
 			if (success){
 				DimensionDialog dd = new DimensionDialog();
-				dd.show();
+//				dd.show();
 			}
 		}catch (Exception e/*IOException ioe*/) {
 			System.out.println("Error2");

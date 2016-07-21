@@ -32,7 +32,7 @@ public class DimensionDialog {
 		return height;
 	}
 
-	public void show(){
+	public void show(double initwidth, double initheight){
 		PropertiesManager prop = PropertiesManager.getPropertiesManager();
 		Stage dim = new Stage();
 		dim.setHeight(230);
@@ -44,11 +44,14 @@ public class DimensionDialog {
 
 		gp.add(new Label(prop.getProperty(PropertyType.DIMENSION_HEIGHT_LABEL)), 0 , 0);
 		TextField HeightTF = new TextField();
+		HeightTF.setText(initheight + "");
+
 		HeightTF.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation());
 		gp.add(HeightTF, 1 , 0);
 
 		gp.add(new Label(prop.getProperty(PropertyType.DIMENSION_WIDTH_LABEL)), 0 , 1);
 		TextField WidthTF = new TextField();
+		WidthTF.setText(initwidth + "");
 		WidthTF.addEventFilter(KeyEvent.KEY_TYPED , numeric_Validation());
 		gp.add(WidthTF, 1 , 1);
 

@@ -187,4 +187,18 @@ public class DataManager {
 				images.remove(x);
 	}
 
+	public void reset(){
+		images = new ArrayList<>(3);
+		mapName = new SimpleStringProperty("");
+		backgroundColor = "0x8099ffff";
+		borderColor = "0x333333ff";
+		zoomLevel = new SimpleDoubleProperty(1);
+		borderWidth = .2;
+		translatex = 0;
+		translatey = 0;
+		height = 536;
+		width = 802;
+		directoryPath = "";
+		subRegions = new SubRegion[1];
+	}
 }
