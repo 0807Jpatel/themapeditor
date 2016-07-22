@@ -1,23 +1,25 @@
 
 {
     "NAME_OF_MAP":"Andorra",
-    "BACKGROUND_COLOR":"0xe6994dff",
+    "BACKGROUND_COLOR":"0xe26f1eff",
     "BORDER_COLOR":"0x333333ff",
-    "BORDER_WIDTH":2.3238938053097344,
-    "ZOOM":721.9115044247789,
-    "TRANSLATEX":30.0,
-    "TRANSLATEY":120.0,
+    "BORDER_WIDTH":1.438938053097345,
+    "ZOOM":616.4159292035398,
+    "TRANSLATEX":60.0,
+    "TRANSLATEY":110.0,
+    "MAP_HEIGHT":536.0,
+    "MAP_WIDTH":802.0,
     "PARENT_DIRECTORY":"/home/jappatel/IdeaProjects/themapeditor/src/me/export/The World/Europe",
     "IMAGES":[
+        {
+            "IMAGE_PATH":"src/me/addedImage/Andorra Flag.png",
+            "IMAGE_X":602.0,
+            "IMAGE_Y":412.0
+        },
         {
             "IMAGE_PATH":"src/me/addedImage/image2.png",
             "IMAGE_X":0.0,
             "IMAGE_Y":0.0
-        },
-        {
-            "IMAGE_PATH":"src/me/addedImage/Andorra Flag.png",
-            "IMAGE_X":601.0,
-            "IMAGE_Y":413.0
         }
     ],
     "COORDINATE_FILE_PATH":"/home/jappatel/IdeaProjects/themapeditor/src/me/raw_map_data/Andorra.json",
@@ -26,7 +28,7 @@
             "NAME_OF_SUBREGION":"Ordino",
             "CAPITAL_OF_SUBREGION":"Ordino (town)",
             "LEADER_OF_SUBREGION":"Ventura Espot",
-            "COLOR_OF_SUBREGION":0.4242857098579407
+            "COLOR_OF_SUBREGION":0.14142857491970062
         },
         {
             "NAME_OF_SUBREGION":"Canillo",
@@ -38,19 +40,19 @@
             "NAME_OF_SUBREGION":"Encamp",
             "CAPITAL_OF_SUBREGION":"Encamp (town)",
             "LEADER_OF_SUBREGION":"Miquel Alís Font",
-            "COLOR_OF_SUBREGION":0.5657142996788025
+            "COLOR_OF_SUBREGION":0.4242857098579407
         },
         {
             "NAME_OF_SUBREGION":"Escaldes-Engordany",
             "CAPITAL_OF_SUBREGION":"Escaldes-Engordany (town)",
             "LEADER_OF_SUBREGION":"Montserrat Capdevila Pallarés",
-            "COLOR_OF_SUBREGION":0.8485714197158813
+            "COLOR_OF_SUBREGION":0.5657142996788025
         },
         {
             "NAME_OF_SUBREGION":"La Massana",
             "CAPITAL_OF_SUBREGION":"La Massana (town)",
             "LEADER_OF_SUBREGION":"Josep Areny",
-            "COLOR_OF_SUBREGION":0.9900000095367432
+            "COLOR_OF_SUBREGION":0.8485714197158813
         },
         {
             "NAME_OF_SUBREGION":"Andorra la Vella",
@@ -62,7 +64,7 @@
             "NAME_OF_SUBREGION":"Sant Julia de Loria",
             "CAPITAL_OF_SUBREGION":"Sant Julia de Loria (town)",
             "LEADER_OF_SUBREGION":"Josep Pintat Forné",
-            "COLOR_OF_SUBREGION":0.14142857491970062
+            "COLOR_OF_SUBREGION":0.9900000095367432
         }
     ]
 }

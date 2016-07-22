@@ -1,5 +1,6 @@
 package gui;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
 import data.DataManager;
 import data.SubRegion;
 import file.FileManager;
@@ -145,24 +146,29 @@ public class SubRegionDialog {
 	private void addImage(){
 		gp.getChildren().removeAll(leaderiv, flagiv);
 		try {
-			String leaderPath = "file:" + FileManager.getRegionPath() + "/" + data.get(index.get()).getLeader() + ".png";
-			leaderiv = new ImageView(leaderPath);
+			File file = new File(FileManager.getRegionPath() + "/" + data.get(index.get()).getLeader() + ".png");
+			if(file.exists()) {
+				leaderiv = new ImageView(file.toURI().toString());
+			}else{
+				file = new File("src/me/images/NoImage.png");
+				leaderiv = new ImageView(file.toURI().toString());
+			}
 			leaderiv.setFitHeight(150);
 			leaderiv.setFitWidth(200);
 			gp.add(leaderiv, 0, 4);
-		}catch (IllegalArgumentException ex){
-			gp.add(new Label(prop.getProperty(PropertyType.SUBREGION_NO_PICTURE)), 0, 4);
-		}
+		}catch (Exception ex){}
 
 		try{
-			String flagPath = "file:" + FileManager.regionPath +"/"+ data.get(index.get()).getName() + " Flag.png";
-//			System.out.println(flagPath);
-			flagiv = new ImageView(flagPath);
+			File file = new File(FileManager.regionPath +"/"+ data.get(index.get()).getName() + " Flag.png");
+			if(file.exists()) {
+				flagiv = new ImageView(file.toURI().toString());
+			}else{
+				file = new File("src/me/images/NoImage.png");
+				flagiv = new ImageView(file.toURI().toString());
+			}
 			flagiv.setFitHeight(150);
 			flagiv.setFitWidth(200);
 			gp.add(flagiv, 1, 4);
-		}catch (IllegalArgumentException ex){
-			gp.add(new Label(prop.getProperty(PropertyType.SUBREGION_NO_PICTURE)), 1, 4);
-		}
+		}catch (Exception ex){}
 	}
 }

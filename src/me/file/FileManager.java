@@ -42,6 +42,8 @@ public class FileManager {
 	private final String ZOOMLEVEL = "ZOOM";
 	private final String TRANSLATEX = "TRANSLATEX";
 	private final String TRANSLATEY = "TRANSLATEY";
+	private final String MAPHEIGHT = "MAP_HEIGHT";
+	private final String MAPWIDTH = "MAP_WIDTH";
 	private final String IMAGES = "IMAGES";
 	private final String IMAGEPATH = "IMAGE_PATH";
 	private final String IMAGEX = "IMAGE_X";
@@ -61,7 +63,6 @@ public class FileManager {
 	private final String EXPORTCAPITAL = "subregions_have_capitals";
 	private final String EXPORTFLAG  = "subregions_have_flags";
 	private final String EXPORTLEADERS = "subregions_have_leaders";
-
 	private DataManager dataManager;
 	private Controller controller;
 	public static String regionPath; //After creating new Directory
@@ -69,6 +70,7 @@ public class FileManager {
 	private static double progress;
 	private SimpleBooleanProperty saved;
 	private boolean allLeaders, allCapital;
+	public double groupWidth;
 	// TODO add the save boolean and alert dialog for robust design
 
 
@@ -117,7 +119,8 @@ public class FileManager {
 			controller.reload();
 			controller.disableButtons(false);
 			saved.set(false);
-		}catch(Exception ex){
+		}catch (NullPointerException ex){}
+		catch(Exception ex){
 			Alert alert = new Alert(Alert.AlertType.ERROR,"Some thing went wrong Please try again");
 			alert.show();
 		}
@@ -160,7 +163,6 @@ public class FileManager {
 
 	public void processSaveRequest() throws IOException{
 	    try{
-
 		if(!controller.getMapNameText().equals(dataManager.getMapName())){
 			String oldName = dataManager.getMapName();
 			dataManager.setMapName(controller.getMapNameText());
@@ -218,6 +220,8 @@ public class FileManager {
 					.add(ZOOMLEVEL, dataManager.getZoomLevel())
 					.add(TRANSLATEX, dataManager.getTranslatex())
 					.add(TRANSLATEY, dataManager.getTranslatey())
+					.add(MAPHEIGHT, dataManager.getHeight())
+					.add(MAPWIDTH, dataManager.getWidth())
 					.add(PARENTDIRECTORY, dataManager.getDirectoryPath())
 					.add(IMAGES, imageArray)
 					.add(COORDINATESFILEPATH, coordinatePath)
@@ -323,6 +327,10 @@ public class FileManager {
 		progress++;
 		dataManager.setTranslatey(getDataAsDouble(jsonObject, TRANSLATEY));
 		progress++;
+		dataManager.setHeight(getDataAsDouble(jsonObject, MAPHEIGHT));
+		progress++;
+		dataManager.setWidth(getDataAsDouble(jsonObject, MAPWIDTH));
+		progress++;
 		dataManager.setZoomLevel(getDataAsDouble(jsonObject, ZOOMLEVEL));
 		progress++;
 		dataManager.setDirectoryPath(jsonObject.getString(PARENTDIRECTORY));
@@ -367,7 +375,8 @@ public class FileManager {
 		JsonObject jsonObject = loadJSONFile(path);
 		int numberOfSubRegions = getDataAsInt(jsonObject, NUMBEROFSUBREGION);
 		JsonArray firstSubRegions = jsonObject.getJsonArray(SUBREGION);
-
+		double minX = 0;
+		double maxX = 0;
 		ObservableList<SubRegion> subRegions = FXCollections.observableArrayList();
 		for (int x = 0; x < firstSubRegions.size(); x++) {
 			JsonObject sr = firstSubRegions.getJsonObject(x);
@@ -380,14 +389,20 @@ public class FileManager {
 				double[] points = new double[xy.size() * 2];
 				for (int w = 0; w < xy.size(); w++) {
 					JsonObject xyObject = xy.getJsonObject(w);
-					points[w * 2] = ((getDataAsDouble(xyObject, "X") + 180) / 360) * dataManager.getWidth();
-					points[w * 2 + 1] = ((getDataAsDouble(xyObject, "Y") * -1 + 90) / 180) * dataManager.getHeight();
+					double xdouble= getDataAsDouble(xyObject, "X");
+					if(minX < xdouble)
+						minX = xdouble;
+					if(maxX > xdouble)
+						maxX = xdouble;
+					points[w * 2] = (xdouble + 180 )/ 360 * 802;
+					points[w * 2 + 1] = ((getDataAsDouble(xyObject, "Y") * -1 + 90) / 180) * 536;
 				}
 				polygonsPoints[q] = points;
 			}
 			temp.setSubPoints(polygonsPoints);
 			subRegions.add(temp);
 		}
+		groupWidth = Math.abs(maxX - minX);
 		dataManager.setSubRegions(subRegions);
 	}
 

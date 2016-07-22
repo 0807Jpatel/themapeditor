@@ -8,9 +8,9 @@
         {
             "name":"Ordino",
             "capital":"Ordino (town)",
-            "red":108,
-            "blue":108,
-            "green":108
+            "red":36,
+            "blue":36,
+            "green":36
         },
         {
             "name":"Canillo",
@@ -22,23 +22,23 @@
         {
             "name":"Encamp",
             "capital":"Encamp (town)",
+            "red":108,
+            "blue":108,
+            "green":108
+        },
+        {
+            "name":"Escaldes-Engordany",
+            "capital":"Escaldes-Engordany (town)",
             "red":144,
             "blue":144,
             "green":144
         },
         {
-            "name":"Escaldes-Engordany",
-            "capital":"Escaldes-Engordany (town)",
+            "name":"La Massana",
+            "capital":"La Massana (town)",
             "red":216,
             "blue":216,
             "green":216
-        },
-        {
-            "name":"La Massana",
-            "capital":"La Massana (town)",
-            "red":252,
-            "blue":252,
-            "green":252
         },
         {
             "name":"Andorra la Vella",
@@ -50,9 +50,9 @@
         {
             "name":"Sant Julia de Loria",
             "capital":"Sant Julia de Loria (town)",
-            "red":36,
-            "blue":36,
-            "green":36
+            "red":252,
+            "blue":252,
+            "green":252
         }
     ]
 }

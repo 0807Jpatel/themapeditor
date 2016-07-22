@@ -123,12 +123,14 @@ public class Controller implements Initializable {
 			if(table.getSelectionModel().getFocusedIndex() >= 0)
 				polygonGroup.setSelected(table.getFocusModel().getFocusedIndex());
 		});
-		borderCP.setOnAction(e -> dataManager.setBorderColor(borderCP.getValue().toString()));
+		borderCP.setOnAction(e -> {
+			dataManager.setBorderColor(borderCP.getValue().toString());
+			fileManager.setEdited();
+		});
 		backgroundCP.setOnAction(e -> {
 			setBackgroundColorPicker();
 			dataManager.setBackgroundColor(backgroundCP.getValue().toString());
 		});
-		borderCP.setOnAction(e -> fileManager.setEdited());
 		zoom.valueProperty().bindBidirectional(dataManager.zoomLevelProperty());
 		zoom.setOnMouseReleased(e -> fileManager.setEdited());
 		borderWidth.setOnMouseReleased(e -> {dataManager.setBorderWidth(borderWidth.getValue()); fileManager.setEdited();});
@@ -253,6 +255,8 @@ public class Controller implements Initializable {
 		dataManager.setHeight(dd.getHeight());
 		dataManager.setWidth(dd.getWidth());
 		pane.setPrefSize(dataManager.getWidth(), dataManager.getHeight());
+		Rectangle clip = new Rectangle(dataManager.getWidth(), dataManager.getHeight());
+		pane.setClip(clip);
 		fileManager.setEdited();
 	}
 
@@ -323,6 +327,7 @@ public class Controller implements Initializable {
 		zoom.setValue(dataManager.getZoomLevel());
 		borderWidth.setValue(dataManager.getBorderWidth());
 		saveButton.disableProperty().bind(fileManager.savedProperty());
+		zoom.setMax(1200/fileManager.groupWidth);
 	}
 
 	private void addImages(){
@@ -407,6 +412,7 @@ public class Controller implements Initializable {
 			polygonGroup.scaleXProperty().unbind();
 			polygonGroup.scaleYProperty().unbind();
 			zoom.valueProperty().unbind();
+			zoom.setMax(1200);
 			dataManager.reset();
 		}catch (NullPointerException ex){}
 	}

@@ -62,7 +62,7 @@ public class ProgressDialog {
 		    Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
-			    bar.setProgress(perc/17);
+			    bar.setProgress(perc/19);
 			    if(bar.getProgress() == 1){
 				kg = false;
 				stage.close();
