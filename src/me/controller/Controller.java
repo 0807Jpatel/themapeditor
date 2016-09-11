@@ -1,8 +1,6 @@
 package controller;
 
 import audio_manager.AudioManager;
-import com.sun.javafx.geom.transform.Affine3D;
-import com.sun.javafx.geom.transform.BaseTransform;
 import data.DataManager;
 import data.ImageDetail;
 import data.SubRegion;
@@ -11,7 +9,6 @@ import gui.DimensionDialog;
 import gui.DraggableImageView;
 import gui.SelectableNode;
 import gui.SubRegionDialog;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
@@ -28,32 +25,28 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.transform.Transform;
+import javafx.stage.FileChooser;
 
+import javax.imageio.ImageIO;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
-import javafx.scene.transform.Transform;
-import javafx.stage.FileChooser;
-
-import javax.imageio.ImageIO;
-import javax.sound.midi.InvalidMidiDataException;
-import javax.sound.midi.MidiUnavailableException;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Controller implements Initializable {
 	@FXML Button newButton, loadButton, saveButton, exportButton, exitButton,
@@ -70,20 +63,11 @@ public class Controller implements Initializable {
 	private ObservableList<SubRegion> ob ;
 	private DataManager dataManager = new DataManager();
 	private FileManager fileManager = new FileManager(dataManager, this);
-	AudioManager audioManager = new AudioManager();
+	private AudioManager audioManager = new AudioManager();
 	private SelectableNode polygonGroup;
 	private SelectableNode imageGroup;
 	private boolean first = true;
-	private DropShadow ds;
-	private InnerShadow is;
 
-
-	/**
-	 * All the binding and new data and stuff goes here
-	 *
-	 * @param location
-	 * @param resources
-	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		ob = dataManager.getSubRegions();
@@ -195,7 +179,7 @@ public class Controller implements Initializable {
 		File dest = new File("src/me/addedImage/"+image.getName());
 		try {
 			Files.copy(image.toPath(), dest.toPath());
-			dataManager.getImages().add(new ImageDetail(dest.getPath().toString(), 0, 0, dataManager.getImages().size()));
+			dataManager.getImages().add(new ImageDetail(dest.getPath(), 0, 0, dataManager.getImages().size()));
 			fileManager.setEdited();
 		} catch (FileAlreadyExistsException e){
 			dataManager.getImages().add(new ImageDetail("src/me/addedImage/"+image.getName(), 0, 0, dataManager.getImages().size()));
@@ -270,15 +254,13 @@ public class Controller implements Initializable {
 		ob = dataManager.getSubRegions();
 		pane.getChildren().remove(polygonGroup);
 		pane.getChildren().remove(imageGroup);
-		creatNewPolyGroup();
+		createNewPolyGroup();
 		init();
-		for (int i = 0; i < ob.size(); i++) {
-			SubRegion temp = ob.get(i);
+		for (SubRegion temp : ob) {
 			double[][] ww = temp.getSubPoints();
 			Group g = new Group();
 			for (double[] f : ww) {
 				Polygon polygon = new Polygon(f);
-				int j = i;
 				polygon.setFill(temp.getColor());
 				polygon.strokeWidthProperty().bind(borderWidth.valueProperty().divide(zoom.valueProperty()));
 				polygon.strokeProperty().bind(borderCP.valueProperty());
@@ -332,7 +314,7 @@ public class Controller implements Initializable {
 
 	private void addImages(){
 		ArrayList<ImageDetail> id = dataManager.getImages();
-		ds = new DropShadow();
+		DropShadow ds = new DropShadow();
 		ds.setOffsetY(6);
 		ds.setOffsetY(6);
 		imageGroup = new SelectableNode(ds) {
@@ -417,8 +399,8 @@ public class Controller implements Initializable {
 		}catch (NullPointerException ex){}
 	}
 
-	private void creatNewPolyGroup() {
-		is = new InnerShadow(0, 2, 2, Color.rgb(206, 74, 73));
+	private void createNewPolyGroup() {
+		InnerShadow is = new InnerShadow(0, 2, 2, Color.rgb(206, 74, 73));
 		polygonGroup = new SelectableNode(is) {
 			@Override
 			public void onMouseClickedHook(MouseEvent e) {

@@ -2,25 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a250106-bdeb-4d3c-b745-b034cbac9f23" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AudioManager/NA.mid" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AudioManager/lib/CopyLibs/org-netbeans-modules-java-j2seproject-copylibstask.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AudioManager/lib/beads.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AudioManager/lib/jl1.0.1.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AudioManager/lib/mp3spi1.9.4.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AudioManager/lib/tritonus_share.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AudioManager/build.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AudioManager/lib/nblibraries.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AudioManager/manifest.mf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AudioManager/nbproject/build-impl.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AudioManager/nbproject/genfiles.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AudioManager/nbproject/private/config.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AudioManager/nbproject/private/private.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AudioManager/nbproject/private/private.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AudioManager/nbproject/project.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AudioManager/nbproject/project.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AudioManager/src/audio_manager/AudioManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/AudioManager/src/audio_manager/Player.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/controller/Controller.java" afterPath="$PROJECT_DIR$/src/me/controller/Controller.java" />
     </list>
     <ignored path="TheMapEditor.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,8 +28,8 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/me/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="61" column="19" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
+            <state relative-caret-position="483">
+              <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -139,9 +122,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="21" />
+    <option name="y" value="24" />
     <option name="width" value="1920" />
-    <option name="height" value="1059" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -151,7 +134,10 @@
             <id />
           </State>
           <State>
-            <id>Android Lint</id>
+            <id>Android &gt; Lint &gt; Usability &gt; Icons</id>
+          </State>
+          <State>
+            <id>Android Lint for Kotlin</id>
           </State>
           <State>
             <id>Declaration redundancyJava</id>
@@ -223,10 +209,11 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane />
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -235,9 +222,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themapeditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="me" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themapeditor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="me" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -245,7 +255,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/jappatel/IdeaProjects/themapeditor/src/me/file/FileManager.java&#10;data&#9;FILE&#9;file:///home/jappatel/IdeaProjects/themapeditor/src/me/data/DataManager.java&#10;css&#9;FILE&#9;file:///home/jappatel/IdeaProjects/themapeditor/src/me/css/workspace.css&#10;co&#9;FILE&#9;file:///home/jappatel/IdeaProjects/themapeditor/src/me/controller/Controller.java&#10;con&#9;FILE&#9;file:///home/jappatel/IdeaProjects/themapeditor/src/me/controller/Controller.java&#10;su&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/SubRegionDialog.java&#10;sub&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/SubRegionDialog.java&#10;da&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/DataManager.java&#10;contr&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/controller/Controller.java&#10;c&#9;null&#9;null&#10;imageDe&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/ImageDetail.java&#10;ImageDet&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/ImageDetail.java&#10;image&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/ImageDetail.java&#10;fi&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/FileManager.java&#10;l&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/testbed/LoadTest.java&#10;file&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/FileManager.java&#10;load&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/testbed/LoadTest.java&#10;Image&#9;PSI&#9;JAVA://data.ImageDetail&#10;L&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/testbed/LoadTest.java&#10;Sub&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/SubRegion.java&#10;s&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/SaveTest.java&#10;sa&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/SaveTest.java&#10;save&#9;RUN_CONFIGURATION&#9;SaveTest&#10;fil&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/FileManager.java&#10;f&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/FileManager.java&#10;d&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/DataManager.java&#10;test&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/SaveTest.java&#10;File&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/FileManager.java&#10;cont&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/controller/Controller.java&#10;request&#9;PSI&#9;JAVA://file.FileManager#processSaveRequest&#10;subRE&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/SubRegionDialog.java&#10;subRe&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/SubRegion.java&#10;contro&#9;PSI&#9;JAVA://controller.Controller&#10;subREgion&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/SubRegion.java&#10;a&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/DataManager.java&#10;on&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/controller/Controller.java&#10;subregion&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/SubRegionDialog.java&#10;subre&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/SubRegion.java&#10;filemana&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/FileManager.java&#10;datamanager&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/data/DataManager.java&#10;dialog.css&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/css/dialog.css&#10;newdialog&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/NewDialog.java&#10;wo&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/workspace.fxml&#10;dialog&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/DimensionDialog.java&#10;ile&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/file/FileManager.java&#10;new&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/NewDialog.java&#10;Filem&#9;FILE&#9;file:///home/jappatel/Downloads/TheMapEditor/src/me/file/FileManager.java&#10;fxml&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/workspace.fxml&#10;workspace.css&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/css/workspace.css&#10;dim&#9;FILE&#9;file:///home/jappatel/IdeaProjects/TheMapEditor/src/me/gui/DimensionDialog.java" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
@@ -846,6 +856,7 @@
       <workItem from="1469131058650" duration="1681000" />
       <workItem from="1469146433746" duration="2266000" />
       <workItem from="1471878778210" duration="86000" />
+      <workItem from="1473624574335" duration="370000" />
     </task>
     <task id="LOCAL-00001" summary="Got PropertiesManager, fxml and css files ready with the proper packages.">
       <created>1467227353196</created>
@@ -1079,7 +1090,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82263000" />
+    <option name="totallyTimeSpent" value="82633000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1091,17 +1102,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="21" width="1920" height="1059" extended-state="6" />
-    <editor active="false" />
+    <frame x="0" y="24" width="1920" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297975" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944608" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36437246" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="613" y="323" width="1018" height="1040" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36345968" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="613" y="323" width="1018" height="1040" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32804757" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1116,7 +1128,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297975" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="322" y="252" width="1299" height="583" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297975" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1199,7 +1210,7 @@
           <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="38" />
+      <option name="time" value="39" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1490,8 +1501,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/me/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="61" column="19" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
+        <state relative-caret-position="483">
+          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
           <folding />
         </state>
       </provider>
